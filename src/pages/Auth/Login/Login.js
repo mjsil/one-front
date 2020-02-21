@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from 'react';
+import { login } from '../../../services/auth';
 import axios from '../../../axios-instance';
 
 import Form from '../../../components/AuthForm/Form/Form';
+import ErrorMessage from '../../../components/AuthForm/ErrorMessage/ErrorMessage';
 import Button from '../../../components/AuthForm/Button/Button';
 import Input from '../../../components/AuthForm/Input/Input';
 import Logo from '../../../components/AuthForm/Logo/Logo';
@@ -12,6 +14,7 @@ class Login extends Component {
   state = {
     email: '',
     password: '',
+    errorMessage: null,
     loading: false
   }
 
@@ -25,17 +28,37 @@ class Login extends Component {
 
   onFormSubmitHandler = (event) => {
     event.preventDefault();
-    this.setState({ loading: true });
+    this.setState({ loading: true, errorMessage: false });
     const formData = {
       email: this.state.email,
       password: this.state.password
     };
+    
+    axios
+      .post('/sessions', formData)
+      .then(res => {
+        const jwtToken = res.data.token;
+        login(jwtToken);
+      })
+      .catch(err => {
+        if (err.response.data) {
+          this.setState({ errorMessage: err.response.data.error})
+        }
+      })
+      .finally(() => {
+        this.setState({ loading: false })
+      });
   }
 
   render() {
+    let errMessage = null;
+    if (this.state.errorMessage) {
+      errMessage = <ErrorMessage>{this.state.errorMessage}</ErrorMessage>
+    } 
+    
     let contentToRender = (
       <Fragment>
-        <Logo />
+        {errMessage}
         <Input
           type="email"
           name="email"
@@ -59,12 +82,14 @@ class Login extends Component {
     if (this.state.loading) {
       contentToRender = (
         <Fragment>
-          <h1>Loading...</h1>
+          <Spinner />
         </Fragment>
       );
     }
+    
     return (
       <Form formOnSubmit={this.onFormSubmitHandler}>
+        <Logo />
         {contentToRender}
       </Form>
     );

@@ -1,10 +1,28 @@
 .Form {
+    position: relative;
     display: flex;
     flex-direction: column;
     width: 30%;
-    min-height: 60%;
     background-color: #fff;
-    padding: 30px 5px 0 5px;
+    padding: 30px 5px 30px 5px;
     border-radius: 5px;
     box-shadow: rgba(0,0,0,.3) 0 5px 10px;
+}
+
+@media (max-width: 900px) {
+    .Form {
+        width: 45%;
+    }
+}
+
+@media (max-width: 600px) {
+    .Form {
+        width: 80%;
+    }
+}
+
+@media (max-width: 1100px) and (min-height: 1000px) {
+    .Form {
+        width: 45%;
+    }
 }
