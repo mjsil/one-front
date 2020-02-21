@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react';
+import { setToken } from '../../../services/institution-token';
 import { login } from '../../../services/auth';
+import { withRouter } from 'react-router-dom';
 import axios from '../../../axios-instance';
 
 import Form from '../../../components/AuthForm/Form/Form';
@@ -35,17 +37,20 @@ class Login extends Component {
     };
     
     axios
-      .post('/sessions', formData)
+      .post('/institutionsessions', formData)
       .then(res => {
         const jwtToken = res.data.token;
-        login(jwtToken);
+        const userId = res.data.user.id;
+        setToken(userId);
+        return login(jwtToken);
+      })
+      .then(() => {
+        this.props.history.replace('/console');
       })
       .catch(err => {
         if (err.response.data) {
           this.setState({ errorMessage: err.response.data.error})
         }
-      })
-      .finally(() => {
         this.setState({ loading: false })
       });
   }
@@ -63,12 +68,14 @@ class Login extends Component {
           type="email"
           name="email"
           placeholder="E-mail"
+          value={this.state.email}
           onChange={this.onChangeInputHandler}
         />
         <Input
           type="password"
           name="password"
           placeholder="Password"
+          value={this.state.password}
           onChange={this.onChangeInputHandler}
         />
         <Button type="submit">Login</Button>
@@ -96,4 +103,4 @@ class Login extends Component {
   }
 }
 
-export default Login;
+export default withRouter(Login);

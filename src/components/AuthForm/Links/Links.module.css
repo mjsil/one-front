@@ -4,6 +4,7 @@
 }
 
 .Links > p {
+    margin: 0;
     display: block;
     color: rgb(48, 101, 145);
 }

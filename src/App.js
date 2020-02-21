@@ -1,10 +1,11 @@
 import React from 'react';
-import Auth from './pages/Auth/Auth';
+
+import Routes from './Routes/Routes';
 
 function App() {
   return (
     <div>
-      <Auth />
+      <Routes />
     </div>
   );
 }
