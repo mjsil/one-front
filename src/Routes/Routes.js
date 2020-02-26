@@ -1,7 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import { isAuthenticated } from "../services/auth";
-import 'bootstrap/dist/css/bootstrap.min.css';
 import AuthPage from '../pages/Auth/Auth';
 import Layout from '../pages/Console/Layout/Layout';
 
