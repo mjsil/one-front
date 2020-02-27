@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from '../../../axios-instance';
 import { getToken } from '../../../services/institution-token';
 
-import Navigation from '../../../components/UI/Navigation/Navigation';
+import Content from './Content/Content';
 import styles from './Layout.module.css';
 
 class Layout extends Component {
@@ -24,7 +24,7 @@ class Layout extends Component {
 
     if (this.state.institution) {
       contentToRender = (
-        <Navigation institutionName={this.state.institution.name} />
+        <Content institutionName={this.state.institution.name} />
       );
     }
     return (

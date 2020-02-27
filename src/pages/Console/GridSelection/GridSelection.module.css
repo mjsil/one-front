@@ -1,0 +1,38 @@
+.container {
+  padding: 50px;
+}
+
+.GridSelection {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.card {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 40px 30px 40px 30px;
+  background-color: #8cbbc2;
+  border-radius: 4px;
+  box-shadow: rgba(0,0,0,.2) 0 2px 5px;
+}
+
+.card:hover {
+  cursor: pointer;
+  background-color: #aae2eb;
+}
+
+.card > h1 {
+  font-weight: 500;
+}
+
+.icon {
+  margin-right: 20px;
+}
+
+@media (max-width: 450px) {
+  .container {
+    padding: 20px;
+  }
+}

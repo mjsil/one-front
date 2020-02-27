@@ -4,7 +4,7 @@ import AppBar from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
-import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 
 const drawerWidth = 280;
@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
   },
   avatar: {
     width: 'fit-content',
+    boxShadow: 'rgba(0,0,0,.3) 0 2px 10px',
     fontWeight: 'bold',
     color: "#eee",
     backgroundColor: '#005ce6',
@@ -50,9 +51,9 @@ function Navbar(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Button className={classes.avatar}>
+          <Typography variant="h5" >
             {props.institutionName}
-          </Button>
+          </Typography>
         </Toolbar>
       </AppBar>
     </Fragment>
