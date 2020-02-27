@@ -1,18 +1,15 @@
 import React, { Fragment } from 'react';
 
+import Dropdown from './Dropdown/Dropdown';
+import routes from './metadata/routes';
 import logo from '../../../../assets/Logo.png';
+
 import Divider from '@material-ui/core/Divider';
 import Drawer from '@material-ui/core/Drawer';
 import Hidden from '@material-ui/core/Hidden';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
-import MailIcon from '@material-ui/icons/Mail';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 
 const useStyles = makeStyles(theme => ({
   drawer: {
@@ -28,8 +25,8 @@ const useStyles = makeStyles(theme => ({
     padding: '10px 0 10px 0'
   },
   logo: {
-    width: '120px',
-    height: '40px'
+    width: '200px',
+    height: '80px'
   },
   drawerPaper: {
     width: drawerWidth,
@@ -51,23 +48,14 @@ function ResponsiveDrawer(props) {
         <img src={logo} alt="Onenet" className={classes.logo} />
       </div>
       <Divider />
-      <List>
-        {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {['All mail', 'Trash', 'Spam'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
+      {routes.map((route, index) => (
+        <Dropdown
+          key={index}
+          parentName={route.parentName}
+          parentIcon={route.parentIcon}
+          childrens={route.childrens}
+        />
+      ))}
     </div>
   );
 

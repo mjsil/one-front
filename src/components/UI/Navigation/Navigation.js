@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function ResponsiveDrawer(props) {
+function Navigation(props) {
   const { container } = props;
   const classes = useStyles();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -31,6 +31,7 @@ function ResponsiveDrawer(props) {
     <div className={classes.root}>
       <CssBaseline />
       <Navbar
+        {...props}
         toggleDrawer={handleDrawerToggle} />
       <Drawer
         container={container}
@@ -66,4 +67,4 @@ function ResponsiveDrawer(props) {
   );
 }
 
-export default ResponsiveDrawer;
+export default Navigation;

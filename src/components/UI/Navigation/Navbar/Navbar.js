@@ -4,16 +4,14 @@ import AppBar from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 
 const useStyles = makeStyles(theme => ({
-  root: {
-    display: 'flex',
-  },
   appBar: {
+    backgroundColor: '#3399ff',
     [theme.breakpoints.up('sm')]: {
       width: `calc(100% - ${drawerWidth}px)`,
       marginLeft: drawerWidth,
@@ -24,6 +22,15 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       display: 'none',
     },
+  },
+  avatar: {
+    width: 'fit-content',
+    fontWeight: 'bold',
+    color: "#eee",
+    backgroundColor: '#005ce6',
+    '&:hover': {
+      backgroundColor: '#80c1ff'
+    }
   }
 }));
 
@@ -43,9 +50,9 @@ function Navbar(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
-            Responsive drawer
-          </Typography>
+          <Button className={classes.avatar}>
+            {props.institutionName}
+          </Button>
         </Toolbar>
       </AppBar>
     </Fragment>
