@@ -1,4 +1,5 @@
 import PersonIcon from '@material-ui/icons/Person';
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import ContactsOutlinedIcon from '@material-ui/icons/ContactsOutlined';
 import RecordVoiceOverOutlinedIcon from '@material-ui/icons/RecordVoiceOverOutlined';
@@ -37,6 +38,11 @@ const routes = [
         name: 'Meu perfil',
         route: '/perfil',
         icon: PersonIcon,
+      },
+      {
+        name: 'Novo usuário',
+        route: '/novo-usuario',
+        icon: PersonAddIcon,
       },
       {
         name: 'Usuários cadastrados',

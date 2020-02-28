@@ -1,16 +1,16 @@
 import React, { Component, Fragment } from 'react';
 import { setToken } from '../../../services/institution-token';
 import { login } from '../../../services/auth';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import axios from '../../../axios-instance';
 
-import Form from '../../../components/AuthForm/Form/Form';
-import ErrorMessage from '../../../components/AuthForm/ErrorMessage/ErrorMessage';
-import Button from '../../../components/AuthForm/Button/Button';
-import Input from '../../../components/AuthForm/Input/Input';
-import Logo from '../../../components/AuthForm/Logo/Logo';
+import Form from '../../../components/Form/Form/Form';
+import ErrorMessage from '../../../components/Form/ErrorMessage/ErrorMessage';
+import Button from '../../../components/Form/Button/Button';
+import Input from '../../../components/Form/Input/Input';
+import Logo from '../../../components/Form/Logo/Logo';
 import Spinner from '../../../components/UI/Spinner/Spinner';
-import Links from '../../../components/AuthForm/Links/Links';
+import Links from '../../../components/Form/Links/Links';
 
 class Login extends Component {
   state = {
@@ -75,13 +75,12 @@ class Login extends Component {
           type="password"
           name="password"
           placeholder="Password"
-          value={this.state.password}
           onChange={this.onChangeInputHandler}
         />
         <Button type="submit">Login</Button>
         <Links>
-          <p>Cadastre-se</p>
-          <p>Esqueci a senha</p>
+          <Link to="/signup">Cadastre-se</Link>
+          <Link to="/forgot">Esqueci a senha</Link>
         </Links>
       </Fragment>
     );

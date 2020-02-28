@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 
+import { withRouter } from 'react-router-dom';
 import Dropdown from './Dropdown/Dropdown';
 import routes from './metadata/routes';
 import logo from '../../../../assets/Logo.png';
@@ -22,7 +23,10 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    padding: '10px 0 10px 0'
+    padding: '10px 0 10px 0',
+    '&:hover': {
+      cursor: 'pointer'
+    }
   },
   logo: {
     width: '200px',
@@ -42,9 +46,13 @@ function ResponsiveDrawer(props) {
   const classes = useStyles();
   const theme = useTheme();
 
+  const redirectToConsole = () => {
+    props.history.push('/console');
+  }
+
   const drawer = (
     <div>
-      <div className={classes.logoContainer}>
+      <div className={classes.logoContainer} onClick={redirectToConsole}>
         <img src={logo} alt="Onenet" className={classes.logo} />
       </div>
       <Divider />
@@ -96,4 +104,4 @@ function ResponsiveDrawer(props) {
   );
 }
 
-export default ResponsiveDrawer;
+export default withRouter(ResponsiveDrawer);
