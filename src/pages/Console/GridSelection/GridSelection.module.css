@@ -13,14 +13,14 @@
   width: 100%;
   align-items: center;
   padding: 40px 30px 40px 30px;
-  background-color: #8cbbc2;
+  background-color: #fff;
   border-radius: 4px;
   box-shadow: rgba(0,0,0,.2) 0 2px 5px;
 }
 
 .card:hover {
   cursor: pointer;
-  background-color: #aae2eb;
+  background-color: #eee;
 }
 
 .card > h1 {

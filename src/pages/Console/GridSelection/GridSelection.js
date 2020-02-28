@@ -2,10 +2,10 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import PersonIcon from '@material-ui/icons/Person';
-import PersonAddIcon from '@material-ui/icons/PersonAdd';
+import BusinessIcon from '@material-ui/icons/Business';
 import AddShoppingCartOutlinedIcon from '@material-ui/icons/AddShoppingCartOutlined';
-import CropRotateOutlinedIcon from '@material-ui/icons/CropRotateOutlined';
 import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined';
+import GetAppOutlinedIcon from '@material-ui/icons/GetAppOutlined';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 
 import styles from './GridSelection.module.css';
@@ -23,16 +23,16 @@ function GridSelection(props) {
           <h1>Meu Perfil</h1>
         </div>
         <div className={styles.card} onClick={() => onRedirectHandler('nova-instituicao')}>
-          <PersonAddIcon fontSize="large" className={styles.icon} />
+          <BusinessIcon fontSize="large" className={styles.icon} />
           <h1>Nova Instituição</h1>
         </div>
         <div className={styles.card} onClick={() => onRedirectHandler('plano-saude')}>
           <AddShoppingCartOutlinedIcon fontSize="large" className={styles.icon} />
           <h1>Plano de Saúde</h1>
         </div>
-        <div className={styles.card} onClick={() => onRedirectHandler('recargas')}>
-          <CropRotateOutlinedIcon fontSize="large" className={styles.icon} />
-          <h1>Recargas</h1>
+        <div className={styles.card} onClick={() => onRedirectHandler('premiacoes')}>
+          <GetAppOutlinedIcon fontSize="large" className={styles.icon} />
+          <h1>Saques</h1>
         </div>
         <div className={styles.card} onClick={() => onRedirectHandler('marketplace/produtos')}>
           <LocalMallOutlinedIcon fontSize="large" className={styles.icon} />

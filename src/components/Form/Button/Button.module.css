@@ -1,4 +1,4 @@
-Button {
+.Button {
     margin: 20px 0 30px 0;
     align-self: center;
     background-color: #1090da;
@@ -12,10 +12,10 @@ Button {
     box-shadow: rgba(0,0,0,.1) 0 2px 5px;
 }
 
-Button:hover {
+.Button:hover {
     cursor: pointer;
 }
 
-Button:focus {
+.Button:focus {
     outline: none;
 }

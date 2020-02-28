@@ -5,6 +5,7 @@ import ContactsOutlinedIcon from '@material-ui/icons/ContactsOutlined';
 import RecordVoiceOverOutlinedIcon from '@material-ui/icons/RecordVoiceOverOutlined';
 import AccountBalanceOutlinedIcon from '@material-ui/icons/AccountBalanceOutlined';
 import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceWalletOutlined';
+import BusinessIcon from '@material-ui/icons/Business';
 import PermDataSettingOutlinedIcon from '@material-ui/icons/PermDataSettingOutlined';
 import PublicOutlinedIcon from '@material-ui/icons/PublicOutlined';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
@@ -64,6 +65,11 @@ const routes = [
         name: 'Instituições Cadastradas',
         route: '/instituicoes',
         icon: AccountBalanceWalletOutlinedIcon,
+      },
+      {
+        name: 'Cadastrar Instituição',
+        route: '/nova-instituicao',
+        icon: BusinessIcon,
       },
       {
         name: 'Set para instituições',

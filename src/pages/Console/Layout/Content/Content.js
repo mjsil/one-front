@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import NovaInstituicaoUsuarios from '../../NovaInstituicao/ListaUsuarios/ListaUsuarios';
 import NovaInstituicaoForm from '../../NovaInstituicao/Form/NovaInstituicao';
+import Premiacoes from '../../Premiacoes/Premiacoes';
 import PlanoSaude from '../../PlanoSaude/PlanoSaude';
 import Navbar from '../../../../components/UI/Navigation/Navbar/Navbar';
 import Drawer from '../../../../components/UI/Navigation/Drawer/Drawer';
@@ -48,6 +49,7 @@ function Content(props) {
           <Route path="/console/perfil" exact render={() => <h1>Meu Perfil</h1>} />
           <Route path="/console/nova-instituicao" exact component={NovaInstituicaoUsuarios} />
           <Route path="/console/nova-instituicao/form" exact component={NovaInstituicaoForm} />
+          <Route path="/console/premiacoes" exact component={Premiacoes} />
           <Route path="/console/plano-saude" exact component={PlanoSaude} />
           <Route path="/console/recargas" exact render={() => <h1>Recargas</h1>} />
           <Route path="/console/marketplace/produtos" exact render={() => <h1>Produtos</h1>} />
