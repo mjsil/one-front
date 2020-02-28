@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import NovaInstituicaoUsuarios from '../../NovaInstituicao/ListaUsuarios/ListaUsuarios';
 import NovaInstituicaoForm from '../../NovaInstituicao/Form/NovaInstituicao';
+import CriarProdutoInstituicoes from '../../CriarProduto/ListaInstituicoes/ListaInstituicoes';
 import Premiacoes from '../../Premiacoes/Premiacoes';
 import PlanoSaude from '../../PlanoSaude/PlanoSaude';
 import Navbar from '../../../../components/UI/Navigation/Navbar/Navbar';
@@ -52,7 +53,7 @@ function Content(props) {
           <Route path="/console/premiacoes" exact component={Premiacoes} />
           <Route path="/console/plano-saude" exact component={PlanoSaude} />
           <Route path="/console/recargas" exact render={() => <h1>Recargas</h1>} />
-          <Route path="/console/marketplace/produtos" exact render={() => <h1>Produtos</h1>} />
+          <Route path="/console/marketplace/novo-produto" exact component={CriarProdutoInstituicoes} />
           <Route path="/console/termos" exact render={() => <h1>Termos</h1>} />
         </Switch>
       </main>

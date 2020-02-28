@@ -34,9 +34,9 @@ function GridSelection(props) {
           <GetAppOutlinedIcon fontSize="large" className={styles.icon} />
           <h1>Saques</h1>
         </div>
-        <div className={styles.card} onClick={() => onRedirectHandler('marketplace/produtos')}>
+        <div className={styles.card} onClick={() => onRedirectHandler('marketplace/novo-produto')}>
           <LocalMallOutlinedIcon fontSize="large" className={styles.icon} />
-          <h1>Produtos</h1>
+          <h1>Novo Produto</h1>
         </div>
         <div className={styles.card} onClick={() => onRedirectHandler('termos')}>
           <CreateOutlinedIcon fontSize="large" className={styles.icon} />

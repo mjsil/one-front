@@ -12,7 +12,7 @@ const CustomTable = (props) => {
 
       {props.rows.map(row => (
         <div key={row.id} className={styles.row}>
-          <div>{row.data_de_saque}</div>
+          <div>{new Date(row.data_de_saque).toLocaleString()}</div>
           <button
             className={styles.icon} 
             onClick={() => props.onClickDownload(row.id)}
