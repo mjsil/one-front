@@ -12,7 +12,22 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 const useStyles = makeStyles(theme => ({
   nested: {
     paddingLeft: theme.spacing(4),
+    color: "#fff",
+    backgroundColor: '#1A222F',
+    '&:hover': {
+      backgroundColor: '#2C3442'
+    }
   },
+  dropdownIconItem: {
+    color: "#fff"
+  },
+  listItem: {
+    backgroundColor: '#18202c',
+    color: '#fff'
+  },
+  listItemIcon: {
+    color: '#fff'
+  }
 }));
 
 const Dropdown = (props) => {
@@ -33,7 +48,7 @@ const Dropdown = (props) => {
       return (
         <ListItem key={index} button className={classes.nested}>
           <ListItemIcon>
-            <Icon />
+            <Icon className={classes.dropdownIconItem} />
           </ListItemIcon>
           <ListItemText primary={children.name} />
         </ListItem>
@@ -44,8 +59,8 @@ const Dropdown = (props) => {
 
   return (
     <Fragment>
-      <ListItem button onClick={handleClick}>
-        <ListItemIcon>
+      <ListItem button onClick={handleClick} className={classes.listItem}>
+        <ListItemIcon className={classes.listItemIcon}>
           <ParentIcon />
         </ListItemIcon>
         <ListItemText primary={props.parentName} />

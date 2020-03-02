@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import NovaInstituicaoUsuarios from '../../NovaInstituicao/ListaUsuarios/ListaUsuarios';
 import NovaInstituicaoForm from '../../NovaInstituicao/Form/NovaInstituicao';
-import CriarProdutoInstituicoes from '../../CriarProduto/ListaInstituicoes/ListaInstituicoes';
+import CriarProdutoInstituicoes from '../../CriarProduto/CriarProduto';
 import Premiacoes from '../../Premiacoes/Premiacoes';
 import PlanoSaude from '../../PlanoSaude/PlanoSaude';
 import Navbar from '../../../../components/UI/Navigation/Navbar/Navbar';

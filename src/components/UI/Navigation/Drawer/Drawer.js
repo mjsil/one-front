@@ -19,6 +19,10 @@ const useStyles = makeStyles(theme => ({
       flexShrink: 0,
     },
   },
+  drawerContainer: {
+    height: '100%', 
+    backgroundColor: '#18202c'
+  },
   logoContainer: {
     display: 'flex',
     alignItems: 'center',
@@ -26,7 +30,11 @@ const useStyles = makeStyles(theme => ({
     padding: '10px 0 10px 0',
     '&:hover': {
       cursor: 'pointer'
-    }
+    },
+    backgroundColor: '#242B37'
+  },
+  divider: {
+    backgroundColor: '#85909D'
   },
   logo: {
     width: '200px',
@@ -51,11 +59,11 @@ function ResponsiveDrawer(props) {
   }
 
   const drawer = (
-    <div>
+    <div className={classes.drawerContainer}>
       <div className={classes.logoContainer} onClick={redirectToConsole}>
         <img src={logo} alt="Onenet" className={classes.logo} />
       </div>
-      <Divider />
+      <Divider className={classes.divider}/>
       {routes.map((route, index) => (
         <Dropdown
           key={index}
@@ -70,7 +78,6 @@ function ResponsiveDrawer(props) {
   return (
     <Fragment>
       <nav className={classes.drawer} aria-label="mailbox folders">
-        {/* The implementation can be swapped with js to avoid SEO duplication of links. */}
         <Hidden smUp implementation="css">
           <Drawer
             container={container}
@@ -82,7 +89,7 @@ function ResponsiveDrawer(props) {
               paper: classes.drawerPaper,
             }}
             ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
+              keepMounted: true, 
             }}
           >
             {drawer}

@@ -1,17 +1,17 @@
 import React, { Component, Fragment } from 'react';
 
-import axios from '../../../../axios-instance';
+import axios from '../../../axios-instance';
 import LinearProgress from '@material-ui/core/LinearProgress';
-import StickyHeadTable from '../../../../components/Table/StickyHeadTable';
-import PrimaryHeading from '../../../../components/UI/PrimaryHeading/PrimaryHeading';
-import InputGroup from '../../../../components/Form/Group/InputGroup/InputGroup';
-import Button from '../../../../components/Form/Button/Button';
-import Modal from '../../../../components/UI/Modal/Modal';
+import StickyHeadTable from '../../../components/Table/StickyHeadTable';
+import PrimaryHeading from '../../../components/UI/PrimaryHeading/PrimaryHeading';
+import InputGroup from '../../../components/Form/Group/InputGroup/InputGroup';
+import Button from '../../../components/Form/Button/Button';
+import Modal from '../../../components/UI/Modal/Modal';
 import CloseIcon from '@material-ui/icons/Close';
 import AddIcon from '@material-ui/icons/Add';
 import Chip from '@material-ui/core/Chip';
-import ErrorMessage from '../../../../components/Form/ErrorMessage/ErrorMessage';
-import styles from './ListaInstituicoes.module.css';
+import ErrorMessage from '../../../components/Form/ErrorMessage/ErrorMessage';
+import styles from './CriarProduto.module.css';
 
 const columns = [
   { id: 'name', label: 'Instituição', minWidth: 100 },
@@ -97,21 +97,21 @@ class ListaInstituicoes extends Component {
     const idInstitution = this.state.selectedInstitution.id;
     const postData = {
       id_instituicao: idInstitution,
-      valor_produto: formData.valor_produto,
+      valor_produto: +formData.valor_produto,
       local: locals,
       nome_produto: formData.nome_produto,
       data_cancelamento: formData.data_cancelamento,
-      percentual_retorno: formData.percentual_retorno,
-      percentual_vendedor: formData.percentual_vendedor,
-      percentual_instituicao: formData.percentual_instituicao,
-      percentual_1net: formData.percentual_1net
+      percentual_retorno: +formData.percentual_retorno,
+      percentual_vendedor: +formData.percentual_vendedor,
+      percentual_instituicao: +formData.percentual_instituicao,
+      percentual_1net: +formData.percentual_1net
     };
 
     const percentual_vendedor = Number(formData.percentual_vendedor || 0);
     const percentual_instituicao = Number(formData.percentual_instituicao || 0);
     const percentual_1net = Number(formData.percentual_1net || 0);
     const percentual_total = percentual_vendedor + percentual_instituicao + percentual_1net;
-
+    
     if (percentual_total !== 100) {
       return this.setState({
         errorMessage: 'Percentual total deve ser igual a 100',
@@ -122,6 +122,11 @@ class ListaInstituicoes extends Component {
     axios
       .post('/products', postData)
       .then(res => {
+        const error = res.data.error;
+        if (error) {
+          return this.setState({ errorMessage: error, loading: false });
+        }
+
         this.closeModalHandler();
       })
       .catch(err => {
@@ -169,6 +174,7 @@ class ListaInstituicoes extends Component {
           />
         </div>
         <Modal
+          className={styles.modal}
           open={this.state.showModal}
           handleClose={this.closeModalHandler}
         >
@@ -201,7 +207,7 @@ class ListaInstituicoes extends Component {
                     inputName='data_cancelamento'
                     inputType='number'
                     inputOnChange={this.onInputChangeHandler}
-                    inputMin='0'
+                    inputMin={0}
                   />
                   <InputGroup
                     label='Local'

@@ -4,8 +4,8 @@ import { withRouter } from 'react-router-dom';
 import PersonIcon from '@material-ui/icons/Person';
 import BusinessIcon from '@material-ui/icons/Business';
 import AddShoppingCartOutlinedIcon from '@material-ui/icons/AddShoppingCartOutlined';
-import LocalMallOutlinedIcon from '@material-ui/icons/LocalMallOutlined';
-import GetAppOutlinedIcon from '@material-ui/icons/GetAppOutlined';
+import GetAppRoundedIcon from '@material-ui/icons/GetAppRounded';
+import LocalMallRoundedIcon from '@material-ui/icons/LocalMallRounded';
 import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
 
 import styles from './GridSelection.module.css';
@@ -31,11 +31,11 @@ function GridSelection(props) {
           <h1>Plano de Saúde</h1>
         </div>
         <div className={styles.card} onClick={() => onRedirectHandler('premiacoes')}>
-          <GetAppOutlinedIcon fontSize="large" className={styles.icon} />
+          <GetAppRoundedIcon fontSize="large" className={styles.icon} />
           <h1>Saques</h1>
         </div>
         <div className={styles.card} onClick={() => onRedirectHandler('marketplace/novo-produto')}>
-          <LocalMallOutlinedIcon fontSize="large" className={styles.icon} />
+          <LocalMallRoundedIcon fontSize="large" className={styles.icon} />
           <h1>Novo Produto</h1>
         </div>
         <div className={styles.card} onClick={() => onRedirectHandler('termos')}>

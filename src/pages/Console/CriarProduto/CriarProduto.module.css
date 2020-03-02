@@ -53,12 +53,12 @@
     align-items: center;
     margin-bottom: 5px;
     padding: 1px 10px 1px 4px;
+    border-bottom: 3px solid transparent;
     transition: all .2s;
 }
 
 .btnAddLocal:hover {
-    box-shadow: rgba(0,0,0,.2) 0 2px 5px;
-    transform: translateY(-1px);
+    border-bottom: 3px solid rgb(65, 170, 231);
     cursor: pointer;
 }
 
