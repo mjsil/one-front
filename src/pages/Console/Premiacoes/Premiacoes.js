@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 
 import axios from '../../../axios-instance';
 import CustomTable from '../../../components/Table/CustomTable/CustomTable';
+import PrimaryHeading from '../../../components/UI/PrimaryHeading/PrimaryHeading';
 import styles from './Premiacoes.module.css';
 
 class Premiacoes extends Component {
@@ -36,7 +37,7 @@ class Premiacoes extends Component {
   render() {
     return (
       <Fragment>
-        <h1>Premiações</h1>
+        <PrimaryHeading>Premiações</PrimaryHeading>
         <div className={styles.container}>
           <CustomTable
             rows={this.state.premiacoes}

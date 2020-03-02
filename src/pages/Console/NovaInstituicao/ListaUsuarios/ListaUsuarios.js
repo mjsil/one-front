@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from 'react';
 
 import StickyHeadTable from '../../../../components/Table/StickyHeadTable';
+import PrimaryHeading from '../../../../components/UI/PrimaryHeading/PrimaryHeading';
 import axios from '../../../../axios-instance';
 import styles from './ListaUsuarios.module.css';
 
@@ -33,7 +34,7 @@ class PlanoSaude extends Component {
   render() {
     return (
       <Fragment>
-        <h1>Selecione usuário</h1>
+        <PrimaryHeading>Selecione usuário</PrimaryHeading>
         <div className={styles.tableContainer}>
           <StickyHeadTable
             columns={columns}

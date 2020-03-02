@@ -1,6 +1,9 @@
 import React, { Fragment, Component } from 'react';
-import StickyHeadTable from '../../../components/Table/StickyHeadTable';
+
 import axios from '../../../axios-instance';
+import PrimaryHeading from '../../../components/UI/PrimaryHeading/PrimaryHeading';
+import StickyHeadTable from '../../../components/Table/StickyHeadTable';
+import styles from './PlanoSaude.module.css';
 
 const columns = [
   { id: 'nome_cliente', label: 'Cliente', minWidth: 60 },
@@ -42,11 +45,12 @@ class PlanoSaude extends Component {
   render() {
     return (
       <Fragment>
-        <h1>Plano de Saúde</h1>
-        <StickyHeadTable
-          columns={columns}
-          rows={this.state.rows}
-        />
+        <PrimaryHeading>Plano de Saúde</PrimaryHeading>
+        <div className={styles.container}>
+          <StickyHeadTable
+            columns={columns}
+            rows={this.state.rows} />
+        </div>
       </Fragment>
     );
   }

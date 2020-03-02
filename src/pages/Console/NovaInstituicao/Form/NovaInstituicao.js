@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import axios from '../../../../axios-instance';
 import { Redirect } from 'react-router-dom';
+import PrimaryHeading from '../../../../components/UI/PrimaryHeading/PrimaryHeading';
 import Spinner from '../../../../components/UI/Spinner/Spinner';
 import ErrorMessage from '../../../../components/Form/ErrorMessage/ErrorMessage';
 import SelectGroup from '../../../../components/Form/Group/SelectGroup/SelectGroup';
@@ -95,8 +96,9 @@ class NovaInstituicao extends Component {
     }
 
     let contentToRender = (
+      <Fragment>
+      <PrimaryHeading>Cadastrar Instituição</PrimaryHeading>
       <form className={styles.form} onSubmit={this.onPostFormHandler}>
-        <h1 className={styles.heading}>Cadastrar Instituição</h1>
         {errorMessage}
         <div className={styles.groups}>
           <InputGroup
@@ -126,6 +128,7 @@ class NovaInstituicao extends Component {
           <Button type="submit">Cadastrar</Button>
         </div>
       </form>
+      </Fragment>
     );
 
     if (this.state.loading) {

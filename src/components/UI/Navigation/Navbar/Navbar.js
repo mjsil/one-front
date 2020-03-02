@@ -23,15 +23,8 @@ const useStyles = makeStyles(theme => ({
       display: 'none',
     },
   },
-  avatar: {
-    width: 'fit-content',
-    boxShadow: 'rgba(0,0,0,.3) 0 2px 10px',
-    fontWeight: 'bold',
-    color: "#eee",
-    backgroundColor: '#005ce6',
-    '&:hover': {
-      backgroundColor: '#80c1ff'
-    }
+  title: {
+    fontWeight: 700
   }
 }));
 
@@ -51,7 +44,7 @@ function Navbar(props) {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h5" >
+          <Typography variant="h5" className={classes.title}>
             {props.institutionName}
           </Typography>
         </Toolbar>
