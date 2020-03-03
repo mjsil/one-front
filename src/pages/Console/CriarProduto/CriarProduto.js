@@ -107,10 +107,11 @@ class ListaInstituicoes extends Component {
       percentual_1net: +formData.percentual_1net
     };
 
-    const percentual_vendedor = Number(formData.percentual_vendedor || 0);
-    const percentual_instituicao = Number(formData.percentual_instituicao || 0);
-    const percentual_1net = Number(formData.percentual_1net || 0);
-    const percentual_total = percentual_vendedor + percentual_instituicao + percentual_1net;
+    const percentual_total = (
+      postData.percentual_vendedor +
+      postData.percentual_instituicao +
+      postData.percentual_1net
+    );
     
     if (percentual_total !== 100) {
       return this.setState({

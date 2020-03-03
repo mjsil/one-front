@@ -40,8 +40,8 @@ class Login extends Component {
       .post('/institutionsessions', formData)
       .then(res => {
         const jwtToken = res.data.token;
-        const userId = res.data.user.id;
-        setToken(userId);
+        const user = res.data.user;
+        setToken(user);
         return login(jwtToken);
       })
       .then(() => {

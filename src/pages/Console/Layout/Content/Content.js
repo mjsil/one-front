@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 
 import NovaInstituicaoUsuarios from '../../NovaInstituicao/ListaUsuarios/ListaUsuarios';
 import NovaInstituicaoForm from '../../NovaInstituicao/Form/NovaInstituicao';
@@ -8,7 +8,7 @@ import CriarProdutoInstituicoes from '../../CriarProduto/CriarProduto';
 import ProdutosCadastrados from '../../ProdutosCadastrados/ProdutosCadastrados';
 import Premiacoes from '../../Premiacoes/Premiacoes';
 import PlanoSaude from '../../PlanoSaude/PlanoSaude';
-import Navbar from '../../../../components/UI/Navigation/Navbar/Navbar';
+import AppBar from '../../../../components/UI/Navigation/AppBar/AppBar';
 import Drawer from '../../../../components/UI/Navigation/Drawer/Drawer';
 import GridSelection from '../../GridSelection/GridSelection';
 
@@ -38,8 +38,9 @@ function Content(props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <Navbar
-        {...props}
+      <AppBar
+        onLogout={props.onLogout}
+        institutionName={props.institution.name}
         toggleDrawer={handleDrawerToggle} />
       <Drawer
         container={container}
@@ -49,7 +50,9 @@ function Content(props) {
         <div className={classes.toolbar} />
         <Switch>
           <Route path="/console" exact component={GridSelection} />
-          <Route path="/console/perfil" exact component={MeuPerfil} />
+          <Route path="/console/perfil" 
+            exact 
+            component={() => <MeuPerfil {...props} />} />
           <Route path="/console/nova-instituicao" exact component={NovaInstituicaoUsuarios} />
           <Route path="/console/nova-instituicao/form" exact component={NovaInstituicaoForm} />
           <Route path="/console/premiacoes" exact component={Premiacoes} />
@@ -62,4 +65,4 @@ function Content(props) {
   );
 }
 
-export default Content;
+export default withRouter(Content);

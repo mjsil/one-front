@@ -35,14 +35,15 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     padding: '2px 5px 2px 5px',
     backgroundColor: '#3B5067',
-    border: '2px solid #eee',
+    border: '2px solid currentcolor',
     '&:hover': {
-      cursor: 'pointer'
+      cursor: 'pointer',
+      color: '#EE2D03'
     }
   }
 }));
 
-function Navbar(props) {
+function AppBarComponent(props) {
   const classes = useStyles();
   
   return (
@@ -71,4 +72,4 @@ function Navbar(props) {
   );
 }
 
-export default Navbar;
+export default AppBarComponent;

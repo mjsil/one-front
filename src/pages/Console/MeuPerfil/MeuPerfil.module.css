@@ -9,18 +9,22 @@
 }
 
 .cardToolbar {
-  background-color: #76d0fa;
+  background-color: #2b2b2b;
+  color: #fff;
   display: flex;
   align-items: center;
 }
 
 .cardContent {
   display: flex;
-  padding: 15px 20px 10px 20px;
+  padding: 40px 40px 10px 40px;
 }
 
 .avatarContainer {
-  margin-right: 10px;
+  margin-right: 30px;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
 }
 
 .avatar {
@@ -31,15 +35,56 @@
   align-items: center;
   justify-content: center;
   background-color: rgb(94, 93, 93);
+  margin-bottom: 20px;
 }
 
 .cardForm {
-  margin-left: 10px;
+  margin-left: 30px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
 }
 
 .avatarIcon {
   color: rgb(124, 122, 122);
+}
+
+.avatarBtn {
+  background: none;
+  align-self: center;
+  font-size: 16px;
+  border: none;
+  font-weight: bold;
+  color: #30547e;
+}
+
+.avatarBtn:hover {
+  cursor: pointer;
+}
+
+.avatarBtn:focus {
+  outline: none;
+}
+
+.avatarBtn:disabled {
+  color: rgb(153, 152, 152);
+  cursor: not-allowed;
+}
+
+@media (max-width: 800px) {
+  .avatarContainer {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .cardForm {
+    margin-left: 0;
+  }
+
+  .cardContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px 10px 20px;
+  }
 }

@@ -14,7 +14,7 @@ class Layout extends Component {
   componentDidMount() {
     const institutionToken = getToken();
     axios
-      .get('/institutions/' + institutionToken)
+      .get('/institutions/' + institutionToken.id)
       .then(res => {
         this.setState({ institution: res.data })
       });
@@ -26,13 +26,18 @@ class Layout extends Component {
     this.props.history.replace('/');
   }
 
+  changeInstitutionData = (newInstitution) => {
+    this.setState({ institution: newInstitution });
+  }
+
   render() {
     let contentToRender = null;
 
     if (this.state.institution) {
       contentToRender = (
         <Content
-          institutionName={this.state.institution.name}
+          institution={this.state.institution}
+          changeInstitutionData={this.changeInstitutionData}
           onLogout={this.onLogoutHandler} />
       );
     }
