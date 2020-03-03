@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from '../../../axios-instance';
-import { getToken } from '../../../services/institution-token';
+import { getToken, removeToken } from '../../../services/institution-token';
+import { logout } from '../../../services/auth';
 
 import Content from './Content/Content';
 import styles from './Layout.module.css';
@@ -19,12 +20,20 @@ class Layout extends Component {
       });
   }
 
+  onLogoutHandler = async () => {
+    await removeToken();
+    await logout();
+    this.props.history.replace('/');
+  }
+
   render() {
     let contentToRender = null;
 
     if (this.state.institution) {
       contentToRender = (
-        <Content institutionName={this.state.institution.name} />
+        <Content
+          institutionName={this.state.institution.name}
+          onLogout={this.onLogoutHandler} />
       );
     }
     return (

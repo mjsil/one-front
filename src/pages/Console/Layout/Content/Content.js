@@ -3,7 +3,9 @@ import { Switch, Route } from 'react-router-dom';
 
 import NovaInstituicaoUsuarios from '../../NovaInstituicao/ListaUsuarios/ListaUsuarios';
 import NovaInstituicaoForm from '../../NovaInstituicao/Form/NovaInstituicao';
+import MeuPerfil from '../../MeuPerfil/MeuPerfil';
 import CriarProdutoInstituicoes from '../../CriarProduto/CriarProduto';
+import ProdutosCadastrados from '../../ProdutosCadastrados/ProdutosCadastrados';
 import Premiacoes from '../../Premiacoes/Premiacoes';
 import PlanoSaude from '../../PlanoSaude/PlanoSaude';
 import Navbar from '../../../../components/UI/Navigation/Navbar/Navbar';
@@ -32,7 +34,7 @@ function Content(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
+  
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -47,14 +49,13 @@ function Content(props) {
         <div className={classes.toolbar} />
         <Switch>
           <Route path="/console" exact component={GridSelection} />
-          <Route path="/console/perfil" exact render={() => <h1>Meu Perfil</h1>} />
+          <Route path="/console/perfil" exact component={MeuPerfil} />
           <Route path="/console/nova-instituicao" exact component={NovaInstituicaoUsuarios} />
           <Route path="/console/nova-instituicao/form" exact component={NovaInstituicaoForm} />
           <Route path="/console/premiacoes" exact component={Premiacoes} />
           <Route path="/console/plano-saude" exact component={PlanoSaude} />
-          <Route path="/console/recargas" exact render={() => <h1>Recargas</h1>} />
           <Route path="/console/marketplace/novo-produto" exact component={CriarProdutoInstituicoes} />
-          <Route path="/console/termos" exact render={() => <h1>Termos</h1>} />
+          <Route path="/console/produtos" exact component={ProdutosCadastrados} />
         </Switch>
       </main>
     </div>

@@ -10,6 +10,7 @@
     font-size: 20px;
     width: 50%;
     box-shadow: rgba(0,0,0,.1) 0 2px 5px;
+    transition: all .3s;
 }
 
 .Button:hover {
@@ -18,4 +19,10 @@
 
 .Button:focus {
     outline: none;
+}
+
+.Button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+    transform: scale(.9) translateX(3px);
 }

@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   nested: {
     paddingLeft: theme.spacing(4),
     color: "#fff",
-    backgroundColor: '#1A222F',
+    backgroundColor: '#232A34',
     '&:hover': {
       backgroundColor: '#2C3442'
     }
@@ -23,7 +23,10 @@ const useStyles = makeStyles(theme => ({
   },
   listItem: {
     backgroundColor: '#18202c',
-    color: '#fff'
+    color: '#fff',
+    '&:hover': {
+      backgroundColor: '#151C26'
+    }
   },
   listItemIcon: {
     color: '#fff'

@@ -6,7 +6,7 @@ import BusinessIcon from '@material-ui/icons/Business';
 import AddShoppingCartOutlinedIcon from '@material-ui/icons/AddShoppingCartOutlined';
 import GetAppRoundedIcon from '@material-ui/icons/GetAppRounded';
 import LocalMallRoundedIcon from '@material-ui/icons/LocalMallRounded';
-import CreateOutlinedIcon from '@material-ui/icons/CreateOutlined';
+import ViewListIcon from '@material-ui/icons/ViewList';
 
 import styles from './GridSelection.module.css';
 
@@ -38,9 +38,9 @@ function GridSelection(props) {
           <LocalMallRoundedIcon fontSize="large" className={styles.icon} />
           <h1>Novo Produto</h1>
         </div>
-        <div className={styles.card} onClick={() => onRedirectHandler('termos')}>
-          <CreateOutlinedIcon fontSize="large" className={styles.icon} />
-          <h1>Termos</h1>
+        <div className={styles.card} onClick={() => onRedirectHandler('produtos')}>
+          <ViewListIcon fontSize="large" className={styles.icon} />
+          <h1>Produtos Cadastrados</h1>
         </div>
       </div>
     </div>
