@@ -7,8 +7,8 @@ import Button from '../../../components/Form/Button/Button';
 import ErrorMessage from '../../../components/Form/ErrorMessage/ErrorMessage';
 import Switch from '@material-ui/core/Switch';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
-import styles from './MeuPerfil.module.css';
+// import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
+import styles from './MinhaInstituicao.module.css';
 
 class MeuPerfil extends Component {
   state = {
@@ -54,25 +54,18 @@ class MeuPerfil extends Component {
     const newInstitutionData = { ...this.state.institutionData };
 
     for (let key in formData) {
-      if (formData[key].trim().length > 0 && key !== 'oldPassword') {
+      if (formData[key].trim().length > 0) {
         newInstitutionData[key] = formData[key];
       }
     }
 
-    const dataToPut = {
-      ...newInstitutionData,
-      oldPassword: this.state.formData.oldPassword
-    };
-
     axios
-      .put('/institutions', dataToPut)
+      .put('/institutions', newInstitutionData)
       .then((res) => {
         const error = res.data.error;
         if (error) {
           return this.setState({ errorMessage: error, loading: false });
         }
-
-        const newInstitutionData = { ...res.data };
         return this.props.changeInstitutionData(newInstitutionData);
       })
       .then(() => {
@@ -84,7 +77,7 @@ class MeuPerfil extends Component {
           this.setState({ errorMessage: err.response.data.error })
         }
         this.setState({ loading: false });
-      });
+      });;
   }
 
   render() {
@@ -117,14 +110,6 @@ class MeuPerfil extends Component {
               {editModeMsg}
             </div>
             <main className={styles.cardContent}>
-              <div className={styles.avatarContainer}>
-                <div className={styles.avatar}>
-                  <AccountBalanceIcon className={styles.avatarIcon} fontSize="large" />
-                </div>
-                <button className={styles.avatarBtn} disabled={!this.state.editMode}>
-                  Alterar Foto
-                </button>
-              </div>
               <form className={styles.cardForm} onSubmit={this.onSubmitNewInstitutionDataHandler}>
                 {errorMessage}
                 <div>

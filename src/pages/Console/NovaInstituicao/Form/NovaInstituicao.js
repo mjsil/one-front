@@ -76,14 +76,14 @@ class NovaInstituicao extends Component {
       .then(res => {
         const { error } = res.data;
         if (error) {
-          this.setState({ errorMsg: error, loading: false });
-        } else {
-          this.props.history.replace('/console/nova-instituicao');
+          return this.setState({ errorMsg: error, loading: false });
         }
+        
+        this.props.history.replace('/console/nova-instituicao');
       })
       .catch(err => {
         if (err.response.data) {
-          this.setState({ errorMsg: err.response.data.error})
+          this.setState({ errorMsg: err.response.data.error })
         }
         this.setState({ loading: false });
       });
@@ -97,37 +97,37 @@ class NovaInstituicao extends Component {
 
     let contentToRender = (
       <Fragment>
-      <PrimaryHeading>Cadastrar Instituição</PrimaryHeading>
-      <form className={styles.form} onSubmit={this.onPostFormHandler}>
-        {errorMessage}
-        <div className={styles.groups}>
-          <InputGroup
-            label="Nome"
-            inputName="name"
-            inputType="text"
-            inputValue={this.state.formData.name}
-            inputOnChange={this.onInputChangedHandler}
-          />
-          <InputGroup
-            label="E-mail"
-            inputName="email"
-            inputValue={this.state.formData.email}
-            inputType="email"
-            inputOnChange={this.onInputChangedHandler}
-          />
-          <SelectGroup
-            label="Permissão"
-            selectName="permission"
-            selectValue={this.state.formData.permission}
-            selectOnChange={this.onSelectChangedHandler}
-          >
-            <option value={1}>1</option>
-            <option value={2}>2</option>
-            <option value={3}>3</option>
-          </SelectGroup>
-          <Button type="submit">Cadastrar</Button>
-        </div>
-      </form>
+        <PrimaryHeading>Cadastrar Instituição</PrimaryHeading>
+        <form className={styles.form} onSubmit={this.onPostFormHandler}>
+          {errorMessage}
+          <div className={styles.groups}>
+            <InputGroup
+              label="Nome"
+              inputName="name"
+              inputType="text"
+              inputValue={this.state.formData.name}
+              inputOnChange={this.onInputChangedHandler}
+            />
+            <InputGroup
+              label="E-mail"
+              inputName="email"
+              inputValue={this.state.formData.email}
+              inputType="email"
+              inputOnChange={this.onInputChangedHandler}
+            />
+            <SelectGroup
+              label="Permissão"
+              selectName="permission"
+              selectValue={this.state.formData.permission}
+              selectOnChange={this.onSelectChangedHandler}
+            >
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+            </SelectGroup>
+            <Button type="submit">Cadastrar</Button>
+          </div>
+        </form>
       </Fragment>
     );
 

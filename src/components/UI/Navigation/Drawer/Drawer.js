@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     },
   },
   drawerContainer: {
-    height: '100%', 
+    height: '100%',
     backgroundColor: '#18202c'
   },
   logoContainer: {
@@ -61,9 +61,9 @@ function ResponsiveDrawer(props) {
   const drawer = (
     <div className={classes.drawerContainer}>
       <div className={classes.logoContainer} onClick={redirectToConsole}>
-        <img src={logo} alt="Onenet" className={classes.logo} />
+        <img src={logo} alt='Onenet' className={classes.logo} />
       </div>
-      <Divider className={classes.divider}/>
+      <Divider className={classes.divider} />
       {routes.map((route, index) => (
         <Dropdown
           key={index}
@@ -77,11 +77,11 @@ function ResponsiveDrawer(props) {
 
   return (
     <Fragment>
-      <nav className={classes.drawer} aria-label="mailbox folders">
-        <Hidden smUp implementation="css">
+      <nav className={classes.drawer} aria-label='mailbox folders'>
+        <Hidden smUp implementation='css'>
           <Drawer
             container={container}
-            variant="temporary"
+            variant='temporary'
             anchor={theme.direction === 'rtl' ? 'right' : 'left'}
             open={props.mobileOpen}
             onClose={props.toggleDrawer}
@@ -89,18 +89,18 @@ function ResponsiveDrawer(props) {
               paper: classes.drawerPaper,
             }}
             ModalProps={{
-              keepMounted: true, 
+              keepMounted: true,
             }}
           >
             {drawer}
           </Drawer>
         </Hidden>
-        <Hidden xsDown implementation="css">
+        <Hidden xsDown implementation='css'>
           <Drawer
             classes={{
               paper: classes.drawerPaper,
             }}
-            variant="permanent"
+            variant='permanent'
             open
           >
             {drawer}

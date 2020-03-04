@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
-
+import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
@@ -12,14 +13,14 @@ import ExpandMore from '@material-ui/icons/ExpandMore';
 const useStyles = makeStyles(theme => ({
   nested: {
     paddingLeft: theme.spacing(4),
-    color: "#fff",
+    color: '#fff',
     backgroundColor: '#232A34',
     '&:hover': {
       backgroundColor: '#2C3442'
     }
   },
   dropdownIconItem: {
-    color: "#fff"
+    color: '#fff'
   },
   listItem: {
     backgroundColor: '#18202c',
@@ -49,12 +50,14 @@ const Dropdown = (props) => {
     childrens = props.childrens.map((children, index) => {
       const Icon = children.icon;
       return (
-        <ListItem key={index} button className={classes.nested}>
-          <ListItemIcon>
-            <Icon className={classes.dropdownIconItem} />
-          </ListItemIcon>
-          <ListItemText primary={children.name} />
-        </ListItem>
+        <Link key={index} to={'/console' + children.route} style={{ textDecoration: 'none' }}>
+          <ListItem button className={classes.nested}>
+            <ListItemIcon>
+              <Icon className={classes.dropdownIconItem} />
+            </ListItemIcon>
+            <ListItemText primary={children.name} />
+          </ListItem>
+        </Link>
       );
     });
     expandIcon = open ? <ExpandLess /> : <ExpandMore />
@@ -69,8 +72,8 @@ const Dropdown = (props) => {
         <ListItemText primary={props.parentName} />
         {expandIcon}
       </ListItem>
-      <Collapse in={open} timeout="auto" unmountOnExit>
-        <List component="div" disablePadding>
+      <Collapse in={open} timeout='auto' unmountOnExit>
+        <List component='div' disablePadding>
           {childrens}
         </List>
       </Collapse>
