@@ -1,0 +1,48 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(0,0,0,.2) 0 5px 10px;
+  position: relative;
+}
+
+.form {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.formLeft {
+  margin-right: 10px;
+}
+
+.formRight {
+  margin-left: 10px;
+}
+
+.formBtn {
+  margin-top: 20px;
+  font-size: 22px;
+  background-color: #ccc;
+  border: none;
+  width: 100%;
+  padding: 10px 0 10px 0;
+}
+
+.formBtn:hover {
+  background-color: #e4e1e1;
+  cursor: pointer;
+}
+
+.formBtn:focus {
+  outline: none;
+}
+
+.linearProgress {
+  margin-bottom: 10px;
+}

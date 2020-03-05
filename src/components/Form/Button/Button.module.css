@@ -22,7 +22,7 @@
 }
 
 .Button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-    transform: scale(.9) translateX(3px);
+    opacity: 0;
+    cursor: unset;
+    transform: scale(.8) translateX(100px);
 }

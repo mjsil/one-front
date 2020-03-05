@@ -140,9 +140,13 @@ class MeuPerfil extends Component {
                       <div className={styles.avatar}>
                         <AccountBalanceIcon className={styles.avatarIcon} fontSize="large" />
                       </div>
-                      <button className={styles.avatarBtn} disabled={!this.state.editMode}>
+                      <button 
+                        type="button"
+                        className={styles.avatarBtn} 
+                        disabled={!this.state.editMode}
+                      >
                         Alterar Foto
-                    </button>
+                      </button>
                     </div>
                   </div>
 

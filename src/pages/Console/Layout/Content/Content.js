@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 
+import MeuPerfil from '../../MeuPerfil/MeuPerfil';
+import NovoUsuario from '../../NovoUsuario/NovoUsuario';
+import UsuariosCadastrados from '../../UsuariosCadastrados/UsuariosCadastrados';
+import MinhaInstituicao from '../../MinhaInstituicao/MinhaInstituicao';
 import NovaInstituicaoUsuarios from '../../NovaInstituicao/ListaUsuarios/ListaUsuarios';
 import NovaInstituicaoForm from '../../NovaInstituicao/Form/NovaInstituicao';
-import MinhaInstituicao from '../../MinhaInstituicao/MinhaInstituicao';
-import MeuPerfil from '../../MeuPerfil/MeuPerfil';
-import UsuariosCadastrados from '../../UsuariosCadastrados/UsuariosCadastrados';
 import CriarProdutoInstituicoes from '../../CriarProduto/CriarProduto';
 import ProdutosCadastrados from '../../ProdutosCadastrados/ProdutosCadastrados';
 import Premiacoes from '../../Premiacoes/Premiacoes';
@@ -82,6 +83,10 @@ function Content(props) {
             exact
             component={() => <MeuPerfil {...props} openSnackbar={handleSnackbarOpen} />} />
           <Route path="/console/usuarios" exact component={UsuariosCadastrados} />
+          <Route 
+            path="/console/novo-usuario" 
+            exact 
+            component={() => <NovoUsuario {...props} openSnackbar={handleSnackbarOpen} />} />
           <Route path="/console/nova-instituicao" exact component={NovaInstituicaoUsuarios} />
           <Route 
             path="/console/minha-instituicao" 
