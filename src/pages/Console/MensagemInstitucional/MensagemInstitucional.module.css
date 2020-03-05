@@ -9,7 +9,7 @@
 }
 
 .infoBar {
-  background-color: #2b2b2b;
+  background-color: #213749;
   color: #fff;
   font-size: 20px;
   padding: 5px 20px 5px 20px;
@@ -49,10 +49,7 @@
 
 @media (max-width: 830px) {
   .infoBar {
-    background-color: #2b2b2b;
-    color: #fff;
     font-size: 18px;
-    padding: 5px 20px 5px 20px;
   }
 
   .box {

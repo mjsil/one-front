@@ -5,6 +5,7 @@ import NovaInstituicaoUsuarios from '../../NovaInstituicao/ListaUsuarios/ListaUs
 import NovaInstituicaoForm from '../../NovaInstituicao/Form/NovaInstituicao';
 import MinhaInstituicao from '../../MinhaInstituicao/MinhaInstituicao';
 import MeuPerfil from '../../MeuPerfil/MeuPerfil';
+import UsuariosCadastrados from '../../UsuariosCadastrados/UsuariosCadastrados';
 import CriarProdutoInstituicoes from '../../CriarProduto/CriarProduto';
 import ProdutosCadastrados from '../../ProdutosCadastrados/ProdutosCadastrados';
 import Premiacoes from '../../Premiacoes/Premiacoes';
@@ -80,6 +81,7 @@ function Content(props) {
             path="/console/perfil"
             exact
             component={() => <MeuPerfil {...props} openSnackbar={handleSnackbarOpen} />} />
+          <Route path="/console/usuarios" exact component={UsuariosCadastrados} />
           <Route path="/console/nova-instituicao" exact component={NovaInstituicaoUsuarios} />
           <Route 
             path="/console/minha-instituicao" 

@@ -4,6 +4,7 @@ import axios from '../../../axios-instance';
 import PrimaryHeading from '../../../components/UI/PrimaryHeading/PrimaryHeading';
 import LinearProgress from '@material-ui/core/LinearProgress';
 import TextField from '@material-ui/core/TextField';
+import ErrorMessage from '../../../components/Form/ErrorMessage/ErrorMessage';
 import Input from '../../../components/Form/Input/Input';
 import Button from '../../../components/Form/Button/Button';
 import styles from './MensagemInstitucional.module.css';
@@ -15,7 +16,7 @@ class MensagemInstitucional extends Component {
       message: '',
       password: ''
     },
-    errorMessage: '',
+    errorMessage: null,
     loading: false
   }
 
@@ -38,12 +39,25 @@ class MensagemInstitucional extends Component {
     this.setState({ loading: true });
     const formData = { ...this.state.formData };
 
+    if (formData.message.trim().length < 4) {
+      return this.setState({
+        errorMessage: 'A mensagem deve conter pelo menos 4 caracteres.',
+        loading: false
+      });
+    }
+
+    if (formData.password.trim().length < 4) {
+      return this.setState({
+        errorMessage: 'Informe sua senha.',
+        loading: false
+      });
+    }
+
     const dataToPut = {
-      ...this.state.institutionData,
       institutional_message: formData.message,
       oldPassword: formData.password
     };
-    
+
     axios
       .put('/institutions', dataToPut)
       .then((res) => {
@@ -51,9 +65,8 @@ class MensagemInstitucional extends Component {
         if (error) {
           return this.setState({ errorMessage: error, loading: false });
         }
-
-        const newInstitutionData = { ...res.data };
-        return this.props.changeInstitutionData(newInstitutionData);
+        
+        return this.props.changeInstitutionData(res.data);
       })
       .then(() => {
         this.props.openSnackbar('Mensagem institucional adicionada');
@@ -75,6 +88,13 @@ class MensagemInstitucional extends Component {
       formBottomContent = <LinearProgress />
     }
 
+    let errorMessage = null;
+    if (this.state.errorMessage) {
+      errorMessage = (
+        <ErrorMessage>{this.state.errorMessage}</ErrorMessage>
+      );
+    }
+
     return (
       <Fragment>
         <PrimaryHeading>Mensagem Institucional</PrimaryHeading>
@@ -84,6 +104,7 @@ class MensagemInstitucional extends Component {
               Adicione sua mensagem
             </div>
             <main className={styles.boxMainContent}>
+              {errorMessage}
               <form className={styles.form} onSubmit={this.onSubmitFormHandler}>
                 <TextField
                   id='outlined-multiline-static'

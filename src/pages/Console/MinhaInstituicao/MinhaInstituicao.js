@@ -51,7 +51,7 @@ class MeuPerfil extends Component {
     this.setState({ loading: true });
 
     const formData = { ...this.state.formData };
-    const newInstitutionData = { ...this.state.institutionData };
+    const newInstitutionData = {};
 
     for (let key in formData) {
       if (formData[key].trim().length > 0) {
@@ -66,7 +66,7 @@ class MeuPerfil extends Component {
         if (error) {
           return this.setState({ errorMessage: error, loading: false });
         }
-        return this.props.changeInstitutionData(newInstitutionData);
+        return this.props.changeInstitutionData(res.data);
       })
       .then(() => {
         this.props.openSnackbar('Dados da instituição alterados');
@@ -77,7 +77,7 @@ class MeuPerfil extends Component {
           this.setState({ errorMessage: err.response.data.error })
         }
         this.setState({ loading: false });
-      });;
+      });
   }
 
   render() {
@@ -102,7 +102,7 @@ class MeuPerfil extends Component {
 
     return (
       <Fragment>
-        <PrimaryHeading>Meu Perfil</PrimaryHeading>
+        <PrimaryHeading>Minha Instituição</PrimaryHeading>
         <div className={styles.container}>
           <div className={styles.card}>
             <div className={styles.cardToolbar}>
@@ -131,18 +131,10 @@ class MeuPerfil extends Component {
                     onChange={this.onChangeFormDataHandler} />
                 </div>
                 <div>
-                  <label>Digite sua senha:</label>
+                  <label>Digite sua senha*:</label>
                   <Input
                     readOnly={!this.state.editMode}
                     name="oldPassword"
-                    type="password"
-                    onChange={this.onChangeFormDataHandler} />
-                </div>
-                <div>
-                  <label>Digite a nova senha (opcional):</label>
-                  <Input
-                    readOnly={!this.state.editMode}
-                    name="password"
                     type="password"
                     onChange={this.onChangeFormDataHandler} />
                 </div>
