@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react';
 
 import axios from '../../../axios-instance';
-import { getToken } from '../../../services/institution-token';
 import PrimaryHeading from '../../../components/UI/PrimaryHeading/PrimaryHeading';
 import Input from '../../../components/Form/Input/Input';
 import Button from '../../../components/Form/Button/Button';
@@ -34,10 +33,8 @@ class MeuPerfil extends Component {
   }
 
   componentDidMount() {
-    const userId = getToken().id_user;
-
     axios
-      .get('/users/' + userId)
+      .get('/user')
       .then((res) => {
         this.setState({ myProfile: res.data });
       });

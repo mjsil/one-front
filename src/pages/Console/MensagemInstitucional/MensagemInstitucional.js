@@ -5,7 +5,6 @@ import PrimaryHeading from '../../../components/UI/PrimaryHeading/PrimaryHeading
 import LinearProgress from '@material-ui/core/LinearProgress';
 import TextField from '@material-ui/core/TextField';
 import ErrorMessage from '../../../components/Form/ErrorMessage/ErrorMessage';
-import Input from '../../../components/Form/Input/Input';
 import Button from '../../../components/Form/Button/Button';
 import styles from './MensagemInstitucional.module.css';
 
@@ -13,8 +12,7 @@ class MensagemInstitucional extends Component {
   state = {
     institutionData: {},
     formData: {
-      message: '',
-      password: ''
+      message: ''
     },
     errorMessage: null,
     loading: false
@@ -48,25 +46,19 @@ class MensagemInstitucional extends Component {
 
     if (formData.message.trim().length > 138) {
       return this.setState({
-        errorMessage: `A mensagem deve conter no máximo 138 carácteres. 
-        Carácteres atuais: ${formData.message.trim().length}`,
+        errorMessage: `
+          A mensagem deve conter no máximo 138 caracteres. 
+          Caracteres atuais: ${formData.message.trim().length}
+        `,
         loading: false
       });
     }
-
-    if (formData.password.trim().length === 0) {
-      return this.setState({
-        errorMessage: 'Informe sua senha.',
-        loading: false
-      });
-    }
-
-    const dataToPut = {
-      institutional_message: formData.message,
-      oldPassword: formData.password
+    const dataToPost = {
+      mensagem: formData.message
     };
+
     axios
-    .put('/institutions', dataToPut)
+    .post('/notificacao', dataToPost)
     .then((res) => {
         const error = res.data.error;
         if (error) {
@@ -123,19 +115,6 @@ class MensagemInstitucional extends Component {
                   rows={4}
                   variant='outlined'
                 />
-                <h3 className={styles.alertHeading}>
-                  É necessário informar sua senha
-                </h3>
-                <div className={styles.passwordGroup}>
-                  <label>Password</label>
-                  <Input
-                    label='Password'
-                    type='password'
-                    name='password'
-                    variant='outlined'
-                    onChange={this.onChangeFormDataHandler}
-                  />
-                </div>
                 {formBottomContent}
               </form>
             </main>
