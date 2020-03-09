@@ -4,6 +4,7 @@ import { Switch, Route, withRouter } from 'react-router-dom';
 import MeuPerfil from '../../MeuPerfil/MeuPerfil';
 import NovoUsuario from '../../NovoUsuario/NovoUsuario';
 import UsuariosCadastrados from '../../UsuariosCadastrados/UsuariosCadastrados';
+import GruposChat from '../../GruposChat/GruposChat';
 import MinhaInstituicao from '../../MinhaInstituicao/MinhaInstituicao';
 import NovaInstituicaoUsuarios from '../../NovaInstituicao/ListaUsuarios/ListaUsuarios';
 import NovaInstituicaoForm from '../../NovaInstituicao/Form/NovaInstituicao';
@@ -23,7 +24,7 @@ import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    display: 'flex',
+    display: 'flex'
   },
   toolbar: theme.mixins.toolbar,
   content: {
@@ -83,6 +84,7 @@ function Content(props) {
             exact
             component={() => <MeuPerfil {...props} openSnackbar={handleSnackbarOpen} />} />
           <Route path="/console/usuarios" exact component={UsuariosCadastrados} />
+          <Route path="/console/grupos-chat" exact component={GruposChat} />
           <Route 
             path="/console/novo-usuario" 
             exact 

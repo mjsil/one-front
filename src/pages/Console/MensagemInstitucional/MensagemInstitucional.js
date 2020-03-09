@@ -41,12 +41,20 @@ class MensagemInstitucional extends Component {
 
     if (formData.message.trim().length < 4) {
       return this.setState({
-        errorMessage: 'A mensagem deve conter pelo menos 4 caracteres.',
+        errorMessage: 'A mensagem deve conter pelo menos 4 carácteres.',
         loading: false
       });
     }
 
-    if (formData.password.trim().length < 4) {
+    if (formData.message.trim().length > 138) {
+      return this.setState({
+        errorMessage: `A mensagem deve conter no máximo 138 carácteres. 
+        Carácteres atuais: ${formData.message.trim().length}`,
+        loading: false
+      });
+    }
+
+    if (formData.password.trim().length === 0) {
       return this.setState({
         errorMessage: 'Informe sua senha.',
         loading: false
@@ -57,10 +65,9 @@ class MensagemInstitucional extends Component {
       institutional_message: formData.message,
       oldPassword: formData.password
     };
-
     axios
-      .put('/institutions', dataToPut)
-      .then((res) => {
+    .put('/institutions', dataToPut)
+    .then((res) => {
         const error = res.data.error;
         if (error) {
           return this.setState({ errorMessage: error, loading: false });
@@ -113,7 +120,7 @@ class MensagemInstitucional extends Component {
                   onChange={this.onChangeFormDataHandler}
                   label='Mensagem'
                   multiline
-                  rows='4'
+                  rows={4}
                   variant='outlined'
                 />
                 <h3 className={styles.alertHeading}>

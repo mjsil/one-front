@@ -96,6 +96,9 @@ class NovoUsuario extends Component {
         <PrimaryHeading>Novo Usuário</PrimaryHeading>
         <div className={styles.container}>
           <div className={styles.box}>
+            <div className={styles.boxBar}>
+              <p>Adicione um novo usuário</p>
+            </div>
             <div className={styles.form}>
               <div className={styles.formLeft}>
                 <InputGroup

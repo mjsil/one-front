@@ -6,23 +6,36 @@
 .box {
   display: flex;
   flex-direction: column;
+  background-color: #fff;
   align-items: center;
   box-shadow: rgba(0,0,0,.2) 0 5px 10px;
   position: relative;
 }
 
+.boxBar {
+  background-color: #2b2b2b;
+  width: 100%;
+  padding: 5px 20px 5px 20px;
+}
+
+.boxBar > p {
+  color: #fff;
+  font-size: 20px;
+}
+
+
 .form {
-  padding: 20px;
+  padding: 30px 40px 20px 40px;
   display: flex;
   justify-content: space-between;
 }
 
 .formLeft {
-  margin-right: 10px;
+  margin-right: 20px;
 }
 
 .formRight {
-  margin-left: 10px;
+  margin-left: 20px;
 }
 
 .formBtn {
@@ -45,4 +58,20 @@
 
 .linearProgress {
   margin-bottom: 10px;
+}
+
+@media (max-width: 830px) {
+  .formLeft {
+    margin-right: 10px;
+  }
+  
+  .formRight {
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 470px) {
+  .form {
+    padding: 30px 20px 20px 20px;
+  }
 }

@@ -140,9 +140,9 @@ class MeuPerfil extends Component {
                       <div className={styles.avatar}>
                         <AccountBalanceIcon className={styles.avatarIcon} fontSize="large" />
                       </div>
-                      <button 
+                      <button
                         type="button"
-                        className={styles.avatarBtn} 
+                        className={styles.avatarBtn}
                         disabled={!this.state.editMode}
                       >
                         Alterar Foto
@@ -178,6 +178,15 @@ class MeuPerfil extends Component {
                         type="number"
                         onChange={this.onChangeFormDataHandler} />
                     </div>
+                    <div>
+                      <label>CPF:</label>
+                      <Input
+                        placeholder={this.state.myProfile.cpf}
+                        readOnly={!this.state.editMode}
+                        name="cpf"
+                        type="number"
+                        onChange={this.onChangeFormDataHandler} />
+                    </div>
                   </div>
                 </div>
                 <div className={styles.cardContentBottom}>
@@ -189,15 +198,6 @@ class MeuPerfil extends Component {
                         readOnly={!this.state.editMode}
                         name="birth"
                         type="text"
-                        onChange={this.onChangeFormDataHandler} />
-                    </div>
-                    <div>
-                      <label>CPF:</label>
-                      <Input
-                        placeholder={this.state.myProfile.cpf}
-                        readOnly={!this.state.editMode}
-                        name="cpf"
-                        type="number"
                         onChange={this.onChangeFormDataHandler} />
                     </div>
                     <div>
@@ -218,8 +218,6 @@ class MeuPerfil extends Component {
                         type="number"
                         onChange={this.onChangeFormDataHandler} />
                     </div>
-                  </div>
-                  <div className={styles.cardContentRight}>
                     <div>
                       <label>Endereço:</label>
                       <Input
@@ -229,6 +227,8 @@ class MeuPerfil extends Component {
                         type="text"
                         onChange={this.onChangeFormDataHandler} />
                     </div>
+                  </div>
+                  <div className={styles.cardContentRight}>
                     <div>
                       <label>Áreas de interesse:</label>
                       <Input

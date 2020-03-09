@@ -56,8 +56,8 @@
 }
 
 .avatar {
-  height: 150px;
-  width: 150px;
+  height: 200px;
+  width: 200px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -90,6 +90,27 @@
 .avatarBtn:disabled {
   color: rgb(153, 152, 152);
   cursor: not-allowed;
+}
+
+@media (max-width: 900px) {
+  .avatarContainer {
+    margin-bottom: 30px;
+  }
+
+  .cardContentTop,
+  .cardContentBottom {
+    flex-direction: column;
+  }
+
+  .cardContentLeft,
+  .cardContentRight {
+    margin: 0
+  }
+
+  .avatar {
+    height: 150px;
+    width: 150px;
+  }
 }
 
 @media (max-width: 800px) {
