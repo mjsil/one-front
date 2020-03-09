@@ -26,7 +26,7 @@ class PlanoSaude extends Component {
 
   onSelectedRowHandler = (userId) => {
     this.props.history.push({
-      pathname: this.props.match.url + '/form',
+      pathname: this.props.location.pathname + '/form',
       state: { userId: userId }
     });
   }

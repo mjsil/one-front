@@ -11,6 +11,7 @@ const Group = (props) => {
         type={props.inputType}
         value={props.inputValue}
         onChange={props.inputOnChange}
+        mask={props.inputMask}
         step={props.inputStep}
         min={props.inputMin}
         max={props.inputMax}

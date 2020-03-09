@@ -30,7 +30,7 @@ class Login extends Component {
 
   onFormSubmitHandler = (event) => {
     event.preventDefault();
-    this.setState({ loading: true, errorMessage: false });
+    this.setState({ loading: true, errorMessage: null });
     const formData = {
       email: this.state.email,
       password: this.state.password

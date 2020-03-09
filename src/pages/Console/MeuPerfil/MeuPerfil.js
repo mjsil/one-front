@@ -15,18 +15,18 @@ class MeuPerfil extends Component {
     editMode: false,
     myProfile: {},
     formData: {
-      name: { value: '', type: 'text' },
-      email: { value: '', type: 'email' },
-      oldPassword: { value: '', type: 'password' },
-      password: { value: '', type: 'password' },
-      phone: { value: '', type: 'number' },
-      birth: { value: '', type: 'text' },
-      cpf: { value: '', type: 'number' },
-      city: { value: '', type: 'text' },
-      cep: { value: '', type: 'number' },
-      address: { value: '', type: 'text' },
-      areas_de_interesse: { value: '', type: 'text' },
-      serial_card: { value: '', type: 'number' },
+      name: '',
+      email: '',
+      oldPassword: '',
+      password: '',
+      phone: '',
+      birth: '',
+      cpf: '',
+      city: '',
+      cep: '',
+      address: '',
+      areas_de_interesse: '',
+      serial_card: '',
     },
     loading: false,
     errorMessage: null
@@ -36,7 +36,15 @@ class MeuPerfil extends Component {
     axios
       .get('/user')
       .then((res) => {
-        this.setState({ myProfile: res.data });
+        const receivedData = res.data;
+        this.setState({
+          myProfile: {
+            ...receivedData,
+            areas_de_interesse: receivedData.areas_de_interesse ? (
+              receivedData.areas_de_interesse.join(', ')
+            ) : null
+          }
+        });
       });
   }
 
@@ -51,7 +59,7 @@ class MeuPerfil extends Component {
     const inputName = event.target.name;
     const inputValue = event.target.value;
     const formData = { ...this.state.formData };
-    formData[inputName].value = inputValue;
+    formData[inputName] = inputValue;
 
     this.setState({ formData: formData });
   }
@@ -61,17 +69,22 @@ class MeuPerfil extends Component {
 
     this.setState({ loading: true });
 
-    const formData = { ...this.state.formData };
+    const formData = { 
+      ...this.state.formData
+    };
+    
     const newMyProfile = {};
 
     for (let key in formData) {
-      if (formData[key].value.trim().length > 0 && formData[key].type === 'number') {
-        newMyProfile[key] = Number(formData[key].value);
-      } else if (formData[key].value.trim().length > 0) {
-        newMyProfile[key] = formData[key].value;
+      if (formData[key].trim().length > 0) {
+        newMyProfile[key] = formData[key];
       }
     }
 
+    if (newMyProfile.areas_de_interesse) {
+      newMyProfile.areas_de_interesse = newMyProfile.areas_de_interesse.split(', ');
+    }
+    
     axios
       .put('/users', newMyProfile)
       .then((res) => {
@@ -154,7 +167,7 @@ class MeuPerfil extends Component {
                         placeholder={this.state.myProfile.name}
                         name="name"
                         type="text"
-                        readOnly={!this.state.editMode}
+                        disabled={!this.state.editMode}
                         onChange={this.onChangeFormDataHandler} />
                     </div>
                     <div>
@@ -163,25 +176,27 @@ class MeuPerfil extends Component {
                         placeholder={this.state.myProfile.email}
                         name="email"
                         type="email"
-                        readOnly={!this.state.editMode}
+                        disabled={!this.state.editMode}
                         onChange={this.onChangeFormDataHandler} />
                     </div>
                     <div>
                       <label>Telefone:</label>
                       <Input
                         placeholder={this.state.myProfile.phone}
-                        readOnly={!this.state.editMode}
+                        disabled={!this.state.editMode}
+                        mask="(99)99999-9999"
                         name="phone"
-                        type="number"
+                        type="tel"
                         onChange={this.onChangeFormDataHandler} />
                     </div>
                     <div>
                       <label>CPF:</label>
                       <Input
                         placeholder={this.state.myProfile.cpf}
-                        readOnly={!this.state.editMode}
+                        disabled={!this.state.editMode}
                         name="cpf"
-                        type="number"
+                        mask="999.999.999-99"
+                        type="text"
                         onChange={this.onChangeFormDataHandler} />
                     </div>
                   </div>
@@ -192,8 +207,9 @@ class MeuPerfil extends Component {
                       <label>Nascimento:</label>
                       <Input
                         placeholder={this.state.myProfile.birth}
-                        readOnly={!this.state.editMode}
+                        disabled={!this.state.editMode}
                         name="birth"
+                        mask="99/99/9999"
                         type="text"
                         onChange={this.onChangeFormDataHandler} />
                     </div>
@@ -201,7 +217,7 @@ class MeuPerfil extends Component {
                       <label>Cidade:</label>
                       <Input
                         placeholder={this.state.myProfile.city}
-                        readOnly={!this.state.editMode}
+                        disabled={!this.state.editMode}
                         name="city"
                         type="text"
                         onChange={this.onChangeFormDataHandler} />
@@ -210,16 +226,17 @@ class MeuPerfil extends Component {
                       <label>CEP:</label>
                       <Input
                         placeholder={this.state.myProfile.cep}
-                        readOnly={!this.state.editMode}
+                        disabled={!this.state.editMode}
                         name="cep"
-                        type="number"
+                        mask="99.999-999"
+                        type="text"
                         onChange={this.onChangeFormDataHandler} />
                     </div>
                     <div>
                       <label>Endereço:</label>
                       <Input
                         placeholder={this.state.myProfile.address}
-                        readOnly={!this.state.editMode}
+                        disabled={!this.state.editMode}
                         name="address"
                         type="text"
                         onChange={this.onChangeFormDataHandler} />
@@ -230,7 +247,7 @@ class MeuPerfil extends Component {
                       <label>Áreas de interesse:</label>
                       <Input
                         placeholder={this.state.myProfile.areas_de_interesse}
-                        readOnly={!this.state.editMode}
+                        disabled={!this.state.editMode}
                         name="areas_de_interesse"
                         type="text"
                         onChange={this.onChangeFormDataHandler} />
@@ -238,7 +255,7 @@ class MeuPerfil extends Component {
                     <div>
                       <label>Serial do cartão:</label>
                       <Input
-                        readOnly={!this.state.editMode}
+                        disabled={!this.state.editMode}
                         name="serial_card"
                         type="number"
                         onChange={this.onChangeFormDataHandler} />
@@ -246,7 +263,7 @@ class MeuPerfil extends Component {
                     <div>
                       <label>Digite sua senha*:</label>
                       <Input
-                        readOnly={!this.state.editMode}
+                        disabled={!this.state.editMode}
                         name="oldPassword"
                         type="password"
                         onChange={this.onChangeFormDataHandler} />
@@ -254,7 +271,7 @@ class MeuPerfil extends Component {
                     <div>
                       <label>Digite a nova senha (opcional):</label>
                       <Input
-                        readOnly={!this.state.editMode}
+                        disabled={!this.state.editMode}
                         name="password"
                         type="password"
                         onChange={this.onChangeFormDataHandler} />

@@ -50,7 +50,7 @@ class NovoUsuario extends Component {
       ...formData,
       id_instituicao: this.state.institutionId
     };
-
+    
     axios
       .post('/users', dataToPut)
       .then((res) => {
@@ -119,12 +119,14 @@ class NovoUsuario extends Component {
                 <InputGroup
                   label="Telefone"
                   inputName="phone"
-                  inputType="number"
+                  inputMask="(99)99999-9999"
+                  inputType="tel"
                   inputOnChange={this.onChangeFormDataHandler} />
                 <InputGroup
                   label="CPF"
                   inputName="cpf"
-                  inputType="number"
+                  inputMask="999.999.999-99"
+                  inputType="text"
                   inputOnChange={this.onChangeFormDataHandler} />
               </div>
               <div className={styles.formRight}>
@@ -136,12 +138,14 @@ class NovoUsuario extends Component {
                 <InputGroup
                   label="Nascimento"
                   inputName="birth"
+                  inputMask="99/99/9999"
                   inputType="text"
                   inputOnChange={this.onChangeFormDataHandler} />
                 <InputGroup
                   label="CEP"
                   inputName="cep"
-                  inputType="number"
+                  inputMask="99.999-999"
+                  inputType="text"
                   inputOnChange={this.onChangeFormDataHandler} />
                 <InputGroup
                   label="Endereço"

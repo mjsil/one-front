@@ -35,7 +35,6 @@ const Routes = () => (
     <Switch>
       <NotAuthRoute exact path="/" component={AuthPage} />
       <AuthRoute path="/console" component={Layout} />
-      <Route path="*" render={() => <h1>Page not found</h1>} />
     </Switch>
   </BrowserRouter>
 );

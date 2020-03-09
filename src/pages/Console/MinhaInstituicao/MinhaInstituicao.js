@@ -7,7 +7,6 @@ import Button from '../../../components/Form/Button/Button';
 import ErrorMessage from '../../../components/Form/ErrorMessage/ErrorMessage';
 import Switch from '@material-ui/core/Switch';
 import CircularProgress from '@material-ui/core/CircularProgress';
-// import AccountBalanceIcon from '@material-ui/icons/AccountBalance';
 import styles from './MinhaInstituicao.module.css';
 
 class MeuPerfil extends Component {
@@ -118,7 +117,7 @@ class MeuPerfil extends Component {
                     placeholder={this.state.institutionData.name}
                     name="name"
                     type="text"
-                    readOnly={!this.state.editMode}
+                    disabled={!this.state.editMode}
                     onChange={this.onChangeFormDataHandler} />
                 </div>
                 <div>
@@ -127,13 +126,13 @@ class MeuPerfil extends Component {
                     placeholder={this.state.institutionData.email}
                     name="email"
                     type="email"
-                    readOnly={!this.state.editMode}
+                    disabled={!this.state.editMode}
                     onChange={this.onChangeFormDataHandler} />
                 </div>
                 <div>
                   <label>Digite sua senha*:</label>
                   <Input
-                    readOnly={!this.state.editMode}
+                    disabled={!this.state.editMode}
                     name="oldPassword"
                     type="password"
                     onChange={this.onChangeFormDataHandler} />
