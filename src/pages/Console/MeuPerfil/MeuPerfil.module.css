@@ -59,11 +59,19 @@
   height: 200px;
   width: 200px;
   border-radius: 50%;
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: rgb(94, 93, 93);
   margin-bottom: 20px;
+}
+
+.avatarImg {
+  height: 200px;
+  width: 200px;
+  background-size: cover;
+  border-radius: 50%;
 }
 
 .avatarIcon {

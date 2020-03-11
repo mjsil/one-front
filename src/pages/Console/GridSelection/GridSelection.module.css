@@ -1,9 +1,11 @@
 .container {
   padding: 50px;
+  height: 100%;
 }
 
 .GridSelection {
   display: grid;
+  height: 100%;
   gap: 10px;
   grid-template-columns: repeat(2, 1fr);
 }

@@ -2,7 +2,7 @@ import PersonIcon from '@material-ui/icons/Person';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
 import ContactsOutlinedIcon from '@material-ui/icons/ContactsOutlined';
-import RecordVoiceOverOutlinedIcon from '@material-ui/icons/RecordVoiceOverOutlined';
+// import RecordVoiceOverOutlinedIcon from '@material-ui/icons/RecordVoiceOverOutlined';
 import AccountBalanceOutlinedIcon from '@material-ui/icons/AccountBalanceOutlined';
 // import AccountBalanceWalletOutlinedIcon from '@material-ui/icons/AccountBalanceWalletOutlined';
 // import BusinessIcon from '@material-ui/icons/Business';
@@ -50,11 +50,11 @@ const routes = [
         route: '/usuarios',
         icon: ContactsOutlinedIcon
       },
-      {
-        name: 'Grupos Chat',
-        route: '/grupos-chat',
-        icon: RecordVoiceOverOutlinedIcon
-      }
+      // {
+      //   name: 'Grupos Chat',
+      //   route: '/grupos-chat',
+      //   icon: RecordVoiceOverOutlinedIcon
+      // }
       // {
       //   name: 'Contatos chat',
       //   route: '/contatos-chat',
