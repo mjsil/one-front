@@ -120,7 +120,7 @@ class MeuPerfil extends Component {
 
     let formBottomContent = (
       <div className={styles.centered}>
-        <Button disabled={!this.state.editMode}>Editar</Button>
+        <Button disabled={!this.state.editMode}>Salvar</Button>
       </div>
     );
 

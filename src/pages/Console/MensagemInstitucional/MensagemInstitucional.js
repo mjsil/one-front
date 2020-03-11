@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 import axios from '../../../axios-instance';
 import PrimaryHeading from '../../../components/UI/PrimaryHeading/PrimaryHeading';
@@ -123,6 +124,12 @@ class MensagemInstitucional extends Component {
       </Fragment>
     );
   }
+}
+
+MensagemInstitucional.propTypes = {
+  institution: PropTypes.object,
+  changeInstitutionData: PropTypes.func,
+  openSnackbar: PropTypes.func
 }
 
 export default MensagemInstitucional;

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import routes from './routes';
 
 import AppBar from '../../../../components/UI/Navigation/AppBar/AppBar';
@@ -89,6 +90,11 @@ function Content(props) {
       </main>
     </div>
   );
+}
+
+Content.propTypes = {
+  institution: PropTypes.object,
+  onLogout: PropTypes.func
 }
 
 export default withRouter(Content);
