@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { setToken } from '../../../services/institution-token';
 import { login } from '../../../services/auth';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import axios from '../../../axios-instance';
 
 import Form from '../../../components/Form/Form/Form';
@@ -10,7 +10,6 @@ import Button from '../../../components/Form/Button/Button';
 import Input from '../../../components/Form/Input/Input';
 import Logo from '../../../components/Form/Logo/Logo';
 import Spinner from '../../../components/UI/Spinner/Spinner';
-import Links from '../../../components/Form/Links/Links';
 
 class Login extends Component {
   state = {
@@ -78,10 +77,6 @@ class Login extends Component {
           onChange={this.onChangeInputHandler}
         />
         <Button type="submit">Login</Button>
-        <Links>
-          <Link to="/signup">Cadastre-se</Link>
-          <Link to="/forgot">Esqueci a senha</Link>
-        </Links>
       </Fragment>
     );
 

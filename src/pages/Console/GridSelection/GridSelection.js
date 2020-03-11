@@ -2,7 +2,6 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 import PersonIcon from '@material-ui/icons/Person';
-import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import ContactsOutlinedIcon from '@material-ui/icons/ContactsOutlined';
 import AccountBalanceOutlinedIcon from '@material-ui/icons/AccountBalanceOutlined';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
@@ -19,10 +18,6 @@ function GridSelection(props) {
         <div className={styles.card} onClick={() => onRedirectHandler('perfil')}>
           <PersonIcon fontSize="large" className={styles.icon} />
           <h1>Meu Perfil</h1>
-        </div>
-        <div className={styles.card} onClick={() => onRedirectHandler('novo-usuario')}>
-          <PersonAddIcon fontSize="large" className={styles.icon} />
-          <h1>Novo Usuário</h1>
         </div>
         <div className={styles.card} onClick={() => onRedirectHandler('usuarios')}>
           <ContactsOutlinedIcon fontSize="large" className={styles.icon} />

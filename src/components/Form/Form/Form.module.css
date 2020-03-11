@@ -9,6 +9,14 @@
     box-shadow: rgba(0,0,0,.3) 0 5px 10px;
 }
 
+.Form > input {
+    margin-bottom: 15px !important;
+}
+
+.Form > button {
+    margin-top: 35px;
+}
+
 @media (max-width: 900px) {
     .Form {
         width: 45%;
