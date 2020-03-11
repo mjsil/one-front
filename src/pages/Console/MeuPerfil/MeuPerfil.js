@@ -154,7 +154,7 @@ class MeuPerfil extends Component {
                       <button
                         type="button"
                         className={styles.avatarBtn}
-                        disabled={!this.state.editMode}
+                        disabled
                       >
                         Alterar Foto
                       </button>
@@ -251,14 +251,6 @@ class MeuPerfil extends Component {
                         disabled={!this.state.editMode}
                         name="areas_de_interesse"
                         type="text"
-                        onChange={this.onChangeFormDataHandler} />
-                    </div>
-                    <div>
-                      <label>Serial do cartão:</label>
-                      <Input
-                        disabled={!this.state.editMode}
-                        name="serial_card"
-                        type="number"
                         onChange={this.onChangeFormDataHandler} />
                     </div>
                     <div>
