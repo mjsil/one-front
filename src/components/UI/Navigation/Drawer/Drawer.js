@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 import { withRouter } from 'react-router-dom';
 import Dropdown from './Dropdown/Dropdown';
@@ -109,6 +110,11 @@ function ResponsiveDrawer(props) {
       </nav>
     </Fragment>
   );
+}
+
+ResponsiveDrawer.propTypes = {
+  mobileOpen: PropTypes.bool,
+  toggleDrawer: PropTypes.func
 }
 
 export default withRouter(ResponsiveDrawer);

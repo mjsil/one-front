@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 import AppBar from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
@@ -70,6 +71,12 @@ function AppBarComponent(props) {
       </AppBar>
     </Fragment>
   );
+}
+
+AppBarComponent.propTypes = {
+  toggleDrawer: PropTypes.func,
+  institutionName: PropTypes.string,
+  onLogout: PropTypes.func
 }
 
 export default AppBarComponent;

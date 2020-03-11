@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -85,6 +86,12 @@ function StickyHeadTable(props) {
       />
     </Paper>
   );
+}
+
+StickyHeadTable.propTypes = {
+  rows: PropTypes.arrayOf(PropTypes.object),
+  columns: PropTypes.arrayOf(PropTypes.object),
+  onSelectedRow: PropTypes.func
 }
 
 export default StickyHeadTable;

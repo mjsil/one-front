@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import Backdrop from '@material-ui/core/Backdrop';
@@ -18,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function TransitionsModal(props) {
+function TransitionsModal(props) {
   const classes = useStyles();
 
   return (
@@ -44,3 +46,11 @@ export default function TransitionsModal(props) {
     </div>
   );
 }
+
+TransitionsModal.propTypes = {
+  open: PropTypes.bool,
+  handleClose: PropTypes.func,
+  children: PropTypes.object
+}
+
+export default TransitionsModal;

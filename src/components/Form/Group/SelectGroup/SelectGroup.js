@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './SelectGroup.module.css';
 
@@ -16,6 +17,14 @@ const Group = (props) => {
       </select>
     </div>
   );
+}
+
+Group.propTypes = {
+  label: PropTypes.string,
+  selectName: PropTypes.string,
+  selectValue: PropTypes.number,
+  selectOnChange: PropTypes.func,
+  children: PropTypes.arrayOf(PropTypes.element)
 }
 
 export default Group;

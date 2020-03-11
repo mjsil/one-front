@@ -16,7 +16,23 @@ estados.
 
 ### pages ###
 
-Conjunto de todas as telas que irão fazer as manipulações de estados e processos de autenticação.
+Conjunto de todas as telas que irão fazer manipulações de estados e processos de autenticação.
+
+#### Auth #### 
+
+Tela inicial. Responsável por renderizar e validar o form de acesso ao usuário. 
+
+#### Console/Layout ####
+
+Página que define a estrutura do conteúdo do console (appbar, drawer e content).
+
+#### Console/Layout/Content ####
+
+Switch de rotas de todos os componentes que estão em /console e, que serão exibidos como conteúdo principal. Além disso, organiza o display de elementos de interface do usuário.
+
+#### Console/Layout/(*) ####
+
+Conjunto de conteúdos que serão exibidos em Layout/content quando determinada rota é alcançada.
 
 ### services ###
 

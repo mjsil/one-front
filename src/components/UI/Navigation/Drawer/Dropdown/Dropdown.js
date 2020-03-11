@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -80,5 +81,11 @@ const Dropdown = (props) => {
     </Fragment>
   );
 };
+
+Dropdown.propTypes = {
+  parentIcon: PropTypes.object,
+  childrens: PropTypes.arrayOf(PropTypes.object),
+  parentName: PropTypes.string
+}
 
 export default Dropdown;

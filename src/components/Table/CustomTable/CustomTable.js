@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Tooltip from '@material-ui/core/Tooltip';
 import IconButton from '@material-ui/core/IconButton';
@@ -24,6 +25,11 @@ const CustomTable = (props) => {
       ))}
     </div>
   );
+}
+
+CustomTable.propTypes = {
+  rows: PropTypes.arrayOf(PropTypes.object),
+  onClickDownload: PropTypes.func
 }
 
 export default CustomTable;

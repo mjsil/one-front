@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 import axios from '../../../axios-instance';
 import PrimaryHeading from '../../../components/UI/PrimaryHeading/PrimaryHeading';
@@ -287,6 +288,10 @@ class MeuPerfil extends Component {
       </Fragment>
     );
   }
+}
+
+MeuPerfil.propTypes = {
+  openSnackbar: PropTypes.func
 }
 
 export default MeuPerfil;

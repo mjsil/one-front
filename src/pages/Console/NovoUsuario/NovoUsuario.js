@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import PropTypes from 'prop-types';
 
 import axios from '../../../axios-instance';
 import InputGroup from '../../../components/Form/Group/InputGroup/InputGroup';
@@ -161,6 +162,11 @@ class NovoUsuario extends Component {
       </Fragment>
     );
   }
+}
+
+NovoUsuario.propTypes = {
+  institution: PropTypes.object,
+  openSnackbar: PropTypes.func
 }
 
 export default NovoUsuario;
