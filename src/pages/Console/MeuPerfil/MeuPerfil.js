@@ -70,10 +70,10 @@ class MeuPerfil extends Component {
 
     this.setState({ loading: true });
 
-    const formData = { 
+    const formData = {
       ...this.state.formData
     };
-    
+
     const newMyProfile = {};
 
     for (let key in formData) {
@@ -85,7 +85,7 @@ class MeuPerfil extends Component {
     if (newMyProfile.areas_de_interesse) {
       newMyProfile.areas_de_interesse = newMyProfile.areas_de_interesse.split(', ');
     }
-    
+
     axios
       .put('/users', newMyProfile)
       .then((res) => {
@@ -172,15 +172,6 @@ class MeuPerfil extends Component {
                         onChange={this.onChangeFormDataHandler} />
                     </div>
                     <div>
-                      <label>E-mail:</label>
-                      <Input
-                        placeholder={this.state.myProfile.email}
-                        name="email"
-                        type="email"
-                        disabled={!this.state.editMode}
-                        onChange={this.onChangeFormDataHandler} />
-                    </div>
-                    <div>
                       <label>Telefone:</label>
                       <Input
                         placeholder={this.state.myProfile.phone}
@@ -200,10 +191,6 @@ class MeuPerfil extends Component {
                         type="text"
                         onChange={this.onChangeFormDataHandler} />
                     </div>
-                  </div>
-                </div>
-                <div className={styles.cardContentBottom}>
-                  <div className={styles.cardContentLeft}>
                     <div>
                       <label>Nascimento:</label>
                       <Input
@@ -214,6 +201,11 @@ class MeuPerfil extends Component {
                         type="text"
                         onChange={this.onChangeFormDataHandler} />
                     </div>
+                  </div>
+                </div>
+                <div className={styles.cardContentBottom}>
+                  <div className={styles.cardContentLeft}>
+
                     <div>
                       <label>Cidade:</label>
                       <Input
