@@ -80,7 +80,7 @@ function StickyHeadTable(props) {
         component="div"
         backIconButtonText="Página anterior"
         nextIconButtonText="Próxima página"
-        labelRowsPerPage="Páginas por linha:"
+        labelRowsPerPage="Linhas por página:"
         // Default property from material ui docs (table-pagination)
         labelDisplayedRows={({ from, to, count }) => (
           `${from}-${to === -1 ? count : to} de ${count !== -1 ? count : `more than ${to}`}`
