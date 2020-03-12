@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useContext } from 'react';
 import PropTypes from 'prop-types';
+import LayoutContext from '../../../../pages/Console/Layout/Layout-context';
 
 import AppBar from '@material-ui/core/AppBar';
 import IconButton from '@material-ui/core/IconButton';
@@ -46,6 +47,8 @@ const useStyles = makeStyles(theme => ({
 
 function AppBarComponent(props) {
   const classes = useStyles();
+
+  const context = useContext(LayoutContext);
   
   return (
     <Fragment>
@@ -61,9 +64,9 @@ function AppBarComponent(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h5" className={classes.title}>
-            {props.institutionName}
+            {context.institution.name}
           </Typography>
-          <button className={classes.logoutBtn} onClick={props.onLogout}>
+          <button className={classes.logoutBtn} onClick={context.onLogout}>
             <ExitToAppIcon />
             <h3>Logout</h3>
           </button>

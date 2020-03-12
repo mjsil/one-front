@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
+import LayoutContext from '../Layout/Layout-context';
 import axios from '../../../axios-instance';
 import PrimaryHeading from '../../../components/UI/PrimaryHeading/PrimaryHeading';
 import LinearProgress from '@material-ui/core/LinearProgress';
@@ -19,8 +20,10 @@ class MensagemInstitucional extends Component {
     loading: false
   }
 
+  static contextType = LayoutContext;
+
   componentDidMount() {
-    const institution = { ...this.props.institution };
+    const institution = { ...this.context.institution };
     this.setState({ institutionData: institution });
   }
 
@@ -66,7 +69,7 @@ class MensagemInstitucional extends Component {
           return this.setState({ errorMessage: error, loading: false });
         }
         
-        return this.props.changeInstitutionData(res.data);
+        return this.context.changeInstitutionData(res.data);
       })
       .then(() => {
         this.props.openSnackbar('Mensagem institucional adicionada');

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ContextAPI from './Layout-context';
 import axios from '../../../axios-instance';
 import { getToken, removeToken } from '../../../services/institution-token';
 import { logout } from '../../../services/auth';
@@ -35,10 +36,13 @@ class Layout extends Component {
 
     if (this.state.institution) {
       contentToRender = (
-        <Content
-          institution={this.state.institution}
-          changeInstitutionData={this.changeInstitutionData}
-          onLogout={this.onLogoutHandler} />
+        <ContextAPI.Provider value={{
+          institution: this.state.institution,
+          changeInstitutionData: this.changeInstitutionData,
+          onLogout: this.onLogoutHandler
+        }}>
+          <Content />
+        </ContextAPI.Provider>
       );
     }
     return (

@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
+import LayoutContext from '../Layout/Layout-context';
 
 import axios from '../../../axios-instance';
 import InputGroup from '../../../components/Form/Group/InputGroup/InputGroup';
@@ -26,8 +27,10 @@ class NovoUsuario extends Component {
     loading: false
   }
 
+  static contextType = LayoutContext;
+
   componentDidMount() {
-    const institutionData = { ...this.props.institution };
+    const institutionData = { ...this.context.institution };
     this.setState({ institutionId: institutionData.id });
   }
 

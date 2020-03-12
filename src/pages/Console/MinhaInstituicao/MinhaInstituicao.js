@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 
+import LayoutContext from '../../Console/Layout/Layout-context';
 import axios from '../../../axios-instance';
 import PrimaryHeading from '../../../components/UI/PrimaryHeading/PrimaryHeading';
 import Input from '../../../components/Form/Input/Input';
@@ -24,8 +25,10 @@ class MeuPerfil extends Component {
     errorMessage: null
   }
 
+  static contextType = LayoutContext;
+
   componentDidMount() {
-    const institution = { ...this.props.institution };
+    const institution = { ...this.context.institution };
     this.setState({ institutionData: institution });
   }
 
@@ -66,7 +69,7 @@ class MeuPerfil extends Component {
         if (error) {
           return this.setState({ errorMessage: error, loading: false });
         }
-        return this.props.changeInstitutionData(res.data);
+        return this.context.changeInstitutionData(res.data);
       })
       .then(() => {
         this.props.openSnackbar('Dados da instituição alterados');

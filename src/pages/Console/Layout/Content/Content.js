@@ -57,8 +57,6 @@ function Content(props) {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
-        onLogout={props.onLogout}
-        institutionName={props.institution.name}
         toggleDrawer={handleDrawerToggle} />
       <Drawer
         container={container}
