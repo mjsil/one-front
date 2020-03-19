@@ -14,17 +14,28 @@ class Layout extends Component {
 
   componentDidMount() {
     const institutionToken = getToken();
+
+    if (!institutionToken) {
+      return this.props.history.replace('/');
+    }
+
     axios
       .get('/institutions/' + institutionToken.id)
       .then(res => {
+        if (res.data.error) {
+          return this.onLogoutHandler(); 
+        }
         this.setState({ institution: res.data })
+      })
+      .catch(err => {
+        this.onLogoutHandler();
       });
   }
 
   onLogoutHandler = async () => {
     await removeToken();
     await logout();
-    this.props.history.replace('/');
+    return this.props.history.replace('/');
   }
 
   changeInstitutionData = (newInstitution) => {
