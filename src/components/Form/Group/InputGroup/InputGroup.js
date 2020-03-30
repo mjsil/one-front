@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 
-import Input from '../../Input/Input';
+import Input from "../../Input/Input";
 
-const Group = (props) => {
+const Group = props => {
   return (
     <div>
       <label>{props.label}</label>
@@ -19,17 +19,14 @@ const Group = (props) => {
       />
     </div>
   );
-}
+};
 
 Group.propTypes = {
   label: PropTypes.string,
   type: PropTypes.string,
-  value: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]),
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   onChange: PropTypes.func,
   inputMask: PropTypes.string
-}
+};
 
 export default Group;

@@ -1,28 +1,28 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component, Fragment } from "react";
 
-import axios from '../../../../axios-instance';
-import { Redirect } from 'react-router-dom';
-import PrimaryHeading from '../../../../components/UI/PrimaryHeading/PrimaryHeading';
-import Spinner from '../../../../components/UI/Spinner/Spinner';
-import ErrorMessage from '../../../../components/Form/ErrorMessage/ErrorMessage';
-import SelectGroup from '../../../../components/Form/Group/SelectGroup/SelectGroup';
-import InputGroup from '../../../../components/Form/Group/InputGroup/InputGroup';
-import Button from '../../../../components/Form/Button/Button';
-import styles from './NovaInstituicao.module.css';
+import axios from "../../../../axios-instance";
+import { Redirect } from "react-router-dom";
+import PrimaryHeading from "../../../../components/UI/PrimaryHeading/PrimaryHeading";
+import Spinner from "../../../../components/UI/Spinner/Spinner";
+import ErrorMessage from "../../../../components/Form/ErrorMessage/ErrorMessage";
+import SelectGroup from "../../../../components/Form/Group/SelectGroup/SelectGroup";
+import InputGroup from "../../../../components/Form/Group/InputGroup/InputGroup";
+import Button from "../../../../components/Form/Button/Button";
+import styles from "./NovaInstituicao.module.css";
 
 class NovaInstituicao extends Component {
   state = {
     formData: {
       userId: null,
-      name: '',
-      email: '',
+      name: "",
+      email: "",
       permission: 1,
       type: 1
     },
     errorMsg: null,
     loading: false,
     redirectToUsers: false
-  }
+  };
 
   componentDidMount() {
     if (this.props.location.state) {
@@ -41,14 +41,14 @@ class NovaInstituicao extends Component {
     }
   }
 
-  onInputChangedHandler = (event) => {
+  onInputChangedHandler = event => {
     const formData = { ...this.state.formData };
     const inputName = event.target.name;
     const inputValue = event.target.value;
     formData[inputName] = inputValue;
 
     this.setState({ formData: formData });
-  }
+  };
 
   onSelectChangedHandler = event => {
     const formData = { ...this.state.formData };
@@ -57,9 +57,9 @@ class NovaInstituicao extends Component {
     formData[selectName] = parseInt(itemValue);
 
     this.setState({ formData: formData });
-  }
+  };
 
-  onPostFormHandler = (event) => {
+  onPostFormHandler = event => {
     event.preventDefault();
     this.setState({ loading: true });
     const formData = { ...this.state.formData };
@@ -72,27 +72,27 @@ class NovaInstituicao extends Component {
     };
 
     axios
-      .post('/institutions', dataToPost)
+      .post("/institutions", dataToPost)
       .then(res => {
         const { error } = res.data;
         if (error) {
           return this.setState({ errorMsg: error, loading: false });
         }
-        
-        this.props.history.replace('/console/nova-instituicao');
+
+        this.props.history.replace("/console/nova-instituicao");
       })
       .catch(err => {
         if (err.response.data) {
-          this.setState({ errorMsg: err.response.data.error })
+          this.setState({ errorMsg: err.response.data.error });
         }
         this.setState({ loading: false });
       });
-  }
+  };
 
   render() {
     let errorMessage = null;
     if (this.state.errorMsg) {
-      errorMessage = <ErrorMessage>{this.state.errorMsg}</ErrorMessage>
+      errorMessage = <ErrorMessage>{this.state.errorMsg}</ErrorMessage>;
     }
 
     let contentToRender = (
@@ -121,9 +121,9 @@ class NovaInstituicao extends Component {
               selectValue={this.state.formData.permission}
               selectOnChange={this.onSelectChangedHandler}
             >
-              <option value={1}>1</option>
-              <option value={2}>2</option>
-              <option value={3}>3</option>
+              <option value={1}>Usuário</option>
+              <option value={2}>Instituição</option>
+              <option value={3}>Super Usuário</option>
             </SelectGroup>
             <Button type="submit">Cadastrar</Button>
           </div>
@@ -132,12 +132,14 @@ class NovaInstituicao extends Component {
     );
 
     if (this.state.loading) {
-      contentToRender = <Spinner />
+      contentToRender = <Spinner />;
     }
 
     return (
       <div className={styles.container}>
-        {this.state.redirectToUsers ? <Redirect to="/console/nova-instituicao" /> : (
+        {this.state.redirectToUsers ? (
+          <Redirect to="/console/nova-instituicao" />
+        ) : (
           contentToRender
         )}
       </div>
