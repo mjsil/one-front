@@ -25,18 +25,18 @@ export default function Terms() {
           23.790.946/0001-02 e doravante chamada apenas de TECH.IN, é a criadora
           e mantenedora da plataforma digital 1NET da qual este APP faz parte
           como um aplicativo livre destinado exclusivamente a pessoas
-          participantes do UNIVERSO EVANGÉLICO. Esta APP não pode ser usado por
-          pessoas que não tenham vínculos com entidades religiosas, devendo
-          cessar imediatamente o uso do APP se a pessoa deixar de ter este
-          vínculo. Este SERVIÇO é provido exclusivamente pela TECH.IN sem nenhum
-          custo e é criado para ser usado da forma que está desenvolvido. CBIC
-          apenas cedem seu nome e utilizam nossa plataforma para a comunicação
-          de seus conteúdos institucionais, não tendo nenhuma responsabilidade
-          sobre os produtos e serviços ofertados aos usuários. Os produtos e
-          serviços são de inteira responsabilidade da TECH.IN e seus parceiros.
-          Fica terminantemente proibido aos usuários utilizar o APP para outras
-          finalidades alheias àquelas para as quais as funcionalidades foram
-          desenvolvidas.
+          participantes da Câmara Brasileira da Indústria da Construção. Esta
+          APP não pode ser usado por pessoas que não tenham vínculos com
+          entidades religiosas, devendo cessar imediatamente o uso do APP se a
+          pessoa deixar de ter este vínculo. Este SERVIÇO é provido
+          exclusivamente pela TECH.IN sem nenhum custo e é criado para ser usado
+          da forma que está desenvolvido. CBIC apenas cedem seu nome e utilizam
+          nossa plataforma para a comunicação de seus conteúdos institucionais,
+          não tendo nenhuma responsabilidade sobre os produtos e serviços
+          ofertados aos usuários. Os produtos e serviços são de inteira
+          responsabilidade da TECH.IN e seus parceiros. Fica terminantemente
+          proibido aos usuários utilizar o APP para outras finalidades alheias
+          àquelas para as quais as funcionalidades foram desenvolvidas.
         </p>
         <h4 className={styles.subtitle}>
           DO USO DE FUNCIONALIDADES COMERCIAIS
