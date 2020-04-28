@@ -4,11 +4,12 @@ import { isAuthenticated } from "../services/auth";
 import AuthPage from "../pages/Auth/Auth";
 import Layout from "../pages/Console/Layout/Layout";
 import ResetPassword from "../pages/ResetPassword/ResetPassword";
+import Terms from "../pages/Terms/Terms";
 
 const AuthRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={props =>
+    render={(props) =>
       isAuthenticated() ? (
         <Component {...props} />
       ) : (
@@ -21,7 +22,7 @@ const AuthRoute = ({ component: Component, ...rest }) => (
 const NotAuthRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={props =>
+    render={(props) =>
       !isAuthenticated() ? (
         <Component {...props} />
       ) : (
@@ -39,6 +40,7 @@ const Routes = () => (
       <NotAuthRoute exact path="/" component={AuthPage} />
       <Route exact path="/reset/:token" component={ResetPassword} />
       <AuthRoute path="/console" component={Layout} />
+      <Route path="/termos" component={Terms} />
       <Route path="*" component={() => <h1>404. Página não encontrada</h1>} />
     </Switch>
   </BrowserRouter>
