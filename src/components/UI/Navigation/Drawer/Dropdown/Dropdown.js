@@ -11,31 +11,31 @@ import Collapse from "@material-ui/core/Collapse";
 import ExpandLess from "@material-ui/icons/ExpandLess";
 import ExpandMore from "@material-ui/icons/ExpandMore";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   nested: {
     paddingLeft: theme.spacing(4),
     color: "#fff",
     backgroundColor: "#232A34",
     "&:hover": {
-      backgroundColor: "#2C3442"
-    }
+      backgroundColor: "#2C3442",
+    },
   },
   dropdownIconItem: {
-    color: "#fff"
+    color: "#fff",
   },
   listItem: {
     backgroundColor: "#18202c",
     color: "#fff",
     "&:hover": {
-      backgroundColor: "#151C26"
-    }
+      backgroundColor: "#151C26",
+    },
   },
   listItemIcon: {
-    color: "#fff"
-  }
+    color: "#fff",
+  },
 }));
 
-const Dropdown = props => {
+const Dropdown = (props) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -93,7 +93,7 @@ Dropdown.propTypes = {
   parentIcon: PropTypes.object,
   childrens: PropTypes.arrayOf(PropTypes.object),
   parentName: PropTypes.string,
-  history: PropTypes.object
+  history: PropTypes.object,
 };
 
 export default Dropdown;

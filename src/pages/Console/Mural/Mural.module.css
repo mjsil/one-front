@@ -1,0 +1,36 @@
+.card {
+  padding: 20px;
+}
+
+.mainHeader {
+  color: #137ec5;
+  margin-bottom: 20px;
+}
+
+.dropzoneContainer {
+  margin-bottom: 10px;
+}
+
+.inputHolder {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputOneLine {
+  width: 200px;
+  margin-bottom: 20px !important;
+}
+
+.inputMultiline {
+  width: 60%;
+  margin-bottom: 20px !important;
+}
+
+.mainButton {
+  font-weight: bold !important;
+  background-color: #137ec5 !important;
+}
+
+.filesNameHolder {
+  float: right;
+}
