@@ -10,11 +10,11 @@ const routes = [
     parentName: "Usuários",
     parentIcon: PeopleAltIcon,
     childrens: [
-      {
-        name: "Meu perfil",
-        route: "/perfil",
-        icon: PersonIcon,
-      },
+      // {
+      //   name: "Meu perfil",
+      //   route: "/perfil",
+      //   icon: PersonIcon,
+      // },
       {
         name: "Usuários cadastrados",
         route: "/usuarios",
@@ -26,11 +26,11 @@ const routes = [
     parentName: "Instituição",
     parentIcon: AccountBalanceOutlinedIcon,
     childrens: [
-      {
-        name: "Minha Instituição",
-        route: "/minha-instituicao",
-        icon: AccountBalanceOutlinedIcon,
-      },
+      // {
+      //   name: "Minha Instituição",
+      //   route: "/minha-instituicao",
+      //   icon: AccountBalanceOutlinedIcon,
+      // },
       {
         name: "Mensagem Institucional",
         route: "/instituicoes/mensagem",
