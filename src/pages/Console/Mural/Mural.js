@@ -7,6 +7,7 @@ import PrimaryHeading from "../../../components/UI/PrimaryHeading/PrimaryHeading
 import Button from "@material-ui/core/Button";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import LayoutContext from "../Layout/Layout-context";
+import ListaMurais from "./ListaMurais/ListaMurais";
 import axios from "../../../axios-instance";
 
 import styles from "./Mural.module.css";
@@ -128,6 +129,7 @@ class Mural extends Component {
             {inputtedFileProgress}
           </div>
         </Card>
+        <ListaMurais institutionId={this.context.institution.id} />
       </div>
     );
   }
