@@ -35,7 +35,7 @@ function Dropzone(props) {
       <input {...getInputProps()} multiple={false} />
       <div className={styles.mainContent}>
         <div className={iconHolderStyle.join(" ")}>
-          <AddIcon style={{ fontSize: 120, color: "#c7c6c6" }} />
+          <AddIcon style={{ fontSize: 60, color: "#c7c6c6" }} />
         </div>
         <h3>{dropzoneText}</h3>
       </div>

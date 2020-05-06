@@ -1,8 +1,8 @@
 .Dropzone {
   border-style: dotted;
+  padding: 2rem 0 2rem 0;
   border-color: rgb(87, 87, 87);
   border-width: 2px;
-  height: 400px;
   display: flex;
   align-items: center;
   justify-content: center;

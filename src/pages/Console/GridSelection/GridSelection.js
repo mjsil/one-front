@@ -1,14 +1,14 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 
-import PersonIcon from "@material-ui/icons/Person";
+import ArtTrackOutlined from "@material-ui/icons/ArtTrackOutlined";
 import ContactsOutlinedIcon from "@material-ui/icons/ContactsOutlined";
 import AccountBalanceOutlinedIcon from "@material-ui/icons/AccountBalanceOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 import styles from "./GridSelection.module.css";
 
 function GridSelection(props) {
-  const onRedirectHandler = path => {
+  const onRedirectHandler = (path) => {
     props.history.push(props.match.path + "/" + path);
   };
 
@@ -17,10 +17,10 @@ function GridSelection(props) {
       <div className={styles.GridSelection}>
         <div
           className={styles.card}
-          onClick={() => onRedirectHandler("perfil")}
+          onClick={() => onRedirectHandler("mural/upload")}
         >
-          <PersonIcon fontSize="large" className={styles.icon} />
-          <h1>Meu Perfil</h1>
+          <ArtTrackOutlined fontSize="large" className={styles.icon} />
+          <h1>Mural</h1>
         </div>
         <div
           className={styles.card}
