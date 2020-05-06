@@ -3,6 +3,7 @@ import Card from "@material-ui/core/Card";
 import PrimaryHeading from "../../../../components/UI/PrimaryHeading/PrimaryHeading";
 import IconButton from "@material-ui/core/IconButton";
 import DeleteIcon from "@material-ui/icons/Delete";
+import styles from "./ListaMurais.module.css";
 import axios from "../../../../axios-instance";
 
 export default class ListaMurais extends Component {
@@ -26,10 +27,7 @@ export default class ListaMurais extends Component {
 
   render() {
     const muralsItems = this.state.murals.map((mural) => (
-      <Card
-        key={mural.id}
-        style={{ marginBottom: 20, padding: "1em", position: "relative" }}
-      >
+      <Card key={mural.id} className={styles.card}>
         <IconButton
           aria-label="delete"
           size="small"
@@ -38,7 +36,7 @@ export default class ListaMurais extends Component {
         >
           <DeleteIcon style={{ color: "#F3450D" }} />
         </IconButton>
-        <h2 style={{ maxWidth: "85%" }}>{mural.eventname}</h2>
+        <h2 className={styles.cardTitle}>{mural.eventname}</h2>
         <p>
           <strong>Descrição:</strong> {mural.eventdescription}
         </p>
@@ -55,7 +53,7 @@ export default class ListaMurais extends Component {
       </Card>
     ));
     return (
-      <Card style={{ padding: "2em", marginTop: 20 }}>
+      <Card className={styles.container}>
         <PrimaryHeading>Lista de Publicações</PrimaryHeading>
         {muralsItems}
       </Card>
