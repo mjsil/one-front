@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 
 import ArtTrackOutlined from "@material-ui/icons/ArtTrackOutlined";
 import ContactsOutlinedIcon from "@material-ui/icons/ContactsOutlined";
-import AccountBalanceOutlinedIcon from "@material-ui/icons/AccountBalanceOutlined";
+// import AccountBalanceOutlinedIcon from "@material-ui/icons/AccountBalanceOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 import styles from "./GridSelection.module.css";
 
@@ -29,7 +29,7 @@ function GridSelection(props) {
           <ContactsOutlinedIcon fontSize="large" className={styles.icon} />
           <h1>Usuários Cadastrados</h1>
         </div>
-        <div
+        {/* <div
           className={styles.card}
           onClick={() => onRedirectHandler("minha-instituicao")}
         >
@@ -38,7 +38,7 @@ function GridSelection(props) {
             className={styles.icon}
           />
           <h1>Minha Instituição</h1>
-        </div>
+        </div> */}
         <div
           className={styles.card}
           onClick={() => onRedirectHandler("instituicoes/mensagem")}

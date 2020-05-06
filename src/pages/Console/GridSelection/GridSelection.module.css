@@ -17,7 +17,7 @@
   padding: 60px 30px 60px 30px;
   background-color: #fff;
   border-radius: 2px;
-  box-shadow: rgba(0,0,0,.2) 0 2px 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0 2px 5px;
 }
 
 .card:hover {
