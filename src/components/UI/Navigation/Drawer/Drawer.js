@@ -13,16 +13,16 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 
 const drawerWidth = 280;
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   drawer: {
     [theme.breakpoints.up("sm")]: {
       width: drawerWidth,
-      flexShrink: 0
-    }
+      flexShrink: 0,
+    },
   },
   drawerContainer: {
     height: "100%",
-    backgroundColor: "#18202c"
+    backgroundColor: "#18202c",
   },
   logoContainer: {
     display: "flex",
@@ -30,24 +30,24 @@ const useStyles = makeStyles(theme => ({
     justifyContent: "center",
     padding: "10px 0 10px 0",
     "&:hover": {
-      cursor: "pointer"
+      cursor: "pointer",
     },
-    backgroundColor: "#242B37"
+    backgroundColor: "#242B37",
   },
   divider: {
-    backgroundColor: "#85909D"
+    backgroundColor: "#85909D",
   },
   logo: {
-    width: "200px",
-    height: "80px"
+    width: "100px",
+    height: "100px",
   },
   drawerPaper: {
-    width: drawerWidth
+    width: drawerWidth,
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3)
-  }
+    padding: theme.spacing(3),
+  },
 }));
 
 function ResponsiveDrawer(props) {
@@ -89,10 +89,10 @@ function ResponsiveDrawer(props) {
             open={props.mobileOpen}
             onClose={props.toggleDrawer}
             classes={{
-              paper: classes.drawerPaper
+              paper: classes.drawerPaper,
             }}
             ModalProps={{
-              keepMounted: true
+              keepMounted: true,
             }}
           >
             {drawer}
@@ -101,7 +101,7 @@ function ResponsiveDrawer(props) {
         <Hidden xsDown implementation="css">
           <Drawer
             classes={{
-              paper: classes.drawerPaper
+              paper: classes.drawerPaper,
             }}
             variant="permanent"
             open
@@ -116,7 +116,7 @@ function ResponsiveDrawer(props) {
 
 ResponsiveDrawer.propTypes = {
   mobileOpen: PropTypes.bool,
-  toggleDrawer: PropTypes.func
+  toggleDrawer: PropTypes.func,
 };
 
 export default withRouter(ResponsiveDrawer);
