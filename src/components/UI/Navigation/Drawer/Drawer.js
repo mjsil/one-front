@@ -65,16 +65,22 @@ function ResponsiveDrawer(props) {
         <img src={logo} alt="Onenet" className={classes.logo} />
       </div>
       <Divider className={classes.divider} />
-      {routes.map((route, index) => (
-        <Dropdown
-          key={index}
-          {...props}
-          parentName={route.parentName}
-          parentPath={route.parentPath}
-          parentIcon={route.parentIcon}
-          childrens={route.childrens}
-        />
-      ))}
+      {routes.map((route, index) => {
+        if (route.type && route.type !== props.institution.type) {
+          return null;
+        }
+
+        return (
+          <Dropdown
+            key={index}
+            {...props}
+            parentName={route.parentName}
+            parentPath={route.parentPath}
+            parentIcon={route.parentIcon}
+            childrens={route.childrens}
+          />
+        );
+      })}
     </div>
   );
 
@@ -115,6 +121,7 @@ function ResponsiveDrawer(props) {
 }
 
 ResponsiveDrawer.propTypes = {
+  institution: PropTypes.object,
   mobileOpen: PropTypes.bool,
   toggleDrawer: PropTypes.func,
 };

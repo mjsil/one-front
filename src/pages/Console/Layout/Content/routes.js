@@ -3,6 +3,7 @@ import MeuPerfil from "../../MeuPerfil/MeuPerfil";
 import UsuariosCadastrados from "../../UsuariosCadastrados/UsuariosCadastrados";
 import MinhaInstituicao from "../../MinhaInstituicao/MinhaInstituicao";
 import MensagemInstitucional from "../../MensagemInstitucional/MensagemInstitucional";
+import Biblia from "../../Biblia/Biblia";
 import Mural from "../../Mural/Mural";
 
 const routes = [
@@ -35,6 +36,13 @@ const routes = [
     path: "/console/mural/upload",
     exact: true,
     component: Mural,
+    type: 1,
+  },
+  {
+    path: "/console/biblia",
+    exact: true,
+    component: Biblia,
+    type: 2,
   },
 ];
 

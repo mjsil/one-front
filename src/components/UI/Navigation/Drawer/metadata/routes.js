@@ -4,6 +4,7 @@ import ContactsOutlinedIcon from "@material-ui/icons/ContactsOutlined";
 import AccountBalanceOutlinedIcon from "@material-ui/icons/AccountBalanceOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 import ArtTrackOutlined from "@material-ui/icons/ArtTrackOutlined";
+import BookIcon from "@material-ui/icons/Book";
 
 const routes = [
   {
@@ -42,6 +43,13 @@ const routes = [
     parentName: "Mural",
     parentIcon: ArtTrackOutlined,
     parentPath: "/mural/upload",
+    type: 1,
+  },
+  {
+    parentName: "Bíblia",
+    parentIcon: BookIcon,
+    parentPath: "/biblia",
+    type: 2,
   },
 ];
 

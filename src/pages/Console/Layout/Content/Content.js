@@ -1,19 +1,20 @@
-import React, { useState } from 'react';
-import { Switch, Route, withRouter } from 'react-router-dom';
-import PropTypes from 'prop-types';
-import routes from './routes';
+import React, { useState, useContext } from "react";
+import { Switch, Route, withRouter } from "react-router-dom";
+import PropTypes from "prop-types";
+import routes from "./routes";
 
-import AppBar from '../../../../components/UI/Navigation/AppBar/AppBar';
-import Drawer from '../../../../components/UI/Navigation/Drawer/Drawer';
-import Snackbar from '@material-ui/core/Snackbar';
-import MuiAlert from '@material-ui/lab/Alert';
+import LayoutContext from "../Layout-context";
+import AppBar from "../../../../components/UI/Navigation/AppBar/AppBar";
+import Drawer from "../../../../components/UI/Navigation/Drawer/Drawer";
+import Snackbar from "@material-ui/core/Snackbar";
+import MuiAlert from "@material-ui/lab/Alert";
 
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { makeStyles } from '@material-ui/core/styles';
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   root: {
-    display: 'flex'
+    display: "flex",
   },
   toolbar: theme.mixins.toolbar,
   content: {
@@ -27,13 +28,15 @@ function Alert(props) {
 }
 
 function Content(props) {
-  const { container } = props;
   const classes = useStyles();
+  const { container } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
   const [snackbar, setSnackbar] = useState({
     isOpen: false,
-    message: ''
+    message: "",
   });
+
+  const context = useContext(LayoutContext);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -42,7 +45,7 @@ function Content(props) {
   const handleSnackbarOpen = (message) => {
     setSnackbar({
       isOpen: true,
-      message: message
+      message: message,
     });
   };
 
@@ -56,24 +59,32 @@ function Content(props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar
-        toggleDrawer={handleDrawerToggle} />
+      <AppBar toggleDrawer={handleDrawerToggle} />
       <Drawer
+        institution={context.institution}
         container={container}
         mobileOpen={mobileOpen}
-        toggleDrawer={handleDrawerToggle} />
+        toggleDrawer={handleDrawerToggle}
+      />
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Switch>
-          {routes.map(route => {
+          {routes.map((route) => {
+            if (route.type && route.type !== context.institution.type) {
+              return null;
+            }
+
             const Component = route.component;
-            return <Route
-              key={route.path}
-              path={route.path}
-              exact={route.exact}
-              component={() => (
-                <Component {...props} openSnackbar={handleSnackbarOpen} />
-              )} />
+            return (
+              <Route
+                key={route.path}
+                path={route.path}
+                exact={route.exact}
+                component={() => (
+                  <Component {...props} openSnackbar={handleSnackbarOpen} />
+                )}
+              />
+            );
           })}
         </Switch>
         <Snackbar
@@ -91,8 +102,7 @@ function Content(props) {
 }
 
 Content.propTypes = {
-  institution: PropTypes.object,
-  onLogout: PropTypes.func
-}
+  onLogout: PropTypes.func,
+};
 
 export default withRouter(Content);
