@@ -1,19 +1,29 @@
 import React, { Fragment, Component } from "react";
 
-import StickyHeadTable from "../../../components/Table/StickyHeadTable";
+import StickyHeadTable from "../../../components/Table/OverwrittenTable/OverwrittenTable";
 import PrimaryHeading from "../../../components/UI/PrimaryHeading/PrimaryHeading";
 import GetAppIcon from "@material-ui/icons/GetApp";
 import Button from "@material-ui/core/Button";
+import EditIcon from "@material-ui/icons/Edit";
 import axios from "../../../axios-instance";
 import styles from "./UsuariosCadastrados.module.css";
 
-const columns = [
-  { id: "name", label: "Usuário", minWidth: 60 },
-  { id: "email", label: "Email", minWidth: 100 },
-  { id: "phone", label: "Telefone", minWidth: 60 },
-  { id: "cpf", label: "CPF", minWidth: 60 },
-  { id: "cep", label: "CEP", minWidth: 60 },
-  { id: "createdAt", label: "Cadastrado em", minWidth: 60 },
+const columnsName = [
+  "Nome",
+  "E-mail",
+  "Telefone",
+  "CPF",
+  "CEP",
+  "Cadastrado Em",
+];
+
+const extract_data_from_rows = [
+  "name",
+  "email",
+  "phone",
+  "cpf",
+  "cep",
+  "createdAt",
 ];
 
 class UsuariosCadastrados extends Component {
@@ -47,12 +57,26 @@ class UsuariosCadastrados extends Component {
     });
   };
 
+  onClickedRowHandler = (row) => {
+    this.props.history.push({
+      pathname: this.props.location.pathname + "/resumo",
+      state: row,
+    });
+  };
+
   render() {
     return (
       <Fragment>
         <PrimaryHeading>Usuários Cadastrados</PrimaryHeading>
         <div className={styles.tableContainer}>
-          <StickyHeadTable columns={columns} rows={this.state.rows} />
+          <StickyHeadTable
+            columns={columnsName}
+            rows={this.state.rows}
+            extractFromRows={extract_data_from_rows}
+            onClickedRow={this.onClickedRowHandler}
+            icon={<EditIcon color="secondary" />}
+            iconTitle="Editar"
+          />
         </div>
         <Button
           onClick={this.onDowloadUsersReports}

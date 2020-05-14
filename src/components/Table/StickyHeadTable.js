@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from "react";
+import PropTypes from "prop-types";
 
-import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TablePagination from '@material-ui/core/TablePagination';
-import TableRow from '@material-ui/core/TableRow';
+import { makeStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import Table from "@material-ui/core/Table";
+import TableBody from "@material-ui/core/TableBody";
+import TableCell from "@material-ui/core/TableCell";
+import TableContainer from "@material-ui/core/TableContainer";
+import TableHead from "@material-ui/core/TableHead";
+import TablePagination from "@material-ui/core/TablePagination";
+import TableRow from "@material-ui/core/TableRow";
 
 const useStyles = makeStyles({
   root: {
-    width: '100%'
+    width: "100%",
   },
   container: {
     maxHeight: 440,
-  }
+  },
 });
 
 function StickyHeadTable(props) {
@@ -29,7 +29,7 @@ function StickyHeadTable(props) {
     setPage(newPage);
   };
 
-  const handleChangeRowsPerPage = event => {
+  const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
@@ -40,7 +40,7 @@ function StickyHeadTable(props) {
         <Table stickyHeader aria-label="sticky table">
           <TableHead>
             <TableRow>
-              {props.columns.map(column => (
+              {props.columns.map((column) => (
                 <TableCell
                   key={column.id}
                   align={column.align}
@@ -52,26 +52,34 @@ function StickyHeadTable(props) {
             </TableRow>
           </TableHead>
           <TableBody>
-            {props.rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map(row => {
-              return (
-                <TableRow
-                  onClick={props.onSelectedRow ? () => props.onSelectedRow(row.id) : null}
-                  hover
-                  role="checkbox"
-                  tabIndex={-1}
-                  key={row.id}
-                >
-                  {props.columns.map(column => {
-                    const value = row[column.id];
-                    return (
-                      <TableCell key={column.id} align={column.align}>
-                        {column.format && typeof value === 'number' ? column.format(value) : value}
-                      </TableCell>
-                    );
-                  })}
-                </TableRow>
-              );
-            })}
+            {props.rows
+              .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+              .map((row) => {
+                return (
+                  <TableRow
+                    onClick={
+                      props.onSelectedRow
+                        ? () => props.onSelectedRow(row.id)
+                        : null
+                    }
+                    hover
+                    role="checkbox"
+                    tabIndex={-1}
+                    key={row.id}
+                  >
+                    {props.columns.map((column) => {
+                      const value = row[column.id];
+                      return (
+                        <TableCell key={column.id} align={column.align}>
+                          {column.format && typeof value === "number"
+                            ? column.format(value)
+                            : value}
+                        </TableCell>
+                      );
+                    })}
+                  </TableRow>
+                );
+              })}
           </TableBody>
         </Table>
       </TableContainer>
@@ -82,9 +90,11 @@ function StickyHeadTable(props) {
         nextIconButtonText="Próxima página"
         labelRowsPerPage="Linhas por página:"
         // Default property from material ui docs (table-pagination)
-        labelDisplayedRows={({ from, to, count }) => (
-          `${from}-${to === -1 ? count : to} de ${count !== -1 ? count : `more than ${to}`}`
-        )}
+        labelDisplayedRows={({ from, to, count }) =>
+          `${from}-${to === -1 ? count : to} de ${
+            count !== -1 ? count : `more than ${to}`
+          }`
+        }
         count={props.rows.length}
         rowsPerPage={rowsPerPage}
         page={page}
@@ -98,7 +108,7 @@ function StickyHeadTable(props) {
 StickyHeadTable.propTypes = {
   rows: PropTypes.arrayOf(PropTypes.object),
   columns: PropTypes.arrayOf(PropTypes.object),
-  onSelectedRow: PropTypes.func
-}
+  onSelectedRow: PropTypes.func,
+};
 
 export default StickyHeadTable;

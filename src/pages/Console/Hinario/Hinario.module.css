@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.formContainer {
+  width: 600px;
+}
+
+.infoBar {
+  background-color: #213749;
+  color: #fff;
+  font-size: 20px;
+  padding: 5px 20px 5px 20px;
+}
+
+.formContent {
+  padding: 20px 30px 20px 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.divider {
+  margin: 15px 0 25px 0px !important;
+}
+
+.inputLabel {
+  display: block;
+}
+
+.newLinkGroup {
+  margin-bottom: 15px;
+}
+
+@media (max-width: 950px) {
+  .formContainer {
+    width: 100%;
+  }
+}

@@ -5,6 +5,7 @@ import AccountBalanceOutlinedIcon from "@material-ui/icons/AccountBalanceOutline
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 import ArtTrackOutlined from "@material-ui/icons/ArtTrackOutlined";
 import BookIcon from "@material-ui/icons/Book";
+import QueueMusic from "@material-ui/icons/QueueMusic";
 
 const routes = [
   {
@@ -46,9 +47,21 @@ const routes = [
     type: 1,
   },
   {
+    parentName: "Eventos",
+    parentIcon: ArtTrackOutlined,
+    parentPath: "/eventos/upload",
+    type: 2,
+  },
+  {
     parentName: "Bíblia",
     parentIcon: BookIcon,
     parentPath: "/biblia",
+    type: 2,
+  },
+  {
+    parentName: "Hinário",
+    parentIcon: QueueMusic,
+    parentPath: "/hinario",
     type: 2,
   },
 ];
