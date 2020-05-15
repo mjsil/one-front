@@ -4,12 +4,42 @@ import Divider from "@material-ui/core/Divider";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
+import Tooltip from "@material-ui/core/Tooltip";
 import PrimaryHeading from "../../../../components/UI/PrimaryHeading/PrimaryHeading";
 import InputGroup from "../../../../components/Form/Group/InputGroup/InputGroup";
 import SelectGroup from "../../../../components/Form/Group/SelectGroup/SelectGroup";
 import TransferList from "../../../../components/UI/TransferList/TransferList";
+import Alert from "@material-ui/lab/Alert";
+import LinearProgress from "@material-ui/core/LinearProgress";
+import axios from "../../../../axios-instance";
+import * as yup from "yup";
 
 import styles from "./DetalhesUsuario.module.css";
+
+const formSchema = yup.object().shape({
+  name: yup
+    .string()
+    .required("É necessário preencher o seu nome.")
+    .min(3, "Preencha seu nome completo."),
+  email: yup
+    .string()
+    .required("É necessário preencher o seu e-mail.")
+    .email("Preencha um e-mail válido."),
+  cpf: yup
+    .string()
+    .required("É necessário preencher o seu CPF.")
+    .min(14, "Preencha um CPF válido."),
+  phone: yup
+    .string()
+    .required("É necessário preencher o seu telefone.")
+    .min(14, "Preencha um número válido de telefone."),
+  cep: yup
+    .string()
+    .required("É necessário preencher o seu CEP.")
+    .min(10, "Preencha um CEP válido."),
+});
 
 const enumValue = (name) => Object.freeze({ toString: () => name });
 
@@ -23,35 +53,25 @@ const TIPO_PROFISSIONAL = Object.freeze({
   IMPRENSA: enumValue("IMPRENSA"),
 });
 
-const AREAS_DE_INTERESSE = Object.freeze({
-  RESPONSABILIDADE_SOCIAL: enumValue("RESPONSABILIDADE_SOCIAL"),
-  INOVACAO: enumValue("INOVACAO"),
-  INTERESSE_SOCIAL: enumValue("INTERESSE_SOCIAL"),
-  INFRAESTRUTURA: enumValue("INFRAESTRUTURA"),
-  JURIDICO: enumValue("JURIDICO"),
-  INDUSTRIA_IMOBILIARIA: enumValue("INDUSTRIA_IMOBILIARIA"),
-  SUSTENTABILIDADE: enumValue("SUSTENTABILIDADE"),
-  RELACOES_TRABALHISTAS: enumValue("RELACOES_TRABALHISTAS"),
-  OBRAS_INDUSTRIAIS: enumValue("OBRAS_INDUSTRIAIS"),
-  SERVICOS_CBIC: enumValue("SERVICOS_CBIC"),
-});
-
 class DetalhesUsuario extends Component {
   state = {
     user: {},
     newUserData: {},
     leftTransferList: [
-      AREAS_DE_INTERESSE.RESPONSABILIDADE_SOCIAL.toString(),
-      AREAS_DE_INTERESSE.INOVACAO.toString(),
-      AREAS_DE_INTERESSE.INTERESSE_SOCIAL.toString(),
-      AREAS_DE_INTERESSE.JURIDICO.toString(),
-      AREAS_DE_INTERESSE.INDUSTRIA_IMOBILIARIA.toString(),
-      AREAS_DE_INTERESSE.SUSTENTABILIDADE.toString(),
-      AREAS_DE_INTERESSE.RELACOES_TRABALHISTAS.toString(),
-      AREAS_DE_INTERESSE.OBRAS_INDUSTRIAIS.toString(),
-      AREAS_DE_INTERESSE.SERVICOS_CBIC.toString(),
+      "RESPONSABILIDADE_SOCIAL",
+      "INOVACAO",
+      "INTERESSE_SOCIAL",
+      "INFRAESTRUTURA",
+      "JURIDICO",
+      "INDUSTRIA_IMOBILIARIA",
+      "SUSTENTABILIDADE",
+      "RELACOES_TRABALHISTAS",
+      "OBRAS_INDUSTRIAIS",
+      "SERVICOS_CBIC",
     ],
     selectedTipoProfissionalIndex: 0,
+    errorMessage: "",
+    isLoading: false,
     rightTransferList: [],
   };
 
@@ -75,6 +95,21 @@ class DetalhesUsuario extends Component {
     this.setState({ rightTransferList: values });
   };
 
+  onDeleteUserHandler = () => {
+    axios
+      .delete("/users/" + this.state.user.id)
+      .then(() => {
+        this.props.openSnackbar("Os dados do usuário foram alterados.");
+        this.props.history.replace("/console");
+      })
+      .catch((err) => {
+        if (err.response.data) {
+          alert(err.response.data.error);
+        }
+        this.setState({ isLoading: false });
+      });
+  };
+
   onChangeUserData = (event) => {
     const eventName = event.target.name;
     const eventValue = event.target.value;
@@ -90,6 +125,10 @@ class DetalhesUsuario extends Component {
   };
 
   onFormSubmittedHandler = () => {
+    this.setState({ isLoading: true, errorMessage: "" });
+
+    const tipo_profissional = this.getTipoProfissionalString();
+    const areas_de_interesse = this.state.rightTransferList;
     const { name, email, phone, birth, cpf, city, cep, address } = {
       ...this.state.newUserData,
     };
@@ -102,10 +141,46 @@ class DetalhesUsuario extends Component {
       city,
       cep,
       address,
-      areas_de_interesse: this.state.rightTransferList,
-      tipo_profissional: this.getTipoProfissionalString(),
+      tipo_profissional,
+      areas_de_interesse,
     };
-    console.log(dataToPut);
+
+    if (!tipo_profissional.trim().length) {
+      return this.setState({
+        errorMessage: "Selecione o tipo profissional do usuário.",
+        isLoading: false,
+      });
+    }
+
+    if (!areas_de_interesse.length) {
+      return this.setState({
+        errorMessage: "É necessário selecionar ao menos uma área de interesse.",
+        isLoading: false,
+      });
+    }
+
+    formSchema.isValid(dataToPut).then((isValid) => {
+      if (!isValid) {
+        return this.setState({
+          errorMessage:
+            "Confira os campos obrigatórios e digite valores válidos.",
+          isLoading: false,
+        });
+      }
+
+      axios
+        .patch("/users/update-by-institution/" + this.state.user.id, dataToPut)
+        .then(() => {
+          this.props.openSnackbar("Os dados do usuário foram alterados.");
+          this.props.history.replace("/console");
+        })
+        .catch((err) => {
+          if (err.response.data) {
+            this.setState({ errorMessage: err.response.data.error });
+          }
+          this.setState({ isLoading: false });
+        });
+    });
   };
 
   getTipoProfissionalString() {
@@ -120,10 +195,28 @@ class DetalhesUsuario extends Component {
 
   render() {
     const { user, newUserData } = this.state;
+
+    let errorBox;
+    if (this.state.errorMessage) {
+      errorBox = <Alert severity="error">{this.state.errorMessage}</Alert>;
+    }
+
+    let linearProgress;
+    if (this.state.isLoading) {
+      linearProgress = <LinearProgress />;
+    }
+
     return (
       <Fragment>
         <PrimaryHeading>Detalhes Usuário</PrimaryHeading>
-        <Typography variant="h5">{user.name}</Typography>
+        <Box className={styles.usernameHolder}>
+          <Typography variant="h5">{user.name}</Typography>
+          <IconButton onClick={this.onDeleteUserHandler}>
+            <Tooltip title="Deletar Usuário">
+              <DeleteIcon color="error" />
+            </Tooltip>
+          </IconButton>
+        </Box>
         <Divider />
         <Box className={styles.userDataContainer}>
           <Typography variant="body1" className={styles.row}>
@@ -189,7 +282,7 @@ class DetalhesUsuario extends Component {
             </Grid>
             <Grid item md={6} xs={12}>
               <InputGroup
-                label="Nascimento*"
+                label="Nascimento"
                 inputName="birth"
                 inputMask="99/99/9999"
                 inputValue={newUserData.birth || ""}
@@ -207,7 +300,7 @@ class DetalhesUsuario extends Component {
             </Grid>
             <Grid item md={6} xs={12}>
               <InputGroup
-                label="Cidade*"
+                label="Cidade"
                 inputName="city"
                 inputValue={newUserData.city || ""}
                 inputOnChange={this.onChangeUserData}
@@ -224,7 +317,7 @@ class DetalhesUsuario extends Component {
             </Grid>
             <Grid item md={6} xs={12}>
               <InputGroup
-                label="Endereço*"
+                label="Endereço"
                 inputName="address"
                 inputValue={newUserData.address || ""}
                 inputOnChange={this.onChangeUserData}
@@ -272,6 +365,7 @@ class DetalhesUsuario extends Component {
           />
           <Box className={styles.buttonHolder}>
             <Button
+              disabled={this.state.isLoading}
               variant="contained"
               color="primary"
               onClick={this.onFormSubmittedHandler}
@@ -279,6 +373,8 @@ class DetalhesUsuario extends Component {
               Alterar Usuário
             </Button>
           </Box>
+          {errorBox}
+          {linearProgress}
         </Box>
       </Fragment>
     );

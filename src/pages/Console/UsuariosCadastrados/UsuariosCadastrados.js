@@ -74,7 +74,7 @@ class UsuariosCadastrados extends Component {
             rows={this.state.rows}
             extractFromRows={extract_data_from_rows}
             onClickedRow={this.onClickedRowHandler}
-            icon={<EditIcon color="secondary" />}
+            icon={<EditIcon color="primary" />}
             iconTitle="Editar"
           />
         </div>

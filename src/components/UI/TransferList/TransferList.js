@@ -5,6 +5,8 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import ListSubheader from "@material-ui/core/ListSubheader";
+import Divider from "@material-ui/core/Divider";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
@@ -73,9 +75,20 @@ export default function TransferList(props) {
     props.setRight([]);
   };
 
-  const customList = (items) => (
+  const customList = (items, position) => (
     <Paper className={classes.paper}>
-      <List dense component="div" role="list">
+      <List
+        dense
+        component="div"
+        role="list"
+        subheader={
+          position === "right" ? (
+            <ListSubheader>
+              Itens Selecionados <Divider />
+            </ListSubheader>
+          ) : null
+        }
+      >
         {items.map((value) => {
           const labelId = `transfer-list-item-${value}-label`;
 
@@ -111,7 +124,7 @@ export default function TransferList(props) {
       alignItems="center"
       className={classes.root}
     >
-      <Grid item>{customList(props.left)}</Grid>
+      <Grid item>{customList(props.left, "left")}</Grid>
       <Grid item xs={12} sm={12} md={12} lg={2}>
         <Grid container direction="column" alignItems="center">
           <Button
@@ -156,7 +169,7 @@ export default function TransferList(props) {
           </Button>
         </Grid>
       </Grid>
-      <Grid item>{customList(props.right)}</Grid>
+      <Grid item>{customList(props.right, "right")}</Grid>
     </Grid>
   );
 }
