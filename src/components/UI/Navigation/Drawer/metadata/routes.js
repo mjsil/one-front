@@ -5,6 +5,7 @@ import AccountBalanceOutlinedIcon from "@material-ui/icons/AccountBalanceOutline
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 import ArtTrackOutlined from "@material-ui/icons/ArtTrackOutlined";
 import BookIcon from "@material-ui/icons/Book";
+import ChatIcon from "@material-ui/icons/Chat";
 import QueueMusic from "@material-ui/icons/QueueMusic";
 
 const routes = [
@@ -56,6 +57,12 @@ const routes = [
     parentName: "Bíblia",
     parentIcon: BookIcon,
     parentPath: "/biblia",
+    type: 2,
+  },
+  {
+    parentName: "Grupos Chat",
+    parentIcon: ChatIcon,
+    parentPath: "/chat",
     type: 2,
   },
   {

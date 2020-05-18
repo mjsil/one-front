@@ -6,6 +6,7 @@ import MinhaInstituicao from "../../MinhaInstituicao/MinhaInstituicao";
 import MensagemInstitucional from "../../MensagemInstitucional/MensagemInstitucional";
 import Biblia from "../../Biblia/Biblia";
 import Hinario from "../../Hinario/Hinario";
+import GruposChat from "../../GruposChat/GruposChat";
 import Mural from "../../Mural/Mural";
 
 const routes = [
@@ -55,6 +56,12 @@ const routes = [
     path: "/console/biblia",
     exact: true,
     component: Biblia,
+    type: 2,
+  },
+  {
+    path: "/console/chat",
+    exact: true,
+    component: GruposChat,
     type: 2,
   },
   {
