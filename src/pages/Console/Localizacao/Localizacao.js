@@ -1,23 +1,21 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-
 import LayoutContext from "../../Console/Layout/Layout-context";
-import axios from "../../../axios-instance";
 import PrimaryHeading from "../../../components/UI/PrimaryHeading/PrimaryHeading";
 import Input from "../../../components/Form/Input/Input";
-import Button from "../../../components/Form/Button/Button";
-import Alert from "@material-ui/lab/Alert";
-import Switch from "@material-ui/core/Switch";
+import Button from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import styles from "./MinhaInstituicao.module.css";
+import Alert from "@material-ui/lab/Alert";
+import axios from "../../../axios-instance";
 
-class MeuPerfil extends Component {
+import styles from "./Localizacao.module.css";
+
+class Localizacao extends Component {
   state = {
-    editMode: false,
     institutionData: {},
     formData: {
-      name: "",
-      email: "",
+      latitude: "",
+      logitude: "",
       oldPassword: "",
       password: "",
     },
@@ -31,13 +29,6 @@ class MeuPerfil extends Component {
     const institution = { ...this.context.institution };
     this.setState({ institutionData: institution });
   }
-
-  onChangeEditModeHandler = () => {
-    this.setState({
-      editMode: !this.state.editMode,
-      errorMessage: null,
-    });
-  };
 
   onChangeFormDataHandler = (event) => {
     const inputName = event.target.name;
@@ -84,10 +75,6 @@ class MeuPerfil extends Component {
   };
 
   render() {
-    let editModeMsg = (
-      <p>{this.state.editMode ? "Desabilitar edição" : "Habilitar edição"}</p>
-    );
-
     let errorMessage = null;
     if (this.state.errorMessage) {
       errorMessage = (
@@ -98,9 +85,16 @@ class MeuPerfil extends Component {
     }
 
     let formBottomContent = (
-      <Button disabled={!this.state.editMode}>Salvar Alterações</Button>
+      <Button
+        disabled={this.state.loading}
+        variant="contained"
+        color="primary"
+        className={styles.button}
+        type="submit"
+      >
+        Salvar Alterações
+      </Button>
     );
-
     if (this.state.loading) {
       formBottomContent = <CircularProgress />;
     }
@@ -110,13 +104,7 @@ class MeuPerfil extends Component {
         <PrimaryHeading>Minha Instituição</PrimaryHeading>
         <div className={styles.container}>
           <div className={styles.card}>
-            <div className={styles.cardToolbar}>
-              <Switch
-                checked={this.state.editMode}
-                onChange={this.onChangeEditModeHandler}
-              />
-              {editModeMsg}
-            </div>
+            <div className={styles.cardToolbar}>Dados Localicação</div>
             <main className={styles.cardContent}>
               <form
                 className={styles.cardForm}
@@ -124,29 +112,26 @@ class MeuPerfil extends Component {
               >
                 {errorMessage}
                 <div>
-                  <label>Instituição:</label>
+                  <label>Latitude:</label>
                   <Input
-                    placeholder={this.state.institutionData.name}
-                    name="name"
+                    placeholder={this.state.institutionData.latitude}
+                    name="latitude"
                     type="text"
-                    disabled={!this.state.editMode}
                     onChange={this.onChangeFormDataHandler}
                   />
                 </div>
                 <div>
-                  <label>E-mail:</label>
+                  <label>Longitude:</label>
                   <Input
-                    placeholder={this.state.institutionData.email}
-                    name="email"
-                    type="email"
-                    disabled={!this.state.editMode}
+                    placeholder={this.state.institutionData.longitude}
+                    name="longitude"
+                    type="text"
                     onChange={this.onChangeFormDataHandler}
                   />
                 </div>
                 <div>
                   <label>Digite sua senha*:</label>
                   <Input
-                    disabled={!this.state.editMode}
                     name="oldPassword"
                     type="password"
                     onChange={this.onChangeFormDataHandler}
@@ -162,10 +147,10 @@ class MeuPerfil extends Component {
   }
 }
 
-MeuPerfil.propTypes = {
+Localizacao.propTypes = {
   institution: PropTypes.object,
   changeInstitutionData: PropTypes.func,
   openSnackbar: PropTypes.func,
 };
 
-export default MeuPerfil;
+export default Localizacao;

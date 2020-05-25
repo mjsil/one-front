@@ -1,6 +1,6 @@
 import React, { Fragment, Component } from "react";
 
-import StickyHeadTable from "../../../components/Table/OverwrittenTable/OverwrittenTable";
+import OverwrittenTable from "../../../components/Table/OverwrittenTable/OverwrittenTable";
 import PrimaryHeading from "../../../components/UI/PrimaryHeading/PrimaryHeading";
 import GetAppIcon from "@material-ui/icons/GetApp";
 import Button from "@material-ui/core/Button";
@@ -69,7 +69,7 @@ class UsuariosCadastrados extends Component {
       <Fragment>
         <PrimaryHeading>Usuários Cadastrados</PrimaryHeading>
         <div className={styles.tableContainer}>
-          <StickyHeadTable
+          <OverwrittenTable
             columns={columnsName}
             rows={this.state.rows}
             extractFromRows={extract_data_from_rows}

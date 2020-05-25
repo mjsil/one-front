@@ -4,10 +4,13 @@ import UsuariosCadastrados from "../../UsuariosCadastrados/UsuariosCadastrados";
 import DetalhesUsuario from "../../UsuariosCadastrados/DetalhesUsuario/DetalhesUsuario";
 import MinhaInstituicao from "../../MinhaInstituicao/MinhaInstituicao";
 import MensagemInstitucional from "../../MensagemInstitucional/MensagemInstitucional";
+import Localizacao from "../../Localizacao/Localizacao";
 import Biblia from "../../Biblia/Biblia";
 import Hinario from "../../Hinario/Hinario";
 import GruposChat from "../../GruposChat/GruposChat";
 import Mural from "../../Mural/Mural";
+import Midias from "../../Midias/Midias";
+import MidiaDetails from "../../Midias/MidiaDetails/MidiaDetails";
 
 const routes = [
   {
@@ -41,6 +44,11 @@ const routes = [
     component: MensagemInstitucional,
   },
   {
+    path: "/console/instituicoes/localizacao",
+    exact: true,
+    component: Localizacao,
+  },
+  {
     path: "/console/mural/upload",
     exact: true,
     component: Mural,
@@ -68,6 +76,18 @@ const routes = [
     path: "/console/hinario",
     exact: true,
     component: Hinario,
+    type: 2,
+  },
+  {
+    path: "/console/midias",
+    exact: true,
+    component: Midias,
+    type: 2,
+  },
+  {
+    path: "/console/midias/resumo",
+    exact: true,
+    component: MidiaDetails,
     type: 2,
   },
 ];

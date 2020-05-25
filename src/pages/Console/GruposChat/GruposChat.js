@@ -25,7 +25,6 @@ const formSchema = yup.object().shape({
 class GruposChat extends Component {
   state = {
     groups: [],
-    institutionId: null,
     modalIsOpen: false,
     errorMessage: null,
     isLoading: false,

@@ -4,7 +4,7 @@ import AddIcon from "@material-ui/icons/Add";
 import styles from "./Dropzone.module.css";
 
 function Dropzone(props) {
-  const onDrop = useCallback(
+  const singleFileHandler = useCallback(
     (acceptedFiles) => {
       const file = acceptedFiles[0];
       const fileExtension = file.name.slice(
@@ -18,6 +18,34 @@ function Dropzone(props) {
     },
     [props]
   );
+
+  const multipleFilesHandler = useCallback(
+    (acceptedFiles) => {
+      acceptedFiles.forEach((file) => {
+        const fileExtension = file.name.slice(
+          ((file.name.lastIndexOf(".") - 1) >>> 0) + 2
+        );
+        for (let key of props.validFilesExtensions) {
+          if (fileExtension === key) {
+            props.onAddFile(file);
+          }
+        }
+      });
+    },
+    [props]
+  );
+
+  const onDrop = useCallback(
+    (acceptedFiles) => {
+      if (props.multiple) {
+        multipleFilesHandler(acceptedFiles);
+      } else {
+        singleFileHandler(acceptedFiles);
+      }
+    },
+    [multipleFilesHandler, props.multiple, singleFileHandler]
+  );
+
   const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop });
 
   const dropzoneStyle = [styles.Dropzone];
@@ -32,7 +60,7 @@ function Dropzone(props) {
 
   return (
     <div {...getRootProps()} className={dropzoneStyle.join(" ")}>
-      <input {...getInputProps()} multiple={false} />
+      <input {...getInputProps()} multiple={props.multiple} />
       <div className={styles.mainContent}>
         <div className={iconHolderStyle.join(" ")}>
           <AddIcon style={{ fontSize: 60, color: "#c7c6c6" }} />

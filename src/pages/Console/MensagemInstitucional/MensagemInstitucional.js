@@ -85,7 +85,7 @@ class MensagemInstitucional extends Component {
   };
 
   render() {
-    let formBottomContent = <Button type="submit">Adicionar </Button>;
+    let formBottomContent = <Button type="submit">Enviar Mensagem </Button>;
     if (this.state.loading) {
       formBottomContent = <LinearProgress />;
     }

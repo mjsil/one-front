@@ -108,6 +108,7 @@ class Mural extends Component {
               onAddFile={this.onAddNewFileHandler}
               setHasError={this.setHasErrorState}
               validFilesExtensions={["png", "pdf", "jpg", "mp4"]}
+              multiple={false}
             />
           </div>
           <Button

@@ -7,6 +7,8 @@ import ArtTrackOutlined from "@material-ui/icons/ArtTrackOutlined";
 import BookIcon from "@material-ui/icons/Book";
 import ChatIcon from "@material-ui/icons/Chat";
 import QueueMusic from "@material-ui/icons/QueueMusic";
+import PhotoLibrary from "@material-ui/icons/PhotoLibrary";
+import GpsFixed from "@material-ui/icons/GpsFixed";
 
 const routes = [
   {
@@ -29,15 +31,20 @@ const routes = [
     parentName: "Instituição",
     parentIcon: AccountBalanceOutlinedIcon,
     childrens: [
-      // {
-      //   name: "Minha Instituição",
-      //   route: "/minha-instituicao",
-      //   icon: AccountBalanceOutlinedIcon,
-      // },
+      {
+        name: "Minha Instituição",
+        route: "/minha-instituicao",
+        icon: AccountBalanceOutlinedIcon,
+      },
       {
         name: "Mensagem Institucional",
         route: "/instituicoes/mensagem",
         icon: EmailOutlinedIcon,
+      },
+      {
+        name: "Localização",
+        route: "/instituicoes/localizacao",
+        icon: GpsFixed,
       },
     ],
   },
@@ -69,6 +76,12 @@ const routes = [
     parentName: "Hinário",
     parentIcon: QueueMusic,
     parentPath: "/hinario",
+    type: 2,
+  },
+  {
+    parentName: "Mídias",
+    parentIcon: PhotoLibrary,
+    parentPath: "/midias",
     type: 2,
   },
 ];
