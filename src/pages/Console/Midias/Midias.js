@@ -7,6 +7,8 @@ import Grid from "@material-ui/core/Grid";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import Alert from "@material-ui/lab/Alert";
 import ButtonUI from "@material-ui/core/Button";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/DeleteSweep";
 import PrimaryHeading from "../../../components/UI/PrimaryHeading/PrimaryHeading";
 import Button from "../../../components/Form/Button/Button";
 import axios from "../../../axios-instance";
@@ -61,6 +63,17 @@ class Midias extends Component {
     });
   };
 
+  onDeletingMediaHandler = (mediaId) => {
+    axios.delete("/midia/" + mediaId).then((res) => {
+      const midias = [...this.state.midias];
+      const updatedMidias = midias.filter(
+        (midia) => midia.id !== res.data.deletedMidiaId
+      );
+
+      this.setState({ midias: updatedMidias });
+    });
+  };
+
   render() {
     let linearProgress;
     if (this.state.isLoading) {
@@ -107,6 +120,13 @@ class Midias extends Component {
               return (
                 <Grid key={midia.id} item xs={6} md={3}>
                   <Card className={styles.gridCard}>
+                    <IconButton
+                      className={styles.deleteIcon}
+                      size="small"
+                      onClick={() => this.onDeletingMediaHandler(midia.id)}
+                    >
+                      <DeleteIcon color="error" />
+                    </IconButton>
                     {midia.name}
                     <ButtonUI
                       color="primary"
@@ -116,7 +136,7 @@ class Midias extends Component {
                         state: { midia },
                       }}
                     >
-                      Detalhes
+                      Editar
                     </ButtonUI>
                   </Card>
                 </Grid>
