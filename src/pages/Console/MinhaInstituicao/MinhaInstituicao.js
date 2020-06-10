@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component, Fragment, createRef } from "react";
 import PropTypes from "prop-types";
 
 import LayoutContext from "../../Console/Layout/Layout-context";
@@ -8,10 +8,16 @@ import Input from "../../../components/Form/Input/Input";
 import Button from "../../../components/Form/Button/Button";
 import Alert from "@material-ui/lab/Alert";
 import Switch from "@material-ui/core/Switch";
+import ButtonUI from "@material-ui/core/Button";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import styles from "./MinhaInstituicao.module.css";
 
 class MeuPerfil extends Component {
+  constructor(props) {
+    super(props);
+    this.fileInput = createRef();
+  }
+
   state = {
     editMode: false,
     institutionData: {},
@@ -21,6 +27,7 @@ class MeuPerfil extends Component {
       oldPassword: "",
       password: "",
     },
+    newLogoFile: null,
     loading: false,
     errorMessage: null,
   };
@@ -35,7 +42,29 @@ class MeuPerfil extends Component {
   onChangeEditModeHandler = () => {
     this.setState({
       editMode: !this.state.editMode,
-      errorMessage: null,
+    });
+  };
+
+  onChangeLogoHandler = (event) => {
+    const file = event.target.files[0];
+    this.setState({ newLogoFile: file });
+  };
+
+  onSubmitNewLogoHandler = async (e) => {
+    const file = this.state.newLogoFile;
+    if (!file) {
+      e.preventDefault();
+      return this.setState({
+        errorMessage: "É necessário selecionar um arquivo.",
+      });
+    }
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("timestamp", (Date.now() / 1000) | 0);
+
+    await axios.post("/avatar", formData, {
+      headers: { "X-Requested-With": "XMLHttpRequest" },
     });
   };
 
@@ -105,6 +134,10 @@ class MeuPerfil extends Component {
       formBottomContent = <CircularProgress />;
     }
 
+    const logoName = this.state.newLogoFile
+      ? this.state.newLogoFile.name
+      : null;
+
     return (
       <Fragment>
         <PrimaryHeading>Minha Instituição</PrimaryHeading>
@@ -117,12 +150,40 @@ class MeuPerfil extends Component {
               />
               {editModeMsg}
             </div>
+            {errorMessage}
             <main className={styles.cardContent}>
+              <div className={styles.chooseImageHolder}>
+                <ButtonUI onClick={() => this.fileInput.current.click()}>
+                  Selecionar imagem
+                </ButtonUI>
+                <form
+                  onSubmit={this.onSubmitNewLogoHandler}
+                  className={styles.chooseImageForm}
+                >
+                  <input
+                    className={styles.chooseImageInput}
+                    ref={this.fileInput}
+                    type="file"
+                    name="logoinput"
+                    title={null}
+                    accept="image/png, image/jpeg, image/jpg"
+                    onChange={this.onChangeLogoHandler}
+                  />
+                  <ButtonUI
+                    variant="contained"
+                    color="secondary"
+                    fullWidth
+                    type="submit"
+                  >
+                    Alterar Logo
+                  </ButtonUI>
+                </form>
+                <p>{logoName}</p>
+              </div>
               <form
                 className={styles.cardForm}
                 onSubmit={this.onSubmitNewInstitutionDataHandler}
               >
-                {errorMessage}
                 <div>
                   <label>Instituição:</label>
                   <Input

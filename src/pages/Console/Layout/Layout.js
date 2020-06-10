@@ -10,6 +10,7 @@ import styles from "./Layout.module.css";
 class Layout extends Component {
   state = {
     institution: null,
+    logoPath: null,
   };
 
   componentDidMount() {
@@ -26,6 +27,13 @@ class Layout extends Component {
           return this.onLogoutHandler();
         }
         this.setState({ institution: res.data });
+
+        return res.data;
+      })
+      .then((institution) => {
+        axios.get("/avatar/instituicao").then((res) => {
+          this.setState({ logoPath: res.data.logoPath });
+        });
       })
       .catch((err) => {
         this.onLogoutHandler();
@@ -52,6 +60,9 @@ class Layout extends Component {
             institution: this.state.institution,
             changeInstitutionData: this.changeInstitutionData,
             onLogout: this.onLogoutHandler,
+            logoPath: this.state.logoPath
+              ? axios.defaults.baseURL + "/files/" + this.state.logoPath
+              : null,
           }}
         >
           <Content />

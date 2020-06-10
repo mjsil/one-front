@@ -1,6 +1,5 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
-
 import { withRouter } from "react-router-dom";
 import Dropdown from "./Dropdown/Dropdown";
 import routes from "./metadata/routes";
@@ -28,7 +27,6 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    padding: "10px 0 10px 0",
     "&:hover": {
       cursor: "pointer",
     },
@@ -38,8 +36,8 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#85909D",
   },
   logo: {
-    width: "100px",
-    height: "100px",
+    width: "60%",
+    height: "130px",
   },
   drawerPaper: {
     width: drawerWidth,
@@ -62,7 +60,11 @@ function ResponsiveDrawer(props) {
   const drawer = (
     <div className={classes.drawerContainer}>
       <div className={classes.logoContainer} onClick={redirectToConsole}>
-        <img src={logo} alt="Onenet" className={classes.logo} />
+        <img
+          src={props.logoPath ? props.logoPath : logo}
+          alt="Onenet"
+          className={classes.logo}
+        />
       </div>
       <Divider className={classes.divider} />
       {routes.map((route, index) => {

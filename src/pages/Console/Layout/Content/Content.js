@@ -65,6 +65,7 @@ function Content(props) {
         container={container}
         mobileOpen={mobileOpen}
         toggleDrawer={handleDrawerToggle}
+        logoPath={context.logoPath}
       />
       <main className={classes.content}>
         <div className={classes.toolbar} />
