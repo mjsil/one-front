@@ -36,8 +36,9 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "#85909D",
   },
   logo: {
-    width: "60%",
+    width: "50%",
     height: "130px",
+    margin: 10,
   },
   drawerPaper: {
     width: drawerWidth,
