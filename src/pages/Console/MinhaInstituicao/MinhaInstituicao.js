@@ -5,11 +5,11 @@ import LayoutContext from "../../Console/Layout/Layout-context";
 import axios from "../../../axios-instance";
 import PrimaryHeading from "../../../components/UI/PrimaryHeading/PrimaryHeading";
 import Input from "../../../components/Form/Input/Input";
-import Button from "../../../components/Form/Button/Button";
+import Button from "@material-ui/core/Button";
 import Alert from "@material-ui/lab/Alert";
 import Switch from "@material-ui/core/Switch";
 import ButtonUI from "@material-ui/core/Button";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import LinearProgress from "@material-ui/core/LinearProgress";
 import styles from "./MinhaInstituicao.module.css";
 
 class MeuPerfil extends Component {
@@ -51,9 +51,12 @@ class MeuPerfil extends Component {
   };
 
   onSubmitNewLogoHandler = async (e) => {
+    e.preventDefault();
+
+    this.setState({ loading: true });
+
     const file = this.state.newLogoFile;
     if (!file) {
-      e.preventDefault();
       return this.setState({
         errorMessage: "É necessário selecionar um arquivo.",
       });
@@ -66,6 +69,9 @@ class MeuPerfil extends Component {
     await axios.post("/avatar", formData, {
       headers: { "X-Requested-With": "XMLHttpRequest" },
     });
+
+    this.setState({ loading: false });
+    window.location.reload(false);
   };
 
   onChangeFormDataHandler = (event) => {
@@ -126,12 +132,10 @@ class MeuPerfil extends Component {
       );
     }
 
-    let formBottomContent = (
-      <Button disabled={!this.state.editMode}>Salvar Alterações</Button>
-    );
+    let linearProgress = null;
 
     if (this.state.loading) {
-      formBottomContent = <CircularProgress />;
+      linearProgress = <LinearProgress />;
     }
 
     const logoName = this.state.newLogoFile
@@ -153,7 +157,10 @@ class MeuPerfil extends Component {
             {errorMessage}
             <main className={styles.cardContent}>
               <div className={styles.chooseImageHolder}>
-                <ButtonUI onClick={() => this.fileInput.current.click()}>
+                <ButtonUI
+                  onClick={() => this.fileInput.current.click()}
+                  disabled={!this.state.editMode || this.state.loading}
+                >
                   Selecionar imagem
                 </ButtonUI>
                 <form
@@ -171,6 +178,7 @@ class MeuPerfil extends Component {
                   />
                   <ButtonUI
                     variant="contained"
+                    disabled={!this.state.editMode || this.state.loading}
                     color="secondary"
                     fullWidth
                     type="submit"
@@ -213,9 +221,17 @@ class MeuPerfil extends Component {
                     onChange={this.onChangeFormDataHandler}
                   />
                 </div>
-                {formBottomContent}
+                <Button
+                  variant="contained"
+                  color="primary"
+                  disabled={!this.state.editMode || this.state.loading}
+                  onClick={this.onSubmitNewInstitutionDataHandler}
+                >
+                  Salvar Alterações
+                </Button>
               </form>
             </main>
+            {linearProgress}
           </div>
         </div>
       </Fragment>
