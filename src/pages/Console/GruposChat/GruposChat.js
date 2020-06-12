@@ -14,7 +14,7 @@ import axios from "../../../axios-instance";
 
 import styles from "./GruposChat.module.css";
 
-const formSchema = yup.object().shape({
+const formSchema_phone = yup.object().shape({
   name: yup.string().required("É necessário preencher o nome."),
   phone: yup
     .string()
@@ -22,11 +22,36 @@ const formSchema = yup.object().shape({
     .min(14, "Preencha um número válido."),
 });
 
+const formSchema_group = yup.object().shape({
+  name: yup.string().required("É necessário preencher o nome."),
+  groupLink: yup.string().required("É necessário preencher o link do grupo."),
+});
+
+const modalTypes = {
+  phone: {
+    id: "phone",
+    formSchema: formSchema_phone,
+    modalLabel: "Novo Número",
+    inputLabel: "Telefone",
+    handleChange: "phone",
+    inputMask: "(99) 99999-9999",
+  },
+  group: {
+    id: "group",
+    formSchema: formSchema_group,
+    modalLabel: "Novo Grupo",
+    inputLabel: "Link do Grupo",
+    handleChange: "groupLink",
+    inputMask: null,
+  },
+};
+
 class GruposChat extends Component {
   state = {
     groups: [],
     modalIsOpen: false,
     errorMessage: null,
+    selectedModalType: null,
     isLoading: false,
   };
 
@@ -37,11 +62,11 @@ class GruposChat extends Component {
   }
 
   closeModalHandler = () => {
-    this.setState({ ...this.state, modalIsOpen: false });
+    this.setState({ modalIsOpen: false, errorMessage: null });
   };
 
-  openModalHandler = () => {
-    this.setState({ ...this.state, modalIsOpen: true });
+  openModalHandler = (modalType) => {
+    this.setState({ selectedModalType: modalType, modalIsOpen: true });
   };
 
   onDeleteGroupHandler = (groupId) => {
@@ -74,6 +99,14 @@ class GruposChat extends Component {
       ...formData,
       institutionId: this.context.institution.id,
     };
+
+    if (this.state.selectedModalType.id === "phone") {
+      dataToPost.phone = formData.phone;
+      dataToPost.groupLink = null;
+    } else {
+      dataToPost.phone = null;
+      dataToPost.groupLink = formData.groupLink;
+    }
 
     axios
       .post("/chat", dataToPost)
@@ -112,56 +145,68 @@ class GruposChat extends Component {
       alertError = <Alert severity="error">{this.state.errorMessage}</Alert>;
     }
 
+    let modalContent = null;
+    const selectedModalType = this.state.selectedModalType;
+
+    if (selectedModalType) {
+      modalContent = (
+        <Formik
+          validationSchema={selectedModalType.formSchema}
+          initialValues={{
+            name: "",
+            phone: "",
+            groupLink: "",
+          }}
+          initialErrors={{
+            error: "É necessário preencher os campos.",
+          }}
+        >
+          {(formikProps) => (
+            <Box className={styles.modal}>
+              <PrimaryHeading>{selectedModalType.modalLabel}</PrimaryHeading>
+              <Input
+                label="Nome do Grupo*"
+                inputValue={formikProps.values.name}
+                inputOnChange={formikProps.handleChange("name")}
+              />
+              <Input
+                label={selectedModalType.inputLabel}
+                inputValue={formikProps.values[selectedModalType.handleChange]}
+                inputOnChange={formikProps.handleChange(
+                  selectedModalType.handleChange
+                )}
+                inputMask={selectedModalType.inputMask}
+              />
+              <Box className={styles.modalButtonHolder}>
+                <Button
+                  variant="contained"
+                  color="primary"
+                  disabled={this.state.isLoading}
+                  onClick={() =>
+                    this.addNewGroupHandler(
+                      formikProps.values,
+                      formikProps.errors
+                    )
+                  }
+                >
+                  Adicionar
+                </Button>
+              </Box>
+              {alertError}
+              {linearProgress}
+            </Box>
+          )}
+        </Formik>
+      );
+    }
+
     return (
       <div>
         <Modal
           open={this.state.modalIsOpen}
           handleClose={this.closeModalHandler}
         >
-          <Formik
-            validationSchema={formSchema}
-            initialValues={{
-              name: "",
-              phone: "",
-            }}
-            initialErrors={{
-              error: "É necessário preencher os campos.",
-            }}
-          >
-            {(formikProps) => (
-              <Box className={styles.modal}>
-                <PrimaryHeading>Novo Grupo</PrimaryHeading>
-                <Input
-                  label="Nome do Grupo*"
-                  inputValue={formikProps.values.name}
-                  inputOnChange={formikProps.handleChange("name")}
-                />
-                <Input
-                  label="Telefone*"
-                  inputValue={formikProps.values.phone}
-                  inputOnChange={formikProps.handleChange("phone")}
-                  inputMask="(99) 99999-9999"
-                />
-                <Box className={styles.modalButtonHolder}>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    disabled={this.state.isLoading}
-                    onClick={() =>
-                      this.addNewGroupHandler(
-                        formikProps.values,
-                        formikProps.errors
-                      )
-                    }
-                  >
-                    Adicionar
-                  </Button>
-                </Box>
-                {alertError}
-                {linearProgress}
-              </Box>
-            )}
-          </Formik>
+          {modalContent}
         </Modal>
         <PrimaryHeading>Grupos Chat</PrimaryHeading>
         <div className={styles.container}>
@@ -174,7 +219,9 @@ class GruposChat extends Component {
                     <Box className={styles.groupItemData}>
                       <p>
                         <span className={styles.groupName}>{group.name}</span>
-                        <span className={styles.groupPhone}>{group.phone}</span>
+                        <span className={styles.groupPhone}>
+                          {group.phone ? group.phone : group.group_link}
+                        </span>
                       </p>
                     </Box>
                     <Button
@@ -192,9 +239,15 @@ class GruposChat extends Component {
             </div>
             <button
               className={styles.btnAddGroup}
-              onClick={this.openModalHandler}
+              onClick={() => this.openModalHandler(modalTypes.group)}
             >
-              <AddIcon /> Adicionar novo grupo
+              <AddIcon /> Adicionar Link (grupo)
+            </button>
+            <button
+              className={styles.btnAddGroup}
+              onClick={() => this.openModalHandler(modalTypes.phone)}
+            >
+              <AddIcon /> Adicionar Número
             </button>
           </div>
         </div>

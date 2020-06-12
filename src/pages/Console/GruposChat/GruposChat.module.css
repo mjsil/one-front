@@ -23,6 +23,7 @@
 .deleteButton {
   background-color: #d32525 !important;
   color: "#fff" !important;
+  height: 40px;
 }
 
 .groupsContainer {
@@ -52,7 +53,7 @@
 }
 
 .groupItemData {
-  width: 80%;
+  width: 70%;
   overflow-wrap: break-word;
 }
 
