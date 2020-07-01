@@ -43,7 +43,7 @@ function StickyHeadTable(props) {
               {props.columns.map((column) => (
                 <TableCell
                   key={column.id}
-                  align={column.align}
+                  align="center"
                   style={{ minWidth: column.minWidth }}
                 >
                   {column.label}
@@ -70,10 +70,10 @@ function StickyHeadTable(props) {
                     {props.columns.map((column) => {
                       const value = row[column.id];
                       return (
-                        <TableCell key={column.id} align={column.align}>
+                        <TableCell key={column.id} align="center">
                           {column.format && typeof value === "number"
                             ? column.format(value)
-                            : value}
+                            : value || "-"}
                         </TableCell>
                       );
                     })}

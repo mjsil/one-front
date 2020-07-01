@@ -1,0 +1,27 @@
+.card {
+  margin-top: 30px;
+  width: 35%;
+  padding: 40px 20px 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cardTextHolder {
+  margin-bottom: 15px;
+}
+
+.errorHolder {
+  margin-top: 20px;
+}
+
+.loadingHolder {
+  margin-top: 20px;
+}
+
+.buttonHolder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
