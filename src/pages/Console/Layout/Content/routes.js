@@ -92,16 +92,16 @@ const routes = [
     component: MidiaDetails,
     type: 2,
   },
-  {
-    path: "/console/vendas",
-    exact: true,
-    component: RelatorioVendas,
-  },
-  {
-    path: "/console/cartao",
-    exact: true,
-    component: Cartao,
-  },
+  // {
+  //   path: "/console/vendas",
+  //   exact: true,
+  //   component: RelatorioVendas,
+  // },
+  // {
+  //   path: "/console/cartao",
+  //   exact: true,
+  //   component: Cartao,
+  // },
 ];
 
 export default routes;

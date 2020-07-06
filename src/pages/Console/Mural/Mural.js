@@ -31,7 +31,9 @@ class Mural extends Component {
     const formData = { ...this.state.formData };
     formData[inputAttr] = inputValue;
 
-    this.setState({ formData: formData });
+    if (inputValue.length <= 255) {
+      this.setState({ formData: formData });
+    }
   };
 
   setHasErrorState = () => {
@@ -79,29 +81,40 @@ class Mural extends Component {
       inputtedFileProgress = ` - ${this.state.completedFilePercent}%`;
     }
 
+    const eventNameLength = this.state.formData.eventName.length;
+    const eventDescriptionLength = this.state.formData.eventDescription.length;
+
     return (
       <div>
         <PrimaryHeading>Adicione um evento</PrimaryHeading>
         <Card className={styles.card}>
           <h2 className={styles.mainHeader}>Novo Evento</h2>
+
           <div className={styles.inputHolder}>
             <TextField
               label="Título do Evento"
               name="eventName"
+              value={this.state.formData.eventName}
               onChange={this.onFormDataChangeHandler}
               variant="outlined"
               className={styles.inputOneLine}
             />
+            {eventNameLength} caracteres
+          </div>
+          <div className={styles.inputHolder}>
             <TextField
               label="Descrição do Evento"
               name="eventDescription"
+              value={this.state.formData.eventDescription}
               onChange={this.onFormDataChangeHandler}
               variant="outlined"
               rows={4}
               className={styles.inputMultiline}
               multiline
             />
+            {eventDescriptionLength} caracteres
           </div>
+
           <div className={styles.dropzoneContainer}>
             <h3>Somente serão válidas as extensões .png .pdf .jpg .mp4.</h3>
             <Dropzone

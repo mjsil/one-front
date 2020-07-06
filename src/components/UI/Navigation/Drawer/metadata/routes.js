@@ -9,8 +9,8 @@ import ChatIcon from "@material-ui/icons/Chat";
 import QueueMusic from "@material-ui/icons/QueueMusic";
 import PhotoLibrary from "@material-ui/icons/PhotoLibrary";
 import GpsFixed from "@material-ui/icons/GpsFixed";
-import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
-import CreditCardIcon from "@material-ui/icons/CreditCard";
+// import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+// import CreditCardIcon from "@material-ui/icons/CreditCard";
 
 const routes = [
   {
@@ -86,16 +86,16 @@ const routes = [
     parentPath: "/midias",
     type: 2,
   },
-  {
-    parentName: "Relatório de Vendas",
-    parentIcon: AddShoppingCartIcon,
-    parentPath: "/vendas",
-  },
-  {
-    parentName: "Cartão",
-    parentIcon: CreditCardIcon,
-    parentPath: "/cartao",
-  },
+  // {
+  //   parentName: "Relatório de Vendas",
+  //   parentIcon: AddShoppingCartIcon,
+  //   parentPath: "/vendas",
+  // },
+  // {
+  //   parentName: "Cartão",
+  //   parentIcon: CreditCardIcon,
+  //   parentPath: "/cartao",
+  // },
 ];
 
 export default routes;

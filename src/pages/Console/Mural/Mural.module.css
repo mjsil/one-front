@@ -14,16 +14,15 @@
 .inputHolder {
   display: flex;
   flex-direction: column;
+  margin-bottom: 20px;
 }
 
 .inputOneLine {
   width: 200px;
-  margin-bottom: 20px !important;
 }
 
 .inputMultiline {
   width: 60%;
-  margin-bottom: 20px !important;
 }
 
 .mainButton {
