@@ -16,6 +16,7 @@ class MensagemInstitucional extends Component {
     institutionData: {},
     formData: {
       message: "",
+      pageUrl: "",
     },
     errorMessage: null,
     loading: false,
@@ -44,7 +45,7 @@ class MensagemInstitucional extends Component {
 
     if (formData.message.trim().length < 4) {
       return this.setState({
-        errorMessage: "A mensagem deve conter pelo menos 4 carácteres.",
+        errorMessage: "A mensagem deve conter pelo menos 4 caracteres.",
         loading: false,
       });
     }
@@ -60,6 +61,7 @@ class MensagemInstitucional extends Component {
     }
     const dataToPost = {
       mensagem: formData.message,
+      pageUrl: formData.pageUrl,
     };
 
     axios
@@ -106,12 +108,20 @@ class MensagemInstitucional extends Component {
               <form className={styles.form} onSubmit={this.onSubmitFormHandler}>
                 <TextField
                   id="outlined-multiline-static"
-                  className={styles.messageInput}
+                  className={styles.input}
                   name="message"
                   onChange={this.onChangeFormDataHandler}
                   label="Mensagem"
                   multiline
                   rows={4}
+                  variant="outlined"
+                />
+                <TextField
+                  id="outlined-multiline-static"
+                  className={styles.input}
+                  name="pageUrl"
+                  onChange={this.onChangeFormDataHandler}
+                  label="URL de redirecionamento"
                   variant="outlined"
                 />
                 {formBottomContent}
