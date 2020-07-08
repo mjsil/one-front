@@ -90,6 +90,10 @@ class Mural extends Component {
         <Card className={styles.card}>
           <h2 className={styles.mainHeader}>Novo Evento</h2>
 
+          <p className={styles.warningParagraph}>
+            <span className={styles.obsText}>OBS:</span> os campos de texto
+            estão limitados a 255 caracteres.
+          </p>
           <div className={styles.inputHolder}>
             <TextField
               label="Título do Evento"
@@ -99,7 +103,7 @@ class Mural extends Component {
               variant="outlined"
               className={styles.inputOneLine}
             />
-            {eventNameLength} caracteres
+            {eventNameLength} / 255
           </div>
           <div className={styles.inputHolder}>
             <TextField
@@ -112,7 +116,7 @@ class Mural extends Component {
               className={styles.inputMultiline}
               multiline
             />
-            {eventDescriptionLength} caracteres
+            {eventDescriptionLength} / 255
           </div>
 
           <div className={styles.dropzoneContainer}>
