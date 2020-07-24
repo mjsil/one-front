@@ -11,8 +11,8 @@ import GruposChat from "../../GruposChat/GruposChat";
 import Mural from "../../Mural/Mural";
 import Midias from "../../Midias/Midias";
 import MidiaDetails from "../../Midias/MidiaDetails/MidiaDetails";
-import RelatorioVendas from "../../RelatorioVendas/RelatorioVendas";
-import Cartao from "../../Cartao/Cartao";
+// import RelatorioVendas from "../../RelatorioVendas/RelatorioVendas";
+// import Cartao from "../../Cartao/Cartao";
 
 const routes = [
   {
@@ -54,43 +54,43 @@ const routes = [
     path: "/console/mural/upload",
     exact: true,
     component: Mural,
-    type: 1,
+    type: [1],
   },
   {
     path: "/console/eventos/upload",
     exact: true,
     component: Mural,
-    type: 2,
+    type: [2],
   },
   {
     path: "/console/biblia",
     exact: true,
     component: Biblia,
-    type: 2,
+    type: [2],
   },
   {
     path: "/console/chat",
     exact: true,
     component: GruposChat,
-    type: 2,
+    type: [2, 3],
   },
   {
     path: "/console/hinario",
     exact: true,
     component: Hinario,
-    type: 2,
+    type: [2],
   },
   {
     path: "/console/midias",
     exact: true,
     component: Midias,
-    type: 2,
+    type: [2],
   },
   {
     path: "/console/midias/resumo",
     exact: true,
     component: MidiaDetails,
-    type: 2,
+    type: [2],
   },
   // {
   //   path: "/console/vendas",

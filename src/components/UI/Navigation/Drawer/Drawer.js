@@ -69,7 +69,7 @@ function ResponsiveDrawer(props) {
       </div>
       <Divider className={classes.divider} />
       {routes.map((route, index) => {
-        if (route.type && route.type !== props.institution.type) {
+        if (route.type && !route.type.includes(props.institution.type)) {
           return null;
         }
 

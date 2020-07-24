@@ -71,7 +71,7 @@ function Content(props) {
         <div className={classes.toolbar} />
         <Switch>
           {routes.map((route) => {
-            if (route.type && route.type !== context.institution.type) {
+            if (route.type && !route.type.includes(context.institution.type)) {
               return null;
             }
 
