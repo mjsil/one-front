@@ -13,6 +13,7 @@ import SelectGroup from "../../../../components/Form/Group/SelectGroup/SelectGro
 import TransferList from "../../../../components/UI/TransferList/TransferList";
 import Alert from "@material-ui/lab/Alert";
 import LinearProgress from "@material-ui/core/LinearProgress";
+import LayoutContext from "../../Layout/Layout-context";
 import axios from "../../../../axios-instance";
 import * as yup from "yup";
 
@@ -87,6 +88,8 @@ class DetalhesUsuario extends Component {
     });
   }
 
+  static contextType = LayoutContext;
+
   setLeftTransferListHandler = (values) => {
     this.setState({ leftTransferList: values });
   };
@@ -145,18 +148,21 @@ class DetalhesUsuario extends Component {
       areas_de_interesse,
     };
 
-    if (!tipo_profissional.trim().length) {
-      return this.setState({
-        errorMessage: "Selecione o tipo profissional do usuário.",
-        isLoading: false,
-      });
-    }
+    if (this.context.institution.type === 1) {
+      if (!tipo_profissional.trim().length) {
+        return this.setState({
+          errorMessage: "Selecione o tipo profissional do usuário.",
+          isLoading: false,
+        });
+      }
 
-    if (!areas_de_interesse.length) {
-      return this.setState({
-        errorMessage: "É necessário selecionar ao menos uma área de interesse.",
-        isLoading: false,
-      });
+      if (!areas_de_interesse.length) {
+        return this.setState({
+          errorMessage:
+            "É necessário selecionar ao menos uma área de interesse.",
+          isLoading: false,
+        });
+      }
     }
 
     formSchema.isValid(dataToPut).then((isValid) => {
@@ -204,6 +210,57 @@ class DetalhesUsuario extends Component {
     let linearProgress;
     if (this.state.isLoading) {
       linearProgress = <LinearProgress />;
+    }
+
+    let renderedTipoProfissional;
+    let renderedAreasDeInteresse;
+    if (this.context.institution.type === 1) {
+      renderedTipoProfissional = (
+        <Fragment>
+          <Grid item md={6} xs={12}>
+            <SelectGroup
+              label="Tipo Profissional*"
+              selectName="tipo_profissional"
+              selectOnChange={this.onChangeSelectElement}
+              selectValue={this.state.selectedTipoProfissionalIndex}
+            >
+              <option value={0}>
+                {TIPO_PROFISSIONAL.NADA_SELECIONADO.toString()}
+              </option>
+              <option value={1}>
+                {TIPO_PROFISSIONAL.CONSTRUCAO_CIVIL.toString()}
+              </option>
+              <option value={2}>
+                {TIPO_PROFISSIONAL.CADEIA_PRODUTIVA.toString()}
+              </option>
+              <option value={3}>
+                {TIPO_PROFISSIONAL.SETOR_CONSTRUCAO.toString()}
+              </option>
+              <option value={4}>
+                {TIPO_PROFISSIONAL.PROJETISTA.toString()}
+              </option>
+              <option value={5}>
+                {TIPO_PROFISSIONAL.ACADEMICO.toString()}
+              </option>
+              <option value={6}>{TIPO_PROFISSIONAL.IMPRENSA.toString()}</option>
+            </SelectGroup>
+          </Grid>
+        </Fragment>
+      );
+
+      renderedAreasDeInteresse = (
+        <Fragment>
+          <Typography variant="subtitle1" align="center">
+            Selecione as áreas de interesse*
+          </Typography>
+          <TransferList
+            left={this.state.leftTransferList}
+            right={this.state.rightTransferList}
+            setLeft={this.setLeftTransferListHandler}
+            setRight={this.setRightTransferListHandler}
+          />
+        </Fragment>
+      );
     }
 
     return (
@@ -323,46 +380,9 @@ class DetalhesUsuario extends Component {
                 inputOnChange={this.onChangeUserData}
               />
             </Grid>
-            <Grid item md={6} xs={12}>
-              <SelectGroup
-                label="Tipo Profissional*"
-                selectName="tipo_profissional"
-                selectOnChange={this.onChangeSelectElement}
-                selectValue={this.state.selectedTipoProfissionalIndex}
-              >
-                <option value={0}>
-                  {TIPO_PROFISSIONAL.NADA_SELECIONADO.toString()}
-                </option>
-                <option value={1}>
-                  {TIPO_PROFISSIONAL.CONSTRUCAO_CIVIL.toString()}
-                </option>
-                <option value={2}>
-                  {TIPO_PROFISSIONAL.CADEIA_PRODUTIVA.toString()}
-                </option>
-                <option value={3}>
-                  {TIPO_PROFISSIONAL.SETOR_CONSTRUCAO.toString()}
-                </option>
-                <option value={4}>
-                  {TIPO_PROFISSIONAL.PROJETISTA.toString()}
-                </option>
-                <option value={5}>
-                  {TIPO_PROFISSIONAL.ACADEMICO.toString()}
-                </option>
-                <option value={6}>
-                  {TIPO_PROFISSIONAL.IMPRENSA.toString()}
-                </option>
-              </SelectGroup>
-            </Grid>
+            {renderedTipoProfissional}
           </Grid>
-          <Typography variant="subtitle1" align="center">
-            Selecione as áreas de interesse*
-          </Typography>
-          <TransferList
-            left={this.state.leftTransferList}
-            right={this.state.rightTransferList}
-            setLeft={this.setLeftTransferListHandler}
-            setRight={this.setRightTransferListHandler}
-          />
+          {renderedAreasDeInteresse}
           <Box className={styles.buttonHolder}>
             <Button
               disabled={this.state.isLoading}
