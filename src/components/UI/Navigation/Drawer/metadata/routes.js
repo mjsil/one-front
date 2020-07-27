@@ -47,6 +47,7 @@ const routes = [
         name: "Localização",
         route: "/instituicoes/localizacao",
         icon: GpsFixed,
+        type: [1, 2],
       },
     ],
   },

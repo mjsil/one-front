@@ -69,6 +69,21 @@ function ResponsiveDrawer(props) {
       </div>
       <Divider className={classes.divider} />
       {routes.map((route, index) => {
+        const routeChildrens = [];
+
+        if (route.childrens) {
+          route.childrens.forEach((children) => {
+            if (
+              children.type &&
+              !children.type.includes(props.institution.type)
+            ) {
+              return null;
+            }
+
+            routeChildrens.push(children);
+          });
+        }
+
         if (route.type && !route.type.includes(props.institution.type)) {
           return null;
         }
@@ -80,7 +95,7 @@ function ResponsiveDrawer(props) {
             parentName={route.parentName}
             parentPath={route.parentPath}
             parentIcon={route.parentIcon}
-            childrens={route.childrens}
+            childrens={routeChildrens}
           />
         );
       })}

@@ -49,6 +49,7 @@ const routes = [
     path: "/console/instituicoes/localizacao",
     exact: true,
     component: Localizacao,
+    type: [1, 2],
   },
   {
     path: "/console/mural/upload",
