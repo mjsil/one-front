@@ -44,7 +44,6 @@ const routes = [
     path: "/console/instituicoes/mensagem",
     exact: true,
     component: MensagemInstitucional,
-    type: [1, 2],
   },
   {
     path: "/console/instituicoes/localizacao",

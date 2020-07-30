@@ -42,7 +42,6 @@ const routes = [
         name: "Mensagem Institucional",
         route: "/instituicoes/mensagem",
         icon: EmailOutlinedIcon,
-        type: [1, 2],
       },
       {
         name: "Localização",
