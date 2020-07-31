@@ -50,7 +50,7 @@ const Dropdown = (props) => {
   let childrens = null;
   let expandIcon = null;
 
-  if (props.childrens) {
+  if (props.childrens.length) {
     childrens = props.childrens.map((children, index) => {
       const Icon = children.icon;
       return (

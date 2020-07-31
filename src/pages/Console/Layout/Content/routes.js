@@ -11,6 +11,7 @@ import GruposChat from "../../GruposChat/GruposChat";
 import Mural from "../../Mural/Mural";
 import Midias from "../../Midias/Midias";
 import MidiaDetails from "../../Midias/MidiaDetails/MidiaDetails";
+import RelatoriosBI from "../../RelatoriosBI/RelatoriosBI";
 // import RelatorioVendas from "../../RelatorioVendas/RelatorioVendas";
 // import Cartao from "../../Cartao/Cartao";
 
@@ -92,6 +93,11 @@ const routes = [
     exact: true,
     component: MidiaDetails,
     type: [2],
+  },
+  {
+    path: "/console/relatorios",
+    exact: true,
+    component: RelatoriosBI,
   },
   // {
   //   path: "/console/vendas",

@@ -46,6 +46,13 @@ function GridSelection(props) {
           <EmailOutlinedIcon fontSize="large" className={styles.icon} />
           <h1>Mensagem Institucional</h1>
         </div>
+        {/* <div
+          className={styles.card}
+          onClick={() => onRedirectHandler("relatorios")}
+        >
+          <EmailOutlinedIcon fontSize="large" className={styles.icon} />
+          <h1>Relatórios</h1>
+        </div> */}
       </div>
     </div>
   );
