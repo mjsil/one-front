@@ -5,6 +5,7 @@ import ArtTrackOutlined from "@material-ui/icons/ArtTrackOutlined";
 import ContactsOutlinedIcon from "@material-ui/icons/ContactsOutlined";
 // import AccountBalanceOutlinedIcon from "@material-ui/icons/AccountBalanceOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
+import AssessmentIcon from "@material-ui/icons/Assessment";
 import styles from "./GridSelection.module.css";
 
 function GridSelection(props) {
@@ -46,13 +47,13 @@ function GridSelection(props) {
           <EmailOutlinedIcon fontSize="large" className={styles.icon} />
           <h1>Mensagem Institucional</h1>
         </div>
-        {/* <div
+        <div
           className={styles.card}
           onClick={() => onRedirectHandler("relatorios")}
         >
-          <EmailOutlinedIcon fontSize="large" className={styles.icon} />
+          <AssessmentIcon fontSize="large" className={styles.icon} />
           <h1>Relatórios</h1>
-        </div> */}
+        </div>
       </div>
     </div>
   );
