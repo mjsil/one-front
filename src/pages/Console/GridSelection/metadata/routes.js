@@ -1,4 +1,3 @@
-import HomeIcon from "@material-ui/icons/Home";
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import AccountBalanceOutlinedIcon from "@material-ui/icons/AccountBalanceOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
@@ -16,81 +15,76 @@ import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 
 const routes = [
   {
-    parentName: "Home",
-    parentIcon: HomeIcon,
-    parentPath: "/",
+    name: "Usuários Cadastrados",
+    icon: PeopleAltIcon,
+    path: "/usuarios",
   },
   {
-    parentName: "Usuários Cadastrados",
-    parentIcon: PeopleAltIcon,
-    parentPath: "/usuarios",
+    name: "Perfil",
+    icon: AccountBalanceOutlinedIcon,
+    path: "/minha-instituicao",
   },
   {
-    parentName: "Perfil",
-    parentIcon: AccountBalanceOutlinedIcon,
-    parentPath: "/minha-instituicao",
+    name: "Mensagem Instantânea",
+    icon: EmailOutlinedIcon,
+    path: "/instituicoes/mensagem",
   },
   {
-    parentName: "Mensagem Instantânea",
-    parentIcon: EmailOutlinedIcon,
-    parentPath: "/instituicoes/mensagem",
-  },
-  {
-    parentName: "Mural",
-    parentIcon: ArtTrackOutlined,
-    parentPath: "/mural/upload",
+    name: "Mural",
+    icon: ArtTrackOutlined,
+    path: "/mural/upload",
     type: [1],
   },
   {
-    parentName: "Eventos",
-    parentIcon: ArtTrackOutlined,
-    parentPath: "/eventos/upload",
+    name: "Eventos",
+    icon: ArtTrackOutlined,
+    path: "/eventos/upload",
     type: [2],
   },
   {
-    parentName: "Bíblia",
-    parentIcon: BookIcon,
-    parentPath: "/biblia",
+    name: "Bíblia",
+    icon: BookIcon,
+    path: "/biblia",
     type: [2],
   },
   {
-    parentName: "Grupos Chat",
-    parentIcon: ChatIcon,
-    parentPath: "/chat",
+    name: "Grupos Chat",
+    icon: ChatIcon,
+    path: "/chat",
     type: [2, 3],
   },
   {
-    parentName: "Hinário",
-    parentIcon: QueueMusic,
-    parentPath: "/hinario",
+    name: "Hinário",
+    icon: QueueMusic,
+    path: "/hinario",
     type: [2],
   },
   {
-    parentName: "Mídias",
-    parentIcon: PhotoLibrary,
-    parentPath: "/midias",
+    name: "Mídias",
+    icon: PhotoLibrary,
+    path: "/midias",
     type: [2],
   },
   {
-    parentName: "Relatórios",
-    parentIcon: AssessmentIcon,
-    parentPath: "/relatorios",
+    name: "Relatórios",
+    icon: AssessmentIcon,
+    path: "/relatorios",
   },
   {
-    parentName: "Plano de Saúde",
-    parentIcon: AddShoppingCartIcon,
-    parentPath: "/saude",
+    name: "Plano de Saúde",
+    icon: AddShoppingCartIcon,
+    path: "/saude",
     type: [2, 3],
   },
   // {
-  //   parentName: "Localização",
-  //   parentIcon: GpsFixed,
-  //   parentPath: "/instituicoes/localizacao",
+  //   name: "Localização",
+  //   icon: GpsFixed,
+  //   path: "/instituicoes/localizacao",
   //   type: [1, 2],
   // },
   // {
-  //   parentName: "Instituição",
-  //   parentIcon: AccountBalanceOutlinedIcon,
+  //   name: "Instituição",
+  //   icon: AccountBalanceOutlinedIcon,
   //   childrens: [
   //     {
   //       name: "Minha Instituição",
@@ -111,14 +105,14 @@ const routes = [
   //   ],
   // },
   // {
-  //   parentName: "Relatório de Vendas",
-  //   parentIcon: AddShoppingCartIcon,
-  //   parentPath: "/vendas",
+  //   name: "Relatório de Vendas",
+  //   icon: AddShoppingCartIcon,
+  //   path: "/vendas",
   // },
   // {
-  //   parentName: "Cartão",
-  //   parentIcon: CreditCardIcon,
-  //   parentPath: "/cartao",
+  //   name: "Cartão",
+  //   icon: CreditCardIcon,
+  //   path: "/cartao",
   // },
 ];
 

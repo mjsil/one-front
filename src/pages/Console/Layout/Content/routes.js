@@ -12,6 +12,7 @@ import Mural from "../../Mural/Mural";
 import Midias from "../../Midias/Midias";
 import MidiaDetails from "../../Midias/MidiaDetails/MidiaDetails";
 import RelatoriosBI from "../../RelatoriosBI/RelatoriosBI";
+import PlanoSaude from "../../PlanoSaude/PlanoSaude";
 // import RelatorioVendas from "../../RelatorioVendas/RelatorioVendas";
 // import Cartao from "../../Cartao/Cartao";
 
@@ -98,6 +99,12 @@ const routes = [
     path: "/console/relatorios",
     exact: true,
     component: RelatoriosBI,
+  },
+  {
+    path: "/console/saude",
+    exact: true,
+    component: PlanoSaude,
+    type: [2, 3],
   },
   // {
   //   path: "/console/vendas",
