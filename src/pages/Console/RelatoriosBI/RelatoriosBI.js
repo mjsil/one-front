@@ -32,7 +32,6 @@ class RelatorioasBI extends Component {
           width="100%"
           height={iframeHeight}
           id="iframe-juma-id"
-          // className="myClassname"
           display="initial"
           position="relative"
         />
