@@ -57,7 +57,7 @@ const routes = [
     path: "/console/mural/upload",
     exact: true,
     component: Mural,
-    type: [1],
+    type: [1, 3],
   },
   {
     path: "/console/eventos/upload",

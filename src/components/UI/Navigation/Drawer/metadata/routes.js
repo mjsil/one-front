@@ -39,7 +39,7 @@ const routes = [
     parentName: "Mural",
     parentIcon: ArtTrackOutlined,
     parentPath: "/mural/upload",
-    type: [1],
+    type: [1, 3],
   },
   {
     parentName: "Eventos",

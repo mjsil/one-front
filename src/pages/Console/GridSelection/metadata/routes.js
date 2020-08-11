@@ -33,7 +33,7 @@ const routes = [
     name: "Mural",
     icon: ArtTrackOutlined,
     path: "/mural/upload",
-    type: [1],
+    type: [1, 3],
   },
   {
     name: "Eventos",
