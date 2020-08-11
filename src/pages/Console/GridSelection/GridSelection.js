@@ -23,6 +23,7 @@ function GridSelection(props) {
       <div
         className={styles.card}
         onClick={() => onRedirectHandler(route.path)}
+        key={route.path}
       >
         <Icon className={styles.icon} />
         <h1>{route.name}</h1>

@@ -1,10 +1,14 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import Iframe from "react-iframe";
+import {
+  serverInstance,
+  clientInstance,
+} from "../../../services/axios-plano-saude";
 
 class RelatorioasBI extends Component {
   constructor(props) {
     super(props);
-    this.state = { width: 0, height: 0 };
+    this.state = { width: 0, height: 0, iframeUrl: null };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
 
@@ -12,6 +16,20 @@ class RelatorioasBI extends Component {
     this.updateWindowDimensions();
 
     window.addEventListener("resize", this.updateWindowDimensions);
+
+    if (!this.state.iframeUrl) {
+      const dataToPost = {
+        email: "vendedor@email.com",
+        password: "vendedor",
+      };
+
+      serverInstance.post("api/user/login", dataToPost).then((res) => {
+        this.setState({
+          iframeUrl:
+            clientInstance.defaults.baseURL + "/?access_token=" + res.data.id,
+        });
+      });
+    }
   }
 
   componentWillUnmount() {
@@ -25,18 +43,21 @@ class RelatorioasBI extends Component {
   render() {
     const iframeHeight = this.state.height - this.state.height * 0.15;
 
-    return (
-      <React.Fragment>
+    let iframe;
+    if (this.state.iframeUrl) {
+      iframe = (
         <Iframe
-          url="http://134.209.167.35"
+          url={this.state.iframeUrl}
           width="100%"
           height={iframeHeight}
           id="iframe-saude"
           display="initial"
           position="relative"
         />
-      </React.Fragment>
-    );
+      );
+    }
+
+    return <Fragment>{iframe}</Fragment>;
   }
 }
 
