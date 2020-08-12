@@ -99,7 +99,7 @@ class MensagemInstitucional extends Component {
 
     return (
       <Fragment>
-        <PrimaryHeading>Mensagem Institucional</PrimaryHeading>
+        <PrimaryHeading>Mensagem Instantânea</PrimaryHeading>
         <div className={styles.container}>
           <Card className={styles.box}>
             <div className={styles.infoBar}>Adicione sua mensagem</div>

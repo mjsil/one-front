@@ -165,7 +165,7 @@ class GruposChat extends Component {
             <Box className={styles.modal}>
               <PrimaryHeading>{selectedModalType.modalLabel}</PrimaryHeading>
               <Input
-                label="Nome do Grupo*"
+                label="Nome*"
                 inputValue={formikProps.values.name}
                 inputOnChange={formikProps.handleChange("name")}
               />

@@ -144,7 +144,7 @@ class MeuPerfil extends Component {
 
     return (
       <Fragment>
-        <PrimaryHeading>Minha Instituição</PrimaryHeading>
+        <PrimaryHeading>Perfil</PrimaryHeading>
         <div className={styles.container}>
           <div className={styles.card}>
             <div className={styles.cardToolbar}>
