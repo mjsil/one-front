@@ -7,7 +7,7 @@ import ChatIcon from "@material-ui/icons/Chat";
 import QueueMusic from "@material-ui/icons/QueueMusic";
 import PhotoLibrary from "@material-ui/icons/PhotoLibrary";
 import AssessmentIcon from "@material-ui/icons/Assessment";
-import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
 // import GpsFixed from "@material-ui/icons/GpsFixed";
 // import PersonIcon from "@material-ui/icons/Person";
 // import ContactsOutlinedIcon from "@material-ui/icons/ContactsOutlined";
@@ -71,9 +71,27 @@ const routes = [
     path: "/relatorios",
   },
   {
-    name: "Plano de Saúde",
-    icon: AddShoppingCartIcon,
+    name: "Vendas",
+    icon: LocalHospitalIcon,
     path: "/saude",
+    type: [2, 3],
+  },
+  {
+    name: "Valores do Plano",
+    icon: LocalHospitalIcon,
+    path: "/saude/value",
+    type: [2, 3],
+  },
+  {
+    name: "Termos de Uso",
+    icon: LocalHospitalIcon,
+    path: "/saude/terms",
+    type: [2, 3],
+  },
+  {
+    name: "Redes Credenciadas",
+    icon: LocalHospitalIcon,
+    path: "/saude/provider",
     type: [2, 3],
   },
   // {
@@ -106,7 +124,7 @@ const routes = [
   // },
   // {
   //   name: "Relatório de Vendas",
-  //   icon: AddShoppingCartIcon,
+  //   icon: LocalHospitalIcon,
   //   path: "/vendas",
   // },
   // {

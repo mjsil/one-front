@@ -5,7 +5,7 @@ import {
   clientInstance,
 } from "../../../services/axios-plano-saude";
 
-class RelatorioasBI extends Component {
+class IframeSaude extends Component {
   constructor(props) {
     super(props);
     this.state = { width: 0, height: 0, iframeUrl: null };
@@ -17,6 +17,11 @@ class RelatorioasBI extends Component {
 
     window.addEventListener("resize", this.updateWindowDimensions);
 
+    let mainUrl = this.props.location.pathname.split("/")[3] || "";
+    if (mainUrl) {
+      mainUrl = "/" + mainUrl;
+    }
+
     if (!this.state.iframeUrl) {
       const dataToPost = {
         email: "vendedor@email.com",
@@ -26,7 +31,10 @@ class RelatorioasBI extends Component {
       serverInstance.post("api/user/login", dataToPost).then((res) => {
         this.setState({
           iframeUrl:
-            clientInstance.defaults.baseURL + "/?access_token=" + res.data.id,
+            clientInstance.defaults.baseURL +
+            mainUrl +
+            "/?access_token=" +
+            res.data.id,
         });
       });
     }
@@ -61,4 +69,4 @@ class RelatorioasBI extends Component {
   }
 }
 
-export default RelatorioasBI;
+export default IframeSaude;

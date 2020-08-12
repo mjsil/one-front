@@ -12,7 +12,7 @@ import Mural from "../../Mural/Mural";
 import Midias from "../../Midias/Midias";
 import MidiaDetails from "../../Midias/MidiaDetails/MidiaDetails";
 import RelatoriosBI from "../../RelatoriosBI/RelatoriosBI";
-import PlanoSaude from "../../PlanoSaude/PlanoSaude";
+import IframeSaude from "../../IframeSaude/IframeSaude";
 // import RelatorioVendas from "../../RelatorioVendas/RelatorioVendas";
 // import Cartao from "../../Cartao/Cartao";
 
@@ -103,7 +103,25 @@ const routes = [
   {
     path: "/console/saude",
     exact: true,
-    component: PlanoSaude,
+    component: IframeSaude,
+    type: [2, 3],
+  },
+  {
+    path: "/console/saude/value",
+    exact: true,
+    component: IframeSaude,
+    type: [2, 3],
+  },
+  {
+    path: "/console/saude/terms",
+    exact: true,
+    component: IframeSaude,
+    type: [2, 3],
+  },
+  {
+    path: "/console/saude/provider",
+    exact: true,
+    component: IframeSaude,
     type: [2, 3],
   },
   // {

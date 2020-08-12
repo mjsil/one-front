@@ -8,7 +8,7 @@ import ChatIcon from "@material-ui/icons/Chat";
 import QueueMusic from "@material-ui/icons/QueueMusic";
 import PhotoLibrary from "@material-ui/icons/PhotoLibrary";
 import AssessmentIcon from "@material-ui/icons/Assessment";
-import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
 // import GpsFixed from "@material-ui/icons/GpsFixed";
 // import PersonIcon from "@material-ui/icons/Person";
 // import ContactsOutlinedIcon from "@material-ui/icons/ContactsOutlined";
@@ -77,9 +77,27 @@ const routes = [
     parentPath: "/relatorios",
   },
   {
-    parentName: "Plano de Saúde",
-    parentIcon: AddShoppingCartIcon,
+    parentName: "Vendas",
+    parentIcon: LocalHospitalIcon,
     parentPath: "/saude",
+    type: [2, 3],
+  },
+  {
+    parentName: "Valores do Plano",
+    parentIcon: LocalHospitalIcon,
+    parentPath: "/saude/value",
+    type: [2, 3],
+  },
+  {
+    parentName: "Termos de Uso",
+    parentIcon: LocalHospitalIcon,
+    parentPath: "/saude/terms",
+    type: [2, 3],
+  },
+  {
+    parentName: "Rede Credenciada",
+    parentIcon: LocalHospitalIcon,
+    parentPath: "/saude/provider",
     type: [2, 3],
   },
   // {
