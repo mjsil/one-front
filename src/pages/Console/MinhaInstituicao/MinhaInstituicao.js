@@ -59,6 +59,7 @@ class MeuPerfil extends Component {
     if (!file) {
       return this.setState({
         errorMessage: "É necessário selecionar um arquivo.",
+        loading: false,
       });
     }
 
@@ -178,12 +179,16 @@ class MeuPerfil extends Component {
                   />
                   <ButtonUI
                     variant="contained"
-                    disabled={!this.state.editMode || this.state.loading}
+                    disabled={
+                      !this.state.editMode ||
+                      this.state.loading ||
+                      !this.state.newLogoFile
+                    }
                     color="secondary"
                     fullWidth
                     type="submit"
                   >
-                    Alterar Logo
+                    Confirmar
                   </ButtonUI>
                 </form>
                 <p>{logoName}</p>

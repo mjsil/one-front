@@ -85,17 +85,61 @@
   margin-bottom: 10px;
 }
 
+.instructionBox {
+  min-width: 30%;
+  margin-left: 40px;
+  background-color: rgb(234, 245, 255);
+  border: 1px solid rgb(174, 214, 241);
+  padding: 30px;
+  border-radius: 20px 20px 20px 0px;
+  height: fit-content;
+}
+
+.instructionHeader {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.instructionItem {
+  width: 430px;
+  margin-bottom: 10px;
+}
+
+.instructionSubItems {
+  padding: 0 20px 0 20px;
+}
+
 @media (max-width: 1100px) {
   .box {
-    width: 60%;
+    width: 40%;
+  }
+
+  .instructionItem {
+    width: 230px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .container {
+    flex-direction: column;
+  }
+
+  .box {
+    width: 100%;
+  }
+
+  .instructionItem {
+    width: 100%;
+  }
+
+  .instructionBox {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
   }
 }
 
 @media (max-width: 800px) {
-  .box {
-    width: 80%;
-  }
-
   .modal {
     width: 300px;
   }

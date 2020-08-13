@@ -250,6 +250,37 @@ class GruposChat extends Component {
               <AddIcon /> Adicionar Número
             </button>
           </div>
+          <div className={styles.instructionBox}>
+            <h2 className={styles.instructionHeader}>Instruções de uso</h2>
+            <ul>
+              <li className={styles.instructionItem}>
+                Adicione informações de contato que aparecerão em seu app
+              </li>
+              <li className={styles.instructionItem}>
+                Crie um grupo no Whatsapp ou tenha um número de celular para
+                fazer contato
+              </li>
+              <li className={styles.instructionItem}>
+                Para adicionar um grupo:
+                <ol className={styles.instructionSubItems}>
+                  <li>Copie o link do grupo no Whatsapp;</li>
+                  <li>Clique no botão "+ Adicionar Link"</li>
+                  <li>Preencha os campos</li>
+                </ol>
+              </li>
+              <li className={styles.instructionItem}>
+                Para adicionar um número:
+                <ol className={styles.instructionSubItems}>
+                  <li>Clique no botão "+ Adicionar Número"</li>
+                  <li>Preencha os campos</li>
+                </ol>
+              </li>
+              <li className={styles.instructionItem}>
+                Lembre-se: o campo contendo o nome estará visível em seu app.
+                Escolha um bom nome!
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     );
