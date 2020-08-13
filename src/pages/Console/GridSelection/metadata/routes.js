@@ -20,11 +20,6 @@ const routes = [
     path: "/usuarios",
   },
   {
-    name: "Perfil",
-    icon: AccountBalanceOutlinedIcon,
-    path: "/minha-instituicao",
-  },
-  {
     name: "Mensagem Instantânea",
     icon: EmailOutlinedIcon,
     path: "/instituicoes/mensagem",
@@ -93,6 +88,11 @@ const routes = [
     icon: LocalHospitalIcon,
     path: "/saude/provider",
     type: [2, 3],
+  },
+  {
+    name: "Perfil",
+    icon: AccountBalanceOutlinedIcon,
+    path: "/minha-instituicao",
   },
   // {
   //   name: "Localização",

@@ -26,11 +26,6 @@ const routes = [
     parentPath: "/usuarios",
   },
   {
-    parentName: "Perfil",
-    parentIcon: AccountBalanceOutlinedIcon,
-    parentPath: "/minha-instituicao",
-  },
-  {
     parentName: "Mensagem Instantânea",
     parentIcon: EmailOutlinedIcon,
     parentPath: "/instituicoes/mensagem",
@@ -99,6 +94,11 @@ const routes = [
     parentIcon: LocalHospitalIcon,
     parentPath: "/saude/provider",
     type: [2, 3],
+  },
+  {
+    parentName: "Perfil",
+    parentIcon: AccountBalanceOutlinedIcon,
+    parentPath: "/minha-instituicao",
   },
   // {
   //   parentName: "Localização",
