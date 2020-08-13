@@ -1,5 +1,4 @@
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
-import AccountBalanceOutlinedIcon from "@material-ui/icons/AccountBalanceOutlined";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 import ArtTrackOutlined from "@material-ui/icons/ArtTrackOutlined";
 import BookIcon from "@material-ui/icons/Book";
@@ -8,6 +7,7 @@ import QueueMusic from "@material-ui/icons/QueueMusic";
 import PhotoLibrary from "@material-ui/icons/PhotoLibrary";
 import AssessmentIcon from "@material-ui/icons/Assessment";
 import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
+// import AccountBalanceOutlinedIcon from "@material-ui/icons/AccountBalanceOutlined";
 // import GpsFixed from "@material-ui/icons/GpsFixed";
 // import PersonIcon from "@material-ui/icons/Person";
 // import ContactsOutlinedIcon from "@material-ui/icons/ContactsOutlined";
@@ -89,11 +89,11 @@ const routes = [
     path: "/saude/provider",
     type: [2, 3],
   },
-  {
-    name: "Perfil",
-    icon: AccountBalanceOutlinedIcon,
-    path: "/minha-instituicao",
-  },
+  // {
+  //   name: "Perfil",
+  //   icon: AccountBalanceOutlinedIcon,
+  //   path: "/minha-instituicao",
+  // },
   // {
   //   name: "Localização",
   //   icon: GpsFixed,
