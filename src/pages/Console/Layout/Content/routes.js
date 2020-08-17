@@ -13,7 +13,7 @@ import Midias from "../../Midias/Midias";
 import MidiaDetails from "../../Midias/MidiaDetails/MidiaDetails";
 import RelatoriosBI from "../../RelatoriosBI/RelatoriosBI";
 import IframeSaude from "../../IframeSaude/IframeSaude";
-// import RelatorioVendas from "../../RelatorioVendas/RelatorioVendas";
+import RelatorioVendas from "../../RelatorioVendas/RelatorioVendas";
 // import Cartao from "../../Cartao/Cartao";
 
 const routes = [
@@ -124,11 +124,12 @@ const routes = [
     component: IframeSaude,
     type: [2, 3],
   },
-  // {
-  //   path: "/console/vendas",
-  //   exact: true,
-  //   component: RelatorioVendas,
-  // },
+  {
+    path: "/console/vendas",
+    exact: true,
+    component: RelatorioVendas,
+    type: [2, 3],
+  },
   // {
   //   path: "/console/cartao",
   //   exact: true,

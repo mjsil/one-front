@@ -9,6 +9,7 @@ import QueueMusic from "@material-ui/icons/QueueMusic";
 import PhotoLibrary from "@material-ui/icons/PhotoLibrary";
 import AssessmentIcon from "@material-ui/icons/Assessment";
 import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
+import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
 // import GpsFixed from "@material-ui/icons/GpsFixed";
 // import PersonIcon from "@material-ui/icons/Person";
 // import ContactsOutlinedIcon from "@material-ui/icons/ContactsOutlined";
@@ -65,6 +66,12 @@ const routes = [
     parentIcon: PhotoLibrary,
     parentPath: "/midias",
     type: [2],
+  },
+  {
+    parentName: "Relatório de Vendas",
+    parentIcon: AddShoppingCartIcon,
+    parentPath: "/vendas",
+    type: [2, 3],
   },
   {
     parentName: "Relatórios",

@@ -119,7 +119,6 @@ class RelatorioVendas extends Component {
     return (
       <Fragment>
         <PrimaryHeading>Relatório de Vendas</PrimaryHeading>
-        <StickyHeadTable columns={columns} rows={this.state.sales} />
         <Card className={styles.card}>
           <div className={styles.cardTextHolder}>
             <p>
@@ -148,6 +147,7 @@ class RelatorioVendas extends Component {
             {loadingProgress}
           </div>
         </Card>
+        <StickyHeadTable columns={columns} rows={this.state.sales} />
       </Fragment>
     );
   }
