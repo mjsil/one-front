@@ -34,7 +34,8 @@ class IframeSaude extends Component {
             clientInstance.defaults.baseURL +
             mainUrl +
             "/?access_token=" +
-            res.data.id,
+            res.data.id +
+            "&&header=false",
         });
       });
     }
