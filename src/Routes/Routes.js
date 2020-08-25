@@ -5,6 +5,7 @@ import AuthPage from "../pages/Auth/Auth";
 import Layout from "../pages/Console/Layout/Layout";
 import ResetPassword from "../pages/ResetPassword/ResetPassword";
 import Terms from "../pages/Terms/Terms";
+import BenchmarkTerms from "../pages/Terms/BenchmarkTerms/BenchmarkTerms";
 
 const AuthRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -40,6 +41,7 @@ const Routes = () => (
       <NotAuthRoute exact path="/" component={AuthPage} />
       <Route exact path="/reset/:token" component={ResetPassword} />
       <AuthRoute path="/console" component={Layout} />
+      <Route path="/termos/benchmark" component={BenchmarkTerms} />
       <Route path="/termos" component={Terms} />
       <Route path="*" component={() => <h1>404. Página não encontrada</h1>} />
     </Switch>
