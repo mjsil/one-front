@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import LayoutContext from "../Layout/Layout-context";
 import Iframe from "react-iframe";
+import institutions from "./institutions-metadata";
 
 class RelatorioasBI extends Component {
   constructor(props) {
@@ -7,6 +9,8 @@ class RelatorioasBI extends Component {
     this.state = { width: 0, height: 0 };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
+
+  static contextType = LayoutContext;
 
   componentDidMount() {
     this.updateWindowDimensions();
@@ -25,10 +29,20 @@ class RelatorioasBI extends Component {
   render() {
     const iframeHeight = this.state.height - this.state.height * 0.15;
 
+    let iframeUrl = "https://www.jumaconsultoria.com/";
+
+    const fetchedInstitution = institutions.find(
+      (inst) => inst.institution_id === this.context.institution.id
+    );
+
+    if (fetchedInstitution && this.state.height !== 0) {
+      iframeUrl = `https://www.jumatech.com.br/login?username=${fetchedInstitution.username}&token=${fetchedInstitution.token}`;
+    }
+
     return (
       <React.Fragment>
         <Iframe
-          url="https://www.jumaconsultoria.com/"
+          url={iframeUrl}
           width="100%"
           height={iframeHeight}
           id="iframe-juma-id"
