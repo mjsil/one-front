@@ -24,8 +24,8 @@ class IframeSaude extends Component {
 
     if (!this.state.iframeUrl) {
       const dataToPost = {
-        email: "vendedor@email.com",
-        password: "vendedor",
+        email: "operador@email.com",
+        password: "operador",
       };
 
       serverInstance.post("api/user/login", dataToPost).then((res) => {
