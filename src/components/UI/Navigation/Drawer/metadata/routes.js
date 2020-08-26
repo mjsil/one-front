@@ -35,7 +35,7 @@ const routes = [
     parentName: "Mural",
     parentIcon: ArtTrackOutlined,
     parentPath: "/mural/upload",
-    type: [1, 3],
+    type: [1, 3, 4],
   },
   {
     parentName: "Eventos",
@@ -53,7 +53,7 @@ const routes = [
     parentName: "Grupos Chat",
     parentIcon: ChatIcon,
     parentPath: "/chat",
-    type: [2, 3],
+    type: [2, 3, 4],
   },
   {
     parentName: "Hinário",
@@ -71,7 +71,7 @@ const routes = [
     parentName: "Relatório de Vendas",
     parentIcon: AddShoppingCartIcon,
     parentPath: "/vendas",
-    type: [2, 3],
+    type: [2, 3, 4],
   },
   {
     parentName: "Relatórios",

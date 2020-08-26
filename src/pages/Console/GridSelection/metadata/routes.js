@@ -29,7 +29,7 @@ const routes = [
     name: "Mural",
     icon: ArtTrackOutlined,
     path: "/mural/upload",
-    type: [1, 3],
+    type: [1, 3, 4],
   },
   {
     name: "Eventos",
@@ -47,7 +47,7 @@ const routes = [
     name: "Grupos Chat",
     icon: ChatIcon,
     path: "/chat",
-    type: [2, 3],
+    type: [2, 3, 4],
   },
   {
     name: "Hinário",
@@ -65,7 +65,7 @@ const routes = [
     name: "Relatório de Vendas",
     icon: AddShoppingCartIcon,
     path: "/vendas",
-    type: [2, 3],
+    type: [2, 3, 4],
   },
   {
     name: "Relatórios",

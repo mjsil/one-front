@@ -57,7 +57,7 @@ const routes = [
     path: "/console/mural/upload",
     exact: true,
     component: Mural,
-    type: [1, 3],
+    type: [1, 3, 4],
   },
   {
     path: "/console/eventos/upload",
@@ -75,7 +75,7 @@ const routes = [
     path: "/console/chat",
     exact: true,
     component: GruposChat,
-    type: [2, 3],
+    type: [2, 3, 4],
   },
   {
     path: "/console/hinario",
@@ -128,7 +128,7 @@ const routes = [
     path: "/console/vendas",
     exact: true,
     component: RelatorioVendas,
-    type: [2, 3],
+    type: [2, 3, 4],
   },
   // {
   //   path: "/console/cartao",
