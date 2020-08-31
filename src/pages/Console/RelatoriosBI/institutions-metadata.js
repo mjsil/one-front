@@ -9,4 +9,9 @@ export default [
     username: "VIDASAUDE",
     token: "295d16484cc02f76c455ae3473e743ff7d110b76034afb9ccb2b23b0736d1efa",
   },
+  {
+    institution_id: 5,
+    username: "BENCHMARK",
+    token: "e79f77315d4e7a953dbfe93661eeefb93a7655db4f25694a8b6026b94ebca1c0",
+  },
 ];
