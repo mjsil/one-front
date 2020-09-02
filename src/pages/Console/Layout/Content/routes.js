@@ -11,6 +11,7 @@ import GruposChat from "../../GruposChat/GruposChat";
 import Mural from "../../Mural/Mural";
 import Midias from "../../Midias/Midias";
 import MidiaDetails from "../../Midias/MidiaDetails/MidiaDetails";
+import Propaganda from "../../Propaganda/Propaganda";
 import RelatoriosBI from "../../RelatoriosBI/RelatoriosBI";
 import IframeSaude from "../../IframeSaude/IframeSaude";
 import RelatorioVendas from "../../RelatorioVendas/RelatorioVendas";
@@ -52,6 +53,11 @@ const routes = [
     exact: true,
     component: Localizacao,
     type: [1, 2],
+  },
+  {
+    path: "/console/propaganda/upload",
+    exact: true,
+    component: Propaganda,
   },
   {
     path: "/console/mural/upload",
