@@ -63,7 +63,7 @@ const routes = [
     path: "/console/mural/upload",
     exact: true,
     component: Mural,
-    type: [1, 3, 4],
+    type: [1, 3, 4, 5],
   },
   {
     path: "/console/eventos/upload",
@@ -134,7 +134,7 @@ const routes = [
     path: "/console/vendas",
     exact: true,
     component: RelatorioVendas,
-    type: [2, 3, 4],
+    type: [2, 3, 4, 5],
   },
   // {
   //   path: "/console/cartao",

@@ -38,6 +38,12 @@ const routes = [
     type: [1, 3, 4],
   },
   {
+    parentName: "Publicações",
+    parentIcon: ArtTrackOutlined,
+    parentPath: "/mural/upload",
+    type: [5],
+  },
+  {
     parentName: "Eventos",
     parentIcon: ArtTrackOutlined,
     parentPath: "/eventos/upload",
@@ -71,7 +77,7 @@ const routes = [
     parentName: "Relatório de Vendas",
     parentIcon: AddShoppingCartIcon,
     parentPath: "/vendas",
-    type: [2, 3, 4],
+    type: [2, 3, 4, 5],
   },
   {
     parentName: "Relatórios",

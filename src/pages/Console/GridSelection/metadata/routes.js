@@ -32,6 +32,12 @@ const routes = [
     type: [1, 3, 4],
   },
   {
+    name: "Publicações",
+    icon: ArtTrackOutlined,
+    path: "/mural/upload",
+    type: [5],
+  },
+  {
     name: "Eventos",
     icon: ArtTrackOutlined,
     path: "/eventos/upload",
@@ -65,7 +71,7 @@ const routes = [
     name: "Relatório de Vendas",
     icon: AddShoppingCartIcon,
     path: "/vendas",
-    type: [2, 3, 4],
+    type: [2, 3, 4, 5],
   },
   {
     name: "Relatórios",
