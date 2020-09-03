@@ -16,6 +16,7 @@ class Propaganda extends Component {
     formData: {
       name: "",
       description: "",
+      url: "",
     },
     inputtedFile: null,
     completedFilePercent: null,
@@ -51,6 +52,7 @@ class Propaganda extends Component {
     formData.append("institutionId", this.context.institution.id);
     formData.append("name", this.state.formData.name);
     formData.append("description", this.state.formData.description);
+    formData.append("url", this.state.formData.url);
     formData.append("timestamp", (Date.now() / 1000) | 0);
 
     await axios.post("/propaganda/upload", formData, {
@@ -84,6 +86,7 @@ class Propaganda extends Component {
 
     const nameLength = this.state.formData.name.length;
     const descriptionLength = this.state.formData.description.length;
+    const urlLength = this.state.formData.url.length;
 
     return (
       <div>
@@ -118,6 +121,17 @@ class Propaganda extends Component {
               multiline
             />
             {descriptionLength} / 255
+          </div>
+          <div className={styles.inputHolder}>
+            <TextField
+              label="URL da Propaganda"
+              name="url"
+              value={this.state.formData.url}
+              onChange={this.onFormDataChangeHandler}
+              variant="outlined"
+              className={styles.inputOneLine}
+            />
+            {urlLength} / 255
           </div>
 
           <div className={styles.dropzoneContainer}>
