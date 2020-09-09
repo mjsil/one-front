@@ -16,7 +16,7 @@ export default [
   },
   {
     institution_id: 6,
-    username: "ABRASCO",
+    username: "ASBRACO",
     token: "db8e16aa858f80dbd592727cd293e5fd57eedb0048c07483747c0f91ca10b9ff",
   },
 ];
