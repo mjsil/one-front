@@ -58,6 +58,7 @@ const routes = [
     path: "/console/propaganda/upload",
     exact: true,
     component: Propaganda,
+    type: [5],
   },
   {
     path: "/console/mural/upload",

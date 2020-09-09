@@ -14,4 +14,9 @@ export default [
     username: "BENCHMARK",
     token: "e79f77315d4e7a953dbfe93661eeefb93a7655db4f25694a8b6026b94ebca1c0",
   },
+  {
+    institution_id: 6,
+    username: "ABRASCO",
+    token: "db8e16aa858f80dbd592727cd293e5fd57eedb0048c07483747c0f91ca10b9ff",
+  },
 ];

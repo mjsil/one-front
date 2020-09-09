@@ -8,6 +8,7 @@ import PhotoLibrary from "@material-ui/icons/PhotoLibrary";
 import AssessmentIcon from "@material-ui/icons/Assessment";
 import LocalHospitalIcon from "@material-ui/icons/LocalHospital";
 import AddShoppingCartIcon from "@material-ui/icons/AddShoppingCart";
+import ViewCarouselIcon from "@material-ui/icons/ViewCarousel";
 // import AccountBalanceOutlinedIcon from "@material-ui/icons/AccountBalanceOutlined";
 // import GpsFixed from "@material-ui/icons/GpsFixed";
 // import PersonIcon from "@material-ui/icons/Person";
@@ -19,6 +20,12 @@ const routes = [
     name: "Usuários Cadastrados",
     icon: PeopleAltIcon,
     path: "/usuarios",
+  },
+  {
+    name: "Publicidades",
+    icon: ViewCarouselIcon,
+    path: "/propaganda/upload",
+    type: [5],
   },
   {
     name: "Mensagem Instantânea",

@@ -15,7 +15,6 @@ class Propaganda extends Component {
   state = {
     formData: {
       name: "",
-      description: "",
       url: "",
     },
     inputtedFile: null,
@@ -51,7 +50,6 @@ class Propaganda extends Component {
     formData.append("file", file);
     formData.append("institutionId", this.context.institution.id);
     formData.append("name", this.state.formData.name);
-    formData.append("description", this.state.formData.description);
     formData.append("url", this.state.formData.url);
     formData.append("timestamp", (Date.now() / 1000) | 0);
 
@@ -85,7 +83,6 @@ class Propaganda extends Component {
     }
 
     const nameLength = this.state.formData.name.length;
-    const descriptionLength = this.state.formData.description.length;
     const urlLength = this.state.formData.url.length;
 
     return (
@@ -111,19 +108,6 @@ class Propaganda extends Component {
           </div>
           <div className={styles.inputHolder}>
             <TextField
-              label="Descrição da Propaganda"
-              name="description"
-              value={this.state.formData.description}
-              onChange={this.onFormDataChangeHandler}
-              variant="outlined"
-              rows={4}
-              className={styles.inputMultiline}
-              multiline
-            />
-            {descriptionLength} / 255
-          </div>
-          <div className={styles.inputHolder}>
-            <TextField
               label="URL da Propaganda"
               name="url"
               value={this.state.formData.url}
@@ -135,11 +119,11 @@ class Propaganda extends Component {
           </div>
 
           <div className={styles.dropzoneContainer}>
-            <h3>Somente serão válidas as extensões .png .pdf .jpg .mp4.</h3>
+            <h3>Somente serão válidas as extensões .png .jpeg .jpg.</h3>
             <Dropzone
               onAddFile={this.onAddNewFileHandler}
               setHasError={this.setHasErrorState}
-              validFilesExtensions={["png", "pdf", "jpg", "mp4"]}
+              validFilesExtensions={["png", "jpeg", "jpg"]}
               multiple={false}
             />
           </div>
