@@ -7,6 +7,7 @@ import PrimaryHeading from "../../../components/UI/PrimaryHeading/PrimaryHeading
 import Button from "@material-ui/core/Button";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
 import LayoutContext from "../Layout/Layout-context";
+import ListaPropagandas from "./ListaPropagandas/ListaPropagandas";
 import axios from "../../../axios-instance";
 
 import styles from "./Propaganda.module.css";
@@ -146,6 +147,7 @@ class Propaganda extends Component {
             {inputtedFileProgress}
           </div>
         </Card>
+        <ListaPropagandas />
       </div>
     );
   }
