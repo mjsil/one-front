@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const serverInstance = axios.create({
-  baseURL: "http://134.209.167.35:3000",
+  baseURL: "http://179.184.24.102:3331",
 });
 
 const clientInstance = axios.create({
-  baseURL: "http://134.209.167.35",
+  baseURL: "http://179.184.24.102:3332",
 });
 
 export { serverInstance, clientInstance };

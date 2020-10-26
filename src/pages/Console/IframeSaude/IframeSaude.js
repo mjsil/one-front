@@ -37,7 +37,7 @@ class IframeSaude extends Component {
             res.data.id +
             "&&header=false",
         });
-      });
+      }).catch(err => console.log(err));
     }
   }
 
