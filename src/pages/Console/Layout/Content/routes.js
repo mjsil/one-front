@@ -9,6 +9,7 @@ import Biblia from "../../Biblia/Biblia";
 import Hinario from "../../Hinario/Hinario";
 import GruposChat from "../../GruposChat/GruposChat";
 import Mural from "../../Mural/Mural";
+import Ganho from "../../Ganhos/Ganho";
 import Midias from "../../Midias/Midias";
 import MidiaDetails from "../../Midias/MidiaDetails/MidiaDetails";
 import Propaganda from "../../Propaganda/Propaganda";
@@ -64,6 +65,12 @@ const routes = [
     path: "/console/mural/upload",
     exact: true,
     component: Mural,
+    type: [1, 3, 4, 5],
+  },
+  {
+    path: "/console/ganhos/upload",
+    exact: true,
+    component: Ganho,
     type: [1, 3, 4, 5],
   },
   {

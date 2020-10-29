@@ -1,6 +1,7 @@
 import PeopleAltIcon from "@material-ui/icons/PeopleAlt";
 import EmailOutlinedIcon from "@material-ui/icons/EmailOutlined";
 import ArtTrackOutlined from "@material-ui/icons/ArtTrackOutlined";
+import MonetizationOnIcon from '@material-ui/icons/MonetizationOn';
 import BookIcon from "@material-ui/icons/Book";
 import ChatIcon from "@material-ui/icons/Chat";
 import QueueMusic from "@material-ui/icons/QueueMusic";
@@ -36,6 +37,12 @@ const routes = [
     name: "Mural",
     icon: ArtTrackOutlined,
     path: "/mural/upload",
+    type: [1, 3, 4],
+  },
+  {
+    name: "Ganhos",
+    icon: MonetizationOnIcon,
+    path: "/ganhos/upload",
     type: [1, 3, 4],
   },
   {
