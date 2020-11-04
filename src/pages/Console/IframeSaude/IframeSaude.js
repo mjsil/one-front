@@ -4,6 +4,7 @@ import {
   serverInstance,
   clientInstance,
 } from "../../../services/axios-plano-saude";
+import LayoutContext from '../Layout/Layout-context';
 
 class IframeSaude extends Component {
   constructor(props) {
@@ -11,6 +12,8 @@ class IframeSaude extends Component {
     this.state = { width: 0, height: 0, iframeUrl: null };
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this);
   }
+
+  static contextType = LayoutContext;
 
   componentDidMount() {
     this.updateWindowDimensions();
@@ -23,10 +26,30 @@ class IframeSaude extends Component {
     }
 
     if (!this.state.iframeUrl) {
-      const dataToPost = {
-        email: "operador@email.com",
-        password: "operador",
-      };
+      let dataToPost;
+
+      switch (this.context.institution.id) {
+        case 8:
+          dataToPost = {
+            email: "operadorcg@email.com",
+            password: "123456",
+          }
+          break;
+
+        case 7:
+            dataToPost = {
+              email: "operadorjp@email.com",
+              password: "123456",
+            }
+            break;
+  
+        default:
+          dataToPost = {
+            email: "operador@email.com",
+            password: "operador",
+          };
+          break;
+      }
 
       serverInstance.post("api/user/login", dataToPost).then((res) => {
         this.setState({
