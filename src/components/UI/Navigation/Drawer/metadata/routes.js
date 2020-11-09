@@ -49,7 +49,7 @@ const routes = [
     parentName: "Ganhos",
     parentIcon: MonetizationOnIcon,
     parentPath: "/ganhos/upload",
-    type: [1, 3, 4],
+    type: [5, 3, 4],
   },
   {
     parentName: "Publicações",
