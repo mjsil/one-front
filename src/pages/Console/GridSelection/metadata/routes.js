@@ -43,7 +43,7 @@ const routes = [
     name: "Ganhos",
     icon: MonetizationOnIcon,
     path: "/ganhos/upload",
-    type: [1, 3, 4],
+    type: [5, 3, 4],
   },
   {
     name: "Publicações",
