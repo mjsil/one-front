@@ -19,4 +19,14 @@ export default [
     username: "ASBRACO",
     token: "db8e16aa858f80dbd592727cd293e5fd57eedb0048c07483747c0f91ca10b9ff",
   },
+  {
+    institution_id: 7,
+    username: "CARING",
+    token: "5b70c9a21aec8d51c411e440ac61eb94c7fc122b2a8a06fdbd3ce8dd415d6263",
+  },
+  {
+    institution_id: 8,
+    username: "CARING",
+    token: "5b70c9a21aec8d51c411e440ac61eb94c7fc122b2a8a06fdbd3ce8dd415d6263",
+  },
 ];
