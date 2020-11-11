@@ -43,3 +43,7 @@
   border: 1px solid;
   transform: translateY(-30px);
 }
+
+.tamanhoMaximo {
+  color: red;
+}

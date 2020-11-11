@@ -66,6 +66,7 @@ function Dropzone(props) {
           <AddIcon style={{ fontSize: 60, color: "#c7c6c6" }} />
         </div>
         <h3>{dropzoneText}</h3>
+        {!isDragActive && <h4 className={styles.tamanhoMaximo}>Tamanho máximo 30mb</h4>}
       </div>
     </div>
   );
