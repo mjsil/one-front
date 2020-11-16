@@ -71,6 +71,13 @@ function ResponsiveDrawer(props) {
       {routes.map((route, index) => {
         const routeChildrens = [];
 
+        if((route.parentName === "Relatório de Vendas") && (props.institution.id === 8 || props.institution.id === 7)){
+          route = {
+            ...route,
+            type: [2, 4, 5]
+          }
+        }
+
         if (route.childrens) {
           route.childrens.forEach((children) => {
             if (
