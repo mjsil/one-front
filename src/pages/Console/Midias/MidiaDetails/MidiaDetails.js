@@ -7,6 +7,9 @@ import Card from "@material-ui/core/Card";
 import Box from "@material-ui/core/Box";
 import TextField from "@material-ui/core/TextField";
 import CloudUploadIcon from "@material-ui/icons/CloudUpload";
+import IconButton from "@material-ui/core/IconButton";
+import DeleteIcon from "@material-ui/icons/Delete";
+import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import axios from "../../../../axios-instance";
 
 import styles from "./MidiaDetails.module.css";
@@ -87,11 +90,29 @@ class MidiaDetails extends Component {
     this.props.openSnackbar("Os itens de mídia foram adicionados.");
   };
 
+  onDeleteLinkHandler = (linkId) => {
+    axios.delete("/midia/videoItem/" + linkId).then((res) => {
+      this.props.openSnackbar("Link deletado com sucesso.");
+    });
+  };
+
+  onDeletePhotoHandler = (photoId) => {
+    console.log("here1");
+    axios.delete("/midia/item/" + photoId).then((res) => {
+      console.log("here2");
+      this.props.openSnackbar("Arquivo deletado com sucesso.");
+    });
+  };
+
   render() {
     let midia;
     if (this.props.location.state) {
       midia = this.props.location.state.midia;
     }
+
+    const inputtedFilesName = this.state.files.map((file, i) => {
+      return <p key={i}>{file.name}</p>;
+    });
 
     return (
       <Fragment>
@@ -130,6 +151,7 @@ class MidiaDetails extends Component {
               multiple={true}
               validFilesExtensions={["png", "jpg", "jpeg"]}
             />
+            {inputtedFilesName}
             <Button
               onClick={this.onUploadingFilesHandler}
               className={styles.button}
@@ -147,21 +169,34 @@ class MidiaDetails extends Component {
             <PrimaryHeading>Vídeos Anexados</PrimaryHeading>
             {this.state.midiaVideoItems.map((item) => {
               return (
-                <a key={item.id} href={item.url} className={styles.link}>
-                  {item.url}
-                </a>
+                <div key={item.id} styles={styles.linkHolder}>
+                  <a href={item.url} className={styles.link}>
+                    {item.url}
+                  </a>
+                  <IconButton
+                    size="small"
+                    onClick={() => this.onDeleteLinkHandler(item.id)}
+                  >
+                    <HighlightOffIcon color="error" />
+                  </IconButton>
+                </div>
               );
             })}
           </Box>
+
           <PrimaryHeading>Imagens Anexadas</PrimaryHeading>
           <Grid container spacing={3}>
             {this.state.midiaItems.map((item) => {
               return (
                 <Grid key={item.id} item md={3} xs={6}>
                   <Box className={styles.imageContainer}>
-                    {/*<IconButton className={styles.deleteIcon} size="small">
+                    <IconButton
+                      className={styles.deleteIcon}
+                      size="small"
+                      onClick={() => this.onDeletePhotoHandler(item.id)}
+                    >
                       <DeleteIcon color="error" />
-                    </IconButton>*/}
+                    </IconButton>
                     <img
                       src={axios.defaults.baseURL + "/files/" + item.filename}
                       alt="Mídia Item"

@@ -32,7 +32,8 @@
 }
 
 .link {
-  display: block;
+  display: inline;
+  margin-right: 10px;
 }
 
 .imageContainer {
