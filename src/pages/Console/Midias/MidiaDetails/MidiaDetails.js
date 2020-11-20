@@ -97,9 +97,7 @@ class MidiaDetails extends Component {
   };
 
   onDeletePhotoHandler = (photoId) => {
-    console.log("here1");
     axios.delete("/midia/item/" + photoId).then((res) => {
-      console.log("here2");
       this.props.openSnackbar("Arquivo deletado com sucesso.");
     });
   };
@@ -136,6 +134,7 @@ class MidiaDetails extends Component {
               color="secondary"
               startIcon={<CloudUploadIcon />}
               variant="contained"
+              disabled={!this.state.newVideoUrl.length}
             >
               Adicionar Link
             </Button>
@@ -158,6 +157,7 @@ class MidiaDetails extends Component {
               color="primary"
               startIcon={<CloudUploadIcon />}
               variant="contained"
+              disabled={!this.state.files.length}
             >
               Adicionar Imagem
             </Button>
