@@ -13,6 +13,13 @@ function GridSelection(props) {
   };
 
   const renderedCards = routes.map((route) => {
+    if((route.name === "Relatório de Vendas") && (context.institution.id === 8 || context.institution.id === 7)){
+      route = {
+        ...route,
+        type: [2, 4, 5]
+      }
+    }
+
     if (route.type && !route.type.includes(context.institution.type)) {
       return null;
     }
