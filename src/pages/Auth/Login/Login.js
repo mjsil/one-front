@@ -41,7 +41,9 @@ class Login extends Component {
         const jwtToken = res.data.token;
         const user = res.data.user;
 
-        if (user.permission !== 2) {
+        console.log(user.permission )
+
+        if (user.permission !== 9) {
           return this.setState({
             loading: false,
             errorMessage: "Usuário não encontrado.",
