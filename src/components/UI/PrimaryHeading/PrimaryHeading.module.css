@@ -1,0 +1,11 @@
+.PrimaryHeading {
+    font-weight: 500;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 420px) {
+    .PrimaryHeading {
+        font-size: 20px;
+    }
+}

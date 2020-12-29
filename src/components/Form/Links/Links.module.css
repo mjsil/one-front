@@ -1,0 +1,10 @@
+.Links {
+    margin-left: 20px;
+    width: fit-content;
+}
+
+.Links > a {
+    margin: 0;
+    display: block;
+    color: rgb(48, 101, 145);
+}

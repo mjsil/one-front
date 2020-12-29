@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.box {
+  width: 50%;
+}
+
+.infoBar {
+  background-color: #213749;
+  color: #fff;
+  font-size: 20px;
+  padding: 5px 20px 5px 20px;
+}
+
+.boxMainContent {
+  background-color: #fff;
+  padding: 20px;
+  justify-content: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.input {
+  margin-bottom: 20px !important;
+}
+
+.alertHeading {
+  margin-bottom: 10px;
+}
+
+.passwordGroup {
+  margin-bottom: 20px;
+  width: 70%;
+  align-self: center;
+  border-radius: 2px;
+}
+
+@media (max-width: 1000px) {
+  .box {
+    width: 70%;
+  }
+}
+
+@media (max-width: 830px) {
+  .infoBar {
+    font-size: 18px;
+  }
+
+  .box {
+    width: 90%;
+  }
+}

@@ -1,0 +1,25 @@
+.userDataContainer {
+  padding: 10px;
+}
+
+.usernameHolder {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.row {
+  margin-bottom: 5px !important;
+  max-width: 40%;
+}
+
+.editUserContainer {
+  margin-top: 25px;
+}
+
+.buttonHolder {
+  margin: 20px 0 20px 0;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}

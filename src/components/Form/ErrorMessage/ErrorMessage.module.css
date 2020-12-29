@@ -1,0 +1,9 @@
+.Error {
+    font-size: 16px;
+    display: block;
+    background-color: rgb(243, 174, 174);
+    border: 1px solid rgb(236, 128, 128);
+    align-self: center;
+    margin-bottom: 15px;
+    padding: 5px 10px 5px 10px;
+}

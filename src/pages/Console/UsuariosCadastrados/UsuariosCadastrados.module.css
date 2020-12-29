@@ -1,0 +1,18 @@
+.tableContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.table {
+  width: 100%;
+}
+
+.downloadButton {
+  font-weight: bold !important;
+  color: #19519e !important;
+  margin: 5px !important;
+}
+
+.downloadButton:hover {
+  background: none !important;
+}

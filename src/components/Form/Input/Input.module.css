@@ -1,0 +1,26 @@
+.Input {
+    display: block;
+    background-color: #f2f3f3;
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-size: 23px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 5px 8px 5px 8px;
+    border-radius: 3px;
+    transition: all .3s;
+}
+
+.Input:focus {
+    outline: none;
+    background-color: #e0e0e0;
+    box-shadow: rgba(0,0,0,.1) 0 2px 5px;
+    border-bottom: 2px solid #1db0ca;
+}
+
+.Input:disabled {
+    color: rgb(49, 49, 49);
+    border-bottom: 2px solid transparent;
+    box-shadow: none;
+    background-color: transparent;
+}

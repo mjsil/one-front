@@ -1,0 +1,28 @@
+.Button {
+  align-self: center;
+  background-color: #0e72ac;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px 20px 10px 20px;
+  min-width: 60%;
+  border: none;
+  border-radius: 5px;
+  font-size: 20px;
+  margin: 20px 0 20px 0;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 2px 5px;
+  transition: all 0.3s;
+}
+
+.Button:hover {
+  cursor: pointer;
+}
+
+.Button:focus {
+  outline: none;
+}
+
+.Button:disabled {
+  opacity: 0;
+  cursor: unset;
+  transform: scale(0.8) translateX(100px);
+}

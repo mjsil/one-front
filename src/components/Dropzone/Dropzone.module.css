@@ -1,0 +1,49 @@
+.Dropzone {
+  border-style: dotted;
+  padding: 2rem 0 2rem 0;
+  border-color: rgb(87, 87, 87);
+  border-width: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.3s;
+}
+
+.Dropzone:hover {
+  cursor: pointer;
+}
+
+.Dropzone:focus {
+  border: none;
+}
+
+.ActivatedDropzone {
+  background-color: rgb(231, 246, 250);
+}
+
+.mainContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.iconHolder {
+  border: 2px solid #c7c6c6;
+  border-style: dotted;
+  width: fit-content;
+  border-radius: 15px;
+  margin-bottom: 20px;
+
+  transition: all 0.3s;
+}
+
+.activatedIcon {
+  background-color: rgb(35, 68, 95);
+  border: 1px solid;
+  transform: translateY(-30px);
+}
+
+.tamanhoMaximo {
+  color: red;
+}
